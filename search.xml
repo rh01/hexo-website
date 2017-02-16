@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+    
+    <entry>
+      <title><![CDATA[about]]></title>
+      <url>%2F2017%2F02%2F16%2Fabout%2F</url>
+      <content type="text"></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>%2F2017%2F02%2F16%2Ftags%2F</url>
+      <content type="text"></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[新的开始]]></title>
+      <url>%2F2017%2F02%2F15%2F%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B%2F</url>
+      <content type="text"><![CDATA[这是新的开始，我用hexo创建了第一篇文章。 通过下面的命令，就可以创建新文章12D:\workspace\javascript\nodejs-hexo&gt;hexo new 新的开始[info] File created at D:\workspace\javascript\nodejs-hexo\source\_posts\新的开始.md]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>%2F2017%2F02%2F15%2Fhello-world%2F</url>
+      <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    </entry>
+
+    
+  
+  
+</search>
