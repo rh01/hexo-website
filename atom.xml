@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.shenhengheng.xyz/"/>
-  <updated>2017-02-16T06:50:30.827Z</updated>
+  <updated>2017-02-16T08:37:25.809Z</updated>
   <id>http://blog.shenhengheng.xyz/</id>
   
   <author>
@@ -14,6 +14,144 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>申请Coursera助学金-干货</title>
+    <link href="http://blog.shenhengheng.xyz/2017/02/16/%E7%94%B3%E8%AF%B7Coursera%E5%8A%A9%E5%AD%A6%E9%87%91-%E5%B9%B2%E8%B4%A7/"/>
+    <id>http://blog.shenhengheng.xyz/2017/02/16/申请Coursera助学金-干货/</id>
+    <published>2017-02-16T08:23:05.000Z</published>
+    <updated>2017-02-16T08:37:25.809Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;对于没有钱的学生党来说，Coursera的课程太贵，没有办法，只能通过申请助学金来实现正规的学习，过去Coursera还支持旁听，现在没有了，无奈的我们只能通过Apply Finitial Aid来学习了，想想都痛苦&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="申请材料" scheme="http://blog.shenhengheng.xyz/categories/%E7%94%B3%E8%AF%B7%E6%9D%90%E6%96%99/"/>
+    
+    
+      <category term="Applay Aid" scheme="http://blog.shenhengheng.xyz/tags/Applay-Aid/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RStudio在使用Github时出现的问题的解决方案</title>
+    <link href="http://blog.shenhengheng.xyz/2017/02/16/RStudio%E5%9C%A8%E4%BD%BF%E7%94%A8Github%E6%97%B6%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>http://blog.shenhengheng.xyz/2017/02/16/RStudio在使用Github时出现的问题的解决方案/</id>
+    <published>2017-02-16T08:06:46.000Z</published>
+    <updated>2017-02-16T08:24:33.981Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在使用&lt;a href=&quot;www.github.com&quot;&gt;Github&lt;/a&gt;时，往往出现这种情况，我在使用&lt;a href=&quot;www.github.com&quot;&gt;Github&lt;/a&gt; client时，比如 &lt;a href=&quot;&quot;&gt;Android Studio&lt;/a&gt;，&lt;a href=&quot;&quot;&gt;Github Desktop&lt;/a&gt;，&lt;a href=&quot;&quot;&gt;Rstudio&lt;/a&gt;，&lt;a href=&quot;&quot;&gt;PyCharm&lt;/a&gt; 等等时，我为了工程项目更好的同步到&lt;a href=&quot;http://github.com/rh01&quot;&gt;我的github&lt;/a&gt; 上，往往使用客户端的 &lt;strong&gt;Git Push&lt;/strong&gt; 比较迅速，但是在配置方面，很麻烦，所以在我配置的时候出现了这样一则错误， &lt;strong&gt;unable to read askpass response from…&lt;/strong&gt; ,结合网上资源，将解决方案放出！&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Rstudio" scheme="http://blog.shenhengheng.xyz/categories/Rstudio/"/>
+    
+    
+      <category term="solution" scheme="http://blog.shenhengheng.xyz/tags/solution/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈latex</title>
+    <link href="http://blog.shenhengheng.xyz/2017/02/16/%E6%B5%85%E8%B0%88latex/"/>
+    <id>http://blog.shenhengheng.xyz/2017/02/16/浅谈latex/</id>
+    <published>2017-02-16T07:58:09.000Z</published>
+    <updated>2017-02-16T08:04:56.831Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;LaTeX是在克努特老先生（注：他的著作有TeX系统，计算机程序设计艺术）发明出来TeX系统的基础之上完善的。刚开始主要适用于文章和数学公式的排版。他是我最喜欢的排版技术之一。TeX系统是在1982年发布的。目前的TeX系统的版本不断修正，们目前的版本号不断接近 $\pi$.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="latex" scheme="http://blog.shenhengheng.xyz/categories/latex/"/>
+    
+    
+      <category term="latex" scheme="http://blog.shenhengheng.xyz/tags/latex/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Soft修正函数</title>
+    <link href="http://blog.shenhengheng.xyz/2017/02/16/Soft%E4%BF%AE%E6%AD%A3%E5%87%BD%E6%95%B0/"/>
+    <id>http://blog.shenhengheng.xyz/2017/02/16/Soft修正函数/</id>
+    <published>2017-02-16T07:51:40.000Z</published>
+    <updated>2017-02-16T07:55:57.478Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;softmax 模型和激活函数&lt;br&gt;
+    
+    </summary>
+    
+      <category term="深度学习" scheme="http://blog.shenhengheng.xyz/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="机器学习" scheme="http://blog.shenhengheng.xyz/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="http://blog.shenhengheng.xyz/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="激活函数" scheme="http://blog.shenhengheng.xyz/tags/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>笔记1-从机器学习到深度学习-两个问题</title>
+    <link href="http://blog.shenhengheng.xyz/2017/02/16/%E7%AC%94%E8%AE%B01-%E4%BB%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%88%B0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E4%B8%A4%E4%B8%AA%E9%97%AE%E9%A2%98/"/>
+    <id>http://blog.shenhengheng.xyz/2017/02/16/笔记1-从机器学习到深度学习-两个问题/</id>
+    <published>2017-02-16T07:47:31.000Z</published>
+    <updated>2017-02-16T07:49:42.558Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这篇笔记主要摘出一部分的问题和解决方案来谈谈我学习 &lt;a href=&quot;https://classroom.udacity.com/courses/ud730&quot;&gt;Deep Learning&lt;/a&gt; 时的一些感想和收获。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="深度学习" scheme="http://blog.shenhengheng.xyz/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="机器学习" scheme="http://blog.shenhengheng.xyz/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="solution" scheme="http://blog.shenhengheng.xyz/tags/solution/"/>
+    
+      <category term="deep learning" scheme="http://blog.shenhengheng.xyz/tags/deep-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用机器学习实现数字识别及分类</title>
+    <link href="http://blog.shenhengheng.xyz/2017/02/16/%E5%88%A9%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E7%8E%B0%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB%E5%8F%8A%E5%88%86%E7%B1%BB/"/>
+    <id>http://blog.shenhengheng.xyz/2017/02/16/利用机器学习实现数字识别及分类/</id>
+    <published>2017-02-16T07:34:46.000Z</published>
+    <updated>2017-02-16T07:46:11.054Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;利用opencv对图像进行边缘检测，轮廓检测等等，人工构建特征和训练集，结合 &lt;a href=&quot;https://en.wikipedia.org/wiki/Euclidean_distance&quot;&gt;Euclidean distance&lt;/a&gt; 来计算相似度，进而可实现0～9的数字的分类。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="machine learning" scheme="http://blog.shenhengheng.xyz/categories/machine-learning/"/>
+    
+      <category term="algorithm" scheme="http://blog.shenhengheng.xyz/categories/machine-learning/algorithm/"/>
+    
+      <category term="图像处理" scheme="http://blog.shenhengheng.xyz/categories/machine-learning/algorithm/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+    
+      <category term="machine learning" scheme="http://blog.shenhengheng.xyz/tags/machine-learning/"/>
+    
+      <category term="digit recognition" scheme="http://blog.shenhengheng.xyz/tags/digit-recognition/"/>
+    
+      <category term="classification" scheme="http://blog.shenhengheng.xyz/tags/classification/"/>
+    
+  </entry>
   
   <entry>
     <title>系列01-利用Python爬虫来抓取银行的牌告汇率</title>
@@ -116,47 +254,6 @@
     <updated>2017-02-16T00:55:06.907Z</updated>
     
     <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>新的开始</title>
-    <link href="http://blog.shenhengheng.xyz/2017/02/15/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/"/>
-    <id>http://blog.shenhengheng.xyz/2017/02/15/新的开始/</id>
-    <published>2017-02-15T07:35:50.000Z</published>
-    <updated>2017-02-15T07:40:13.876Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这是&lt;strong&gt;新的开始&lt;/strong&gt;，我用hexo创建了第一篇文章。&lt;/p&gt;
-&lt;p&gt;通过下面的命令，就可以创建新文章&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;di
-    
-    </summary>
-    
-      <category term="日志" scheme="http://blog.shenhengheng.xyz/categories/%E6%97%A5%E5%BF%97/"/>
-    
-      <category term="第一天" scheme="http://blog.shenhengheng.xyz/categories/%E6%97%A5%E5%BF%97/%E7%AC%AC%E4%B8%80%E5%A4%A9/"/>
-    
-    
-      <category term="第一天" scheme="http://blog.shenhengheng.xyz/tags/%E7%AC%AC%E4%B8%80%E5%A4%A9/"/>
-    
-      <category term="开始" scheme="http://blog.shenhengheng.xyz/tags/%E5%BC%80%E5%A7%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://blog.shenhengheng.xyz/2017/02/15/hello-world/"/>
-    <id>http://blog.shenhengheng.xyz/2017/02/15/hello-world/</id>
-    <published>2017-02-15T07:05:01.895Z</published>
-    <updated>2017-02-15T07:05:01.911Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
     
     </summary>
     
