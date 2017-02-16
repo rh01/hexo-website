@@ -3,17 +3,92 @@
 
 
     
-    
   <url>
-    <loc>http://blog.shenhengheng.xyz/2017/02/16/tags/</loc>
-    <lastmod>2017-02-16T01:36:03.515Z</lastmod>
+    <loc>http://blog.shenhengheng.xyz/2017/02/16/%E5%88%A9%E7%94%A8Python%E7%88%AC%E8%99%AB%E6%9D%A5%E6%8A%93%E5%8F%96%E9%93%B6%E8%A1%8C%E7%9A%84%E7%89%8C%E5%91%8A%E6%B1%87%E7%8E%87/</loc>
+    <lastmod>2017-02-16T06:50:30.827Z</lastmod>
     <data>
         <display>
-        <title>tags</title>
-        <pubTime>2017-02-16T00:45:38.000Z</pubTime>
+        <title>系列01-利用Python爬虫来抓取银行的牌告汇率</title>
+        <pubTime>2017-02-16T06:43:16.000Z</pubTime>
         
+        <tag>crawler</tag>
+         
+        <tag>ant</tag>
+         
          
            
+             
+              <breadCrumb title="爬虫" url="http://blog.shenhengheng.xyz/categories/%E7%88%AC%E8%99%AB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/02/16/old-%E5%88%A9%E7%94%A8opencv%E5%AE%9E%E7%8E%B0%E8%84%B8%E9%83%A8%E8%AF%86%E5%88%AB/</loc>
+    <lastmod>2017-02-16T06:40:51.343Z</lastmod>
+    <data>
+        <display>
+        <title>old-利用opencv实现脸部识别</title>
+        <pubTime>2017-02-16T06:19:10.000Z</pubTime>
+        
+        <tag>opencv</tag>
+         
+        <tag>face detection</tag>
+         
+         
+           
+             
+              <breadCrumb title="OpenCV" url="http://blog.shenhengheng.xyz/categories/OpenCV/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/02/16/%E5%88%A9%E7%94%A8pandas%E5%AE%9E%E7%8E%B0%E8%BE%93%E5%87%BA%E6%BC%82%E4%BA%AE%E7%9A%84%E5%9B%BE%E8%A1%A8/</loc>
+    <lastmod>2017-02-16T06:39:54.791Z</lastmod>
+    <data>
+        <display>
+        <title>利用pandas实现输出漂亮的图表</title>
+        <pubTime>2017-02-16T06:30:40.000Z</pubTime>
+        
+        <tag>pandas</tag>
+         
+        <tag>data Visualization</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据科学" url="http://blog.shenhengheng.xyz/categories/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+          
+             
+              <breadCrumb title="爬虫" url="http://blog.shenhengheng.xyz/categories/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/%E7%88%AC%E8%99%AB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/02/16/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E7%AC%AC%E4%B8%80%E5%A4%A9-%E6%8A%93%E5%8F%96%E6%B7%98%E5%AE%9D%E7%BD%91%E7%AB%99%E7%9A%84%E5%90%8D%E7%A7%B0%E5%92%8C%E4%BB%B7%E6%A0%BC/</loc>
+    <lastmod>2017-02-16T06:39:53.560Z</lastmod>
+    <data>
+        <display>
+        <title>爬虫实战第一天-抓取淘宝网站的名称和价格</title>
+        <pubTime>2017-02-16T05:52:29.000Z</pubTime>
+        
+        <tag>crawler</tag>
+         
+        <tag>ant</tag>
+         
+         
+           
+             
+              <breadCrumb title="爬虫" url="http://blog.shenhengheng.xyz/categories/%E7%88%AC%E8%99%AB/"/>
+          
         </display>
     </data>
     </url>

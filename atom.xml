@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.shenhengheng.xyz/"/>
-  <updated>2017-02-16T00:55:06.907Z</updated>
+  <updated>2017-02-16T06:50:30.827Z</updated>
   <id>http://blog.shenhengheng.xyz/</id>
   
   <author>
@@ -16,25 +16,104 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>系列01-利用Python爬虫来抓取银行的牌告汇率</title>
+    <link href="http://blog.shenhengheng.xyz/2017/02/16/%E5%88%A9%E7%94%A8Python%E7%88%AC%E8%99%AB%E6%9D%A5%E6%8A%93%E5%8F%96%E9%93%B6%E8%A1%8C%E7%9A%84%E7%89%8C%E5%91%8A%E6%B1%87%E7%8E%87/"/>
+    <id>http://blog.shenhengheng.xyz/2017/02/16/利用Python爬虫来抓取银行的牌告汇率/</id>
+    <published>2017-02-16T06:43:16.000Z</published>
+    <updated>2017-02-16T06:50:30.827Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;python爬虫抓取台湾银行的牌告汇率,让你更加获益&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;台湾银行网站为 &lt;a href=&quot;http://rate.bot.com.tw/xrt?Lang=zh-TW&quot;&gt;http://rate.bot.com.tw/xrt?Lang=zh-TW&lt;/a&gt;&lt;br&gt;视频为：&lt;a href=&quot;https://www.youtube.com/watch?v=-c5rrzjsN34&quot;&gt;https://www.youtube.com/watch?v=-c5rrzjsN34&lt;/a&gt;&lt;br&gt;简介：利用pandas爬去牌告汇率，然后生成excel文件&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="爬虫" scheme="http://blog.shenhengheng.xyz/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+      <category term="crawler" scheme="http://blog.shenhengheng.xyz/tags/crawler/"/>
+    
+      <category term="ant" scheme="http://blog.shenhengheng.xyz/tags/ant/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用pandas实现输出漂亮的图表</title>
+    <link href="http://blog.shenhengheng.xyz/2017/02/16/%E5%88%A9%E7%94%A8pandas%E5%AE%9E%E7%8E%B0%E8%BE%93%E5%87%BA%E6%BC%82%E4%BA%AE%E7%9A%84%E5%9B%BE%E8%A1%A8/"/>
+    <id>http://blog.shenhengheng.xyz/2017/02/16/利用pandas实现输出漂亮的图表/</id>
+    <published>2017-02-16T06:30:40.000Z</published>
+    <updated>2017-02-16T06:39:54.791Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;利用python的数据分析 pandas 库来可视化近期货币的走势，具体代码见-&amp;gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数据科学" scheme="http://blog.shenhengheng.xyz/categories/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
+    
+      <category term="爬虫" scheme="http://blog.shenhengheng.xyz/categories/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/%E7%88%AC%E8%99%AB/"/>
+    
+    
+      <category term="pandas" scheme="http://blog.shenhengheng.xyz/tags/pandas/"/>
+    
+      <category term="data Visualization" scheme="http://blog.shenhengheng.xyz/tags/data-Visualization/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>old-利用opencv实现脸部识别</title>
+    <link href="http://blog.shenhengheng.xyz/2017/02/16/old-%E5%88%A9%E7%94%A8opencv%E5%AE%9E%E7%8E%B0%E8%84%B8%E9%83%A8%E8%AF%86%E5%88%AB/"/>
+    <id>http://blog.shenhengheng.xyz/2017/02/16/old-利用opencv实现脸部识别/</id>
+    <published>2017-02-16T06:19:10.000Z</published>
+    <updated>2017-02-16T06:40:51.343Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;利用很简单的&lt;a href=&quot;www.opencv.org&quot;&gt;OpenCV&lt;/a&gt;库在JuPyter上实现了一个简单的练习，人脸检测。使用了OpenCV成熟的级联分类器,又称为 &lt;strong&gt;分类器&lt;/strong&gt; &lt;a href=&quot;https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml&quot;&gt;haarcascade_frontalface_default.xml&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="OpenCV" scheme="http://blog.shenhengheng.xyz/categories/OpenCV/"/>
+    
+    
+      <category term="opencv" scheme="http://blog.shenhengheng.xyz/tags/opencv/"/>
+    
+      <category term="face detection" scheme="http://blog.shenhengheng.xyz/tags/face-detection/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>爬虫实战第一天-抓取淘宝网站的名称和价格</title>
+    <link href="http://blog.shenhengheng.xyz/2017/02/16/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E7%AC%AC%E4%B8%80%E5%A4%A9-%E6%8A%93%E5%8F%96%E6%B7%98%E5%AE%9D%E7%BD%91%E7%AB%99%E7%9A%84%E5%90%8D%E7%A7%B0%E5%92%8C%E4%BB%B7%E6%A0%BC/"/>
+    <id>http://blog.shenhengheng.xyz/2017/02/16/爬虫实战第一天-抓取淘宝网站的名称和价格/</id>
+    <published>2017-02-16T05:52:29.000Z</published>
+    <updated>2017-02-16T06:39:53.560Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之前在YouTube上学习过一系列的&lt;a href=&quot;https://www.youtube.com/watch?v=vOjRcxTLUEI&amp;amp;t=2s&quot;&gt;爬虫实战课程&lt;/a&gt;,&lt;strong&gt;淘宝&lt;/strong&gt;（这里的淘宝指的是 &lt;strong&gt;台湾淘宝&lt;/strong&gt;）使用AJAX 的方式填入页面内容。因此在这里便可以从XHR 以及JS 下手，找寻入口点，再使用正规表达式(&lt;strong&gt;re&lt;/strong&gt;)，便可以快速的剖析出重要资讯，&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="爬虫" scheme="http://blog.shenhengheng.xyz/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+      <category term="crawler" scheme="http://blog.shenhengheng.xyz/tags/crawler/"/>
+    
+      <category term="ant" scheme="http://blog.shenhengheng.xyz/tags/ant/"/>
+    
+  </entry>
+  
+  <entry>
     <title>about</title>
     <link href="http://blog.shenhengheng.xyz/2017/02/16/about/"/>
     <id>http://blog.shenhengheng.xyz/2017/02/16/about/</id>
     <published>2017-02-16T00:54:39.000Z</published>
     <updated>2017-02-16T00:55:06.907Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>tags</title>
-    <link href="http://blog.shenhengheng.xyz/2017/02/16/tags/"/>
-    <id>http://blog.shenhengheng.xyz/2017/02/16/tags/</id>
-    <published>2017-02-16T00:45:38.000Z</published>
-    <updated>2017-02-16T01:36:03.515Z</updated>
     
     <summary type="html">
     
