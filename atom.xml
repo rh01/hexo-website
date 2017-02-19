@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.shenhengheng.xyz/"/>
-  <updated>2017-02-18T09:12:41.704Z</updated>
+  <updated>2017-02-19T09:07:20.414Z</updated>
   <id>http://blog.shenhengheng.xyz/</id>
   
   <author>
@@ -16,11 +16,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>爬虫实战第一节课笔记</title>
-    <link href="http://blog.shenhengheng.xyz/2017/02/18/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0/"/>
-    <id>http://blog.shenhengheng.xyz/2017/02/18/爬虫实战第一节课笔记/</id>
+    <title>爬虫实战第二节课笔记及相关代码</title>
+    <link href="http://blog.shenhengheng.xyz/2017/02/19/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0%E5%8F%8A%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/"/>
+    <id>http://blog.shenhengheng.xyz/2017/02/19/爬虫实战第二节课笔记及相关代码/</id>
+    <published>2017-02-19T09:04:35.000Z</published>
+    <updated>2017-02-19T09:07:20.414Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;网络爬虫更新第二节课笔记&lt;br&gt;
+    
+    </summary>
+    
+      <category term="爬虫" scheme="http://blog.shenhengheng.xyz/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+      <category term="爬虫" scheme="http://blog.shenhengheng.xyz/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>爬虫实战第一节课笔记及相关代码</title>
+    <link href="http://blog.shenhengheng.xyz/2017/02/18/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0%E5%8F%8A%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/"/>
+    <id>http://blog.shenhengheng.xyz/2017/02/18/爬虫实战第一节课笔记及相关代码/</id>
     <published>2017-02-18T07:35:21.000Z</published>
-    <updated>2017-02-18T09:12:41.704Z</updated>
+    <updated>2017-02-19T09:06:18.164Z</updated>
     
     <summary type="html">
     
