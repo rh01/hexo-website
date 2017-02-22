@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.shenhengheng.xyz/"/>
-  <updated>2017-02-19T09:07:20.414Z</updated>
+  <updated>2017-02-22T10:04:06.880Z</updated>
   <id>http://blog.shenhengheng.xyz/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>matplotlib tutorial - 1</title>
+    <link href="http://blog.shenhengheng.xyz/2017/02/22/matplotlib%20tutorial%20-%201/"/>
+    <id>http://blog.shenhengheng.xyz/2017/02/22/matplotlib tutorial - 1/</id>
+    <published>2017-02-22T09:41:44.000Z</published>
+    <updated>2017-02-22T10:04:06.880Z</updated>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;
+    
+    </summary>
+    
+      <category term="Data visualization" scheme="http://blog.shenhengheng.xyz/categories/Data-visualization/"/>
+    
+    
+      <category term="data science" scheme="http://blog.shenhengheng.xyz/tags/data-science/"/>
+    
+      <category term="matplotlib" scheme="http://blog.shenhengheng.xyz/tags/matplotlib/"/>
+    
+      <category term="Data visualization" scheme="http://blog.shenhengheng.xyz/tags/Data-visualization/"/>
+    
+  </entry>
   
   <entry>
     <title>爬虫实战第二节课笔记及相关代码</title>
