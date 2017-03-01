@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="恒行天下">
 <meta property="og:description" content="MNIST 机器学习入门本教程的目标读者是对机器学习和TensorFlow 都不太了解的新手．如果你已经了解 MNIST 和 softmax 回归(softmax regression) 的相关知识，你可以阅读这个快速上手教程．">
 <meta property="og:image" content="https://www.tensorflow.org/versions/r0.10/images/mnist_digits.png">
-<meta property="og:updated_time" content="2017-03-01T12:46:40.351Z">
+<meta property="og:updated_time" content="2017-03-01T12:51:08.641Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MNIST机器学习入门">
 <meta name="twitter:description" content="MNIST 机器学习入门本教程的目标读者是对机器学习和TensorFlow 都不太了解的新手．如果你已经了解 MNIST 和 softmax 回归(softmax regression) 的相关知识，你可以阅读这个快速上手教程．">
@@ -446,7 +446,7 @@ Extracting MNIST_data/train-images-idx3-ubyte.gz/t10k-labels-idx1-ubyte.gz
 <p>softmax 回归（softmax regression）分两步：首先对输入被分类对象属于某个类的“证据”相加求和，然后将这个“证据”的和转化为概率.</p>
 <p>我们使用加权的方法来累积计算一张图片是否属于某类的“证据”。如果图片的像素强有力的体现该图不属于某个类，则权重为负数，相反如果这个像素拥有有利的证据支持这张图片属于这个类，那么权值为正．</p>
 <p>我们也需要引入额外的“证据”，可称之为偏置量(bias）。总的来说，我们希望它<br>代表了与所输入向无关的判断证据．因此对于给定的输入图片x 代表某数字i 的总体证<br>据可以表示为:</p>
-<p>$$evidencei=\sum<em>jW</em>{i,j}  x_j + b_i$$</p>
+<p>$$evidencei=\sum<em>j{W</em>{i,j}  x_j + b_i}$$</p>
 <p>其中，$W_i$ 代表权重，$b_i$ 代表第 i 类的偏置量，j 代表给定图片x 的像素索引用于像素求和．然后用 softmax 函数可以把这些证据转换成概率y:</p>
 <p>$$y = softmax(evidence)$$</p>
 <p>这里的softmax 可以看成是一个激励（activation）函数或是链接（link）函数，把我们定义的线性函数的输出转换成我们想要的格式，也就是关于10 个数字类的概率分布．因此，给定一张图片，它对于每一个数字的吻合度可以被softmax 函数转换成为一个概率值．softmax 函数可以定义为：</p>
