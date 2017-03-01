@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.shenhengheng.xyz/"/>
-  <updated>2017-02-22T10:52:33.574Z</updated>
+  <updated>2017-03-01T02:29:06.625Z</updated>
   <id>http://blog.shenhengheng.xyz/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>tensorflow Tutotial:Start</title>
+    <link href="http://blog.shenhengheng.xyz/2017/03/01/TensorFlow%20Tutotial-Start/"/>
+    <id>http://blog.shenhengheng.xyz/2017/03/01/TensorFlow Tutotial-Start/</id>
+    <published>2017-03-01T02:23:40.000Z</published>
+    <updated>2017-03-01T02:29:06.625Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用图(graphs) 来表示计算.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在会话(&lt;strong&gt;Session&lt;/strong&gt;) 中执行图.&lt;/li&gt;
+&lt;li&gt;使用张量(&lt;strong&gt;tensors&lt;/strong&gt;) 来代表数据.&lt;/li&gt;
+&lt;li&gt;通过变量(&lt;strong&gt;Variables&lt;/strong&gt;) 维护状态.&lt;/li&gt;
+&lt;li&gt;使用供给(&lt;strong&gt;feeds&lt;/strong&gt;) 和取回(&lt;strong&gt;fetches&lt;/strong&gt;) 将数据传入或传出任何操作.
+    
+    </summary>
+    
+      <category term="tutorial" scheme="http://blog.shenhengheng.xyz/categories/tutorial/"/>
+    
+    
+      <category term="Tensorflow" scheme="http://blog.shenhengheng.xyz/tags/Tensorflow/"/>
+    
+      <category term="machine learning" scheme="http://blog.shenhengheng.xyz/tags/machine-learning/"/>
+    
+      <category term="tutorial" scheme="http://blog.shenhengheng.xyz/tags/tutorial/"/>
+    
+  </entry>
   
   <entry>
     <title>matplotlib tutorial - 1</title>

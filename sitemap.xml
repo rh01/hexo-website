@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.shenhengheng.xyz/2017/03/01/TensorFlow%20Tutotial-Start/</loc>
+    
+    <lastmod>2017-03-01T02:29:06.625Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.shenhengheng.xyz/about/index.html</loc>
     
     <lastmod>2017-02-25T11:16:15.225Z</lastmod>

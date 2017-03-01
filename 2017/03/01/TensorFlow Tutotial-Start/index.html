@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="solution,deep learning," />
+  <meta name="keywords" content="Tensorflow,machine learning,tutorial," />
 
 
 
@@ -89,19 +89,34 @@
 
 
 
-<meta name="description" content="这篇笔记主要摘出一部分的问题和解决方案来谈谈我学习 Deep Learning 时的一些感想和收获。">
+<meta name="description" content="使用图(graphs) 来表示计算.
+
+在会话(Session) 中执行图.
+使用张量(tensors) 来代表数据.
+通过变量(Variables) 维护状态.
+使用供给(feeds) 和取回(fetches) 将数据传入或传出任何操作.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="笔记1-从机器学习到深度学习-两个问题">
-<meta property="og:url" content="http://blog.shenhengheng.xyz/2017/02/16/笔记1-从机器学习到深度学习-两个问题/index.html">
+<meta property="og:title" content="tensorflow Tutotial:Start">
+<meta property="og:url" content="http://blog.shenhengheng.xyz/2017/03/01/TensorFlow Tutotial-Start/index.html">
 <meta property="og:site_name" content="恒行天下">
-<meta property="og:description" content="这篇笔记主要摘出一部分的问题和解决方案来谈谈我学习 Deep Learning 时的一些感想和收获。">
-<meta property="og:image" content="http://p1.bqimg.com/567571/6b5b92539b60bd36.png">
-<meta property="og:image" content="http://p1.bqimg.com/567571/c2e243e01ec6dcc8.png">
-<meta property="og:updated_time" content="2017-02-16T07:49:42.558Z">
+<meta property="og:description" content="使用图(graphs) 来表示计算.
+
+在会话(Session) 中执行图.
+使用张量(tensors) 来代表数据.
+通过变量(Variables) 维护状态.
+使用供给(feeds) 和取回(fetches) 将数据传入或传出任何操作.">
+<meta property="og:image" content="http://olrs8j04a.bkt.clouddn.com/17-3-1/31514919-file_1488335299476_e136.png">
+<meta property="og:image" content="http://olrs8j04a.bkt.clouddn.com/17-3-1/31514919-file_1488335299476_e136.png">
+<meta property="og:updated_time" content="2017-03-01T02:29:06.625Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="笔记1-从机器学习到深度学习-两个问题">
-<meta name="twitter:description" content="这篇笔记主要摘出一部分的问题和解决方案来谈谈我学习 Deep Learning 时的一些感想和收获。">
-<meta name="twitter:image" content="http://p1.bqimg.com/567571/6b5b92539b60bd36.png">
+<meta name="twitter:title" content="tensorflow Tutotial:Start">
+<meta name="twitter:description" content="使用图(graphs) 来表示计算.
+
+在会话(Session) 中执行图.
+使用张量(tensors) 来代表数据.
+通过变量(Variables) 维护状态.
+使用供给(feeds) 和取回(fetches) 将数据传入或传出任何操作.">
+<meta name="twitter:image" content="http://olrs8j04a.bkt.clouddn.com/17-3-1/31514919-file_1488335299476_e136.png">
 
 
 
@@ -129,13 +144,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.shenhengheng.xyz/2017/02/16/笔记1-从机器学习到深度学习-两个问题/"/>
+  <link rel="canonical" href="http://blog.shenhengheng.xyz/2017/03/01/TensorFlow Tutotial-Start/"/>
 
 
 
 
 
-  <title> 笔记1-从机器学习到深度学习-两个问题 | 恒行天下 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> tensorflow Tutotial:Start | 恒行天下 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -303,7 +318,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/02/16/笔记1-从机器学习到深度学习-两个问题/">
+  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/03/01/TensorFlow Tutotial-Start/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Shen Hengheng">
@@ -327,7 +342,7 @@
             
             
               
-                笔记1-从机器学习到深度学习-两个问题
+                tensorflow Tutotial:Start
               
             
           </h1>
@@ -342,8 +357,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-16T15:47:31+08:00">
-                Feb 16 2017
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-01T10:23:40+08:00">
+                Mar 1 2017
               </time>
             
 
@@ -365,20 +380,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-	
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/tutorial/" itemprop="url" rel="index">
+                    <span itemprop="name">tutorial</span>
                   </a>
 	
                 </span>
@@ -398,8 +401,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/16/笔记1-从机器学习到深度学习-两个问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/笔记1-从机器学习到深度学习-两个问题/" itemprop="commentCount"></span>
+                <a href="/2017/03/01/TensorFlow Tutotial-Start/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/01/TensorFlow Tutotial-Start/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -434,21 +437,46 @@
       
 
       
-        <p>这篇笔记主要摘出一部分的问题和解决方案来谈谈我学习 <a href="https://classroom.udacity.com/courses/ud730" target="_blank" rel="external">Deep Learning</a> 时的一些感想和收获。</p>
-<a id="more"></a>
-<h2 id="行人检测任务"><a href="#行人检测任务" class="headerlink" title="行人检测任务"></a>行人检测任务</h2><p><strong>问题是</strong>：</p>
-<p>假设你在你的车上有一个摄像头拍摄前面的街道，你想检测你前面的行人在哪？保证你不撞到他们，你怎么能通过一个分类器实现呢？</p>
-<p><img src="http://p1.bqimg.com/567571/6b5b92539b60bd36.png" alt="detecting"></p>
-<p><strong>Answer</strong>：（我的想法）</p>
-<p>首先选择一些标记了正负标记的样本（Positive：行人，Negative：杂讯），用于训练行人检测分类模型，然后利用训练好的模型来检测街道是否有行人。</p>
-<p><em>导师给出的答案</em>:</p>
-<p><em>A typical method is to run a binary classifier over different areas of an image, and mark the areas with a positive label as detected instances.</em></p>
-<p>一种把这个检测问题转化为分类问题的方法是，一个分类器将图片中的小块分成两类，行人或者非行人，你就可以对图片多次执行这个分类器，每当它的输出为行人时就告诉你你所需要的行人位置！</p>
-<h2 id="用于排名的分类（有时候也成为竞价排名）"><a href="#用于排名的分类（有时候也成为竞价排名）" class="headerlink" title="用于排名的分类（有时候也成为竞价排名）"></a>用于排名的分类（有时候也成为竞价排名）</h2><p><strong>问题是</strong></p>
-<p>网页搜索排序,假设你有一个搜索请求,你想找到在网站上所有跟请求相关的网页,你怎么使用一个分类器实现？</p>
-<p><img src="http://p1.bqimg.com/567571/c2e243e01ec6dcc8.png" alt="Ranking"></p>
-<p><strong>解决方案：</strong></p>
-<p>使分类器接收成对的搜索请求和网站,输出则是两类中的其中一个 相关或者不相关<br>当然 如果你在整个网络中运行分类器,将会有无数的网页需要查看,但是搜索引擎将会走捷径,仅尝试分类那些比较有可能的候选网站.</p>
+        <p>使用图(graphs) 来表示计算.</p>
+<ol>
+<li>在会话(<strong>Session</strong>) 中执行图.</li>
+<li>使用张量(<strong>tensors</strong>) 来代表数据.</li>
+<li>通过变量(<strong>Variables</strong>) 维护状态.</li>
+<li>使用供给(<strong>feeds</strong>) 和取回(<strong>fetches</strong>) 将数据传入或传出任何操作.<a id="more"></a>
+TensorFlow是一个以<strong>图(graphs)</strong> 来表示计算的编程系统, 图中的节点被称之为<strong>op (operation<br>的缩写)</strong>. 一个op 获得零或多个张量(tensors) 执行计算, 产生零或多个张量。</li>
+</ol>
+<p>TensorFlow 的图是一种对<strong>计算的抽象描述</strong>。在计算开始前, 图必须在<strong>会话(Session<br>()) </strong>中被启动. 会话将图的op 分发到如CPU 或GPU 之类的设备(Devices()) 上, 同时提供<br>执行op 的方法。这些方法执行后, 将产生的<strong>张量(tensor) </strong>返回。</p>
+<p>通常，TensorFlow 编程可按两个阶段组织起来: 构建阶段和执行阶段; 前者用于组<br>织计算图，而后者利用session 中执行计算图中的op 操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用"with"句块开始一个会话，该会</span></div><div class="line">话将在<span class="string">"with"</span>句块结束时自动关闭</div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf </div><div class="line"><span class="keyword">from</span> tfdot <span class="keyword">import</span> tfdot</div><div class="line"></div><div class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">'inputs'</span>):</div><div class="line">    mat1 = tf.constant([[<span class="number">1</span>,<span class="number">2</span>]],name=<span class="string">'mat1'</span>)</div><div class="line">    mat2 = tf.constant([[<span class="number">1</span>],[<span class="number">2</span>]],name=<span class="string">'mat2'</span>)</div><div class="line"></div><div class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">'output'</span>):</div><div class="line">    result = tf.matmul(mat1, mat2,name=<span class="string">'result'</span>)</div><div class="line"></div><div class="line">    </div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    print(sess.run(result))</div><div class="line">    tf.summary.FileWriter(<span class="string">'logs/'</span>,sess.graph)</div><div class="line"></div><div class="line">tfdot()</div></pre></td></tr></table></figure>
+<pre><code>[[5]]
+</code></pre><p><img src="http://olrs8j04a.bkt.clouddn.com/17-3-1/31514919-file_1488335299476_e136.png" alt=""></p>
+<p>TensorFlow 事实上通过一个“翻译”过程，将定义的图转化为不同的可用计算资源<br>间实现分布计算的操作，如CPU 或是显卡GPU。通常不需要用户指定具体使用的CPU<br>或GPU，TensorFlow 能自动检测并<strong>尽可能的充分利用找到的第一个GPU 进行运算</strong>。如果你的设备上有不止一个GPU，你需要明确指定op 操作到不同的运算设备以调<br>用它们。使用<strong>with…Device</strong>语句明确指定哪个CPU 或GPU 将被调用:以下是例子</p>
+<ol>
+<li>“/cpu:0”：计算机的CPU；</li>
+<li>“/gpu:0”：计算机的第一个GPU，如果可用；</li>
+<li>“/gpu:1”：计算机的第二个GPU，以此类推。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    <span class="keyword">with</span> tf.device(<span class="string">"/gpu:0"</span>):</div><div class="line">        mat1 = tf.constant([[<span class="number">3.</span>, <span class="number">3.</span>]])</div><div class="line">        mat2 = tf.constant([[<span class="number">2.</span>],[<span class="number">2.</span>]])</div><div class="line">        product = tf.matmul(mat1, mat2)</div><div class="line"><span class="comment">#     sess.run(product)</span></div></pre></td></tr></table></figure>
+<p>考虑到如IPython这样的交互式Python 环境的易用, 可以使用InteractiveSession 代<br>替Session类, 使用Tensor.eval()和Operation.run() 方法代替Session.run(). 这样可以避<br>免使用一个变量来持有会话.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Enter an interactive TensorFlow Session.</span></div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line">sess = tf.InteractiveSession()</div><div class="line"></div><div class="line">x = tf.Variable([<span class="number">1.0</span>, <span class="number">2.0</span>])</div><div class="line">a = tf.constant([<span class="number">3.0</span>, <span class="number">3.0</span>])</div><div class="line"></div><div class="line"><span class="comment"># Initialize 'x' using the run() method of its initializer op.</span></div><div class="line">x.initializer.run()</div><div class="line"></div><div class="line"><span class="comment"># Add an op to subtract 'a' from 'x'. Run it and print the result</span></div><div class="line">sub = tf.subtract(x, a)</div><div class="line">print(sub.eval())</div><div class="line"><span class="comment"># ==&gt; [¡2. ¡1.]</span></div><div class="line"></div><div class="line"><span class="comment"># Close the Session when we're done.</span></div><div class="line">sess.close()</div></pre></td></tr></table></figure>
+<pre><code>[-2. -1.]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> tfdot <span class="keyword">import</span> tfdot</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tfdot()</div></pre></td></tr></table></figure>
+<p><img src="http://olrs8j04a.bkt.clouddn.com/17-3-1/31514919-file_1488335299476_e136.png" alt=""></p>
+<h2 id="Variables-变量"><a href="#Variables-变量" class="headerlink" title="Variables | 变量"></a>Variables | 变量</h2><p>变量维持了图执行过程中的状态信息</p>
+<p>代码中assign()操作是图所描绘的表达式的一部分, 正如add()操作一样. 所以在调<br>用run()执行表达式之前, 它并不会真正执行赋值操作.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 建立一个变量， 用0初始化它的值</span></div><div class="line">state = tf.Variable(<span class="number">0</span>, name=<span class="string">'counter'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 创建加法运算单元One，并加到state</span></div><div class="line">one = tf.constant(<span class="number">1</span>)</div><div class="line">new_value = tf.add(state, one)</div><div class="line">update = tf.assign(state, new_value)</div><div class="line"></div><div class="line"><span class="comment"># Variables must be initialized by running an `init` Op after having 12</span></div><div class="line"><span class="comment"># launched the graph. We first have to add the `init` Op to the graph.</span></div><div class="line">init = tf.global_variables_initializer()</div><div class="line"><span class="comment"># init_op = tf.initialize_all_variables() # 已废除</span></div><div class="line"></div><div class="line"><span class="comment"># Launch the graph and run the ops.</span></div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    sess.run(init)</div><div class="line">    <span class="comment"># print the value of 'state'</span></div><div class="line">    print(sess.run(update))</div><div class="line">    <span class="comment"># run the op that updates 'state and print 'state'    </span></div><div class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">3</span>):</div><div class="line">        sess.run(update)</div><div class="line">        print(sess.run(state))</div></pre></td></tr></table></figure>
+<pre><code>1
+2
+3
+4
+</code></pre><h2 id="Fetches-取回"><a href="#Fetches-取回" class="headerlink" title="Fetches | 取回"></a>Fetches | 取回</h2><p>为了取回操作的输出内容, 可以在使用Session 对象的run() 调用执行图时, 传入一<br>些tensor, 这些tensor 会帮助你取回结果. 在之前的例子里, 我们只取回了单个节点state,<br>但是你也可以取回多个<strong>tensor:</strong></p>
+<h2 id="Feeds-供给"><a href="#Feeds-供给" class="headerlink" title="Feeds | 供给"></a>Feeds | 供给</h2><p>feed 使用一个tensor 值临时替换一个操作的输出结果. 你可以提供feed 数据作为<br>run() 调用的参数.feed 只在调用它的方法内有效, 方法结束, feed 就会消失. 最常见的用例是将某些特殊的操作指定为”feed” 操作, 标记的方法是使用<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tf.placeholder()</div></pre></td></tr></table></figure></p>
+<p>为这些操作创建占位符 .</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">input1 = tf.placeholder(tf.float32)</div><div class="line">input2 = tf.placeholder(tf.float32)</div><div class="line">output = tf.multiply(input1, input2)</div><div class="line"></div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    print(sess.run(output, feed_dict=&#123;input1:[<span class="number">7.</span>], input2:[<span class="number">3.</span>]&#125;))</div></pre></td></tr></table></figure>
+<pre><code>[ 21.]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    print(sess.run(output, feed_dict=&#123;*:*,*:*&#125;</div></pre></td></tr></table></figure>
+<p>占位符，传入的参数格式是字典</p>
 
       
     </div>
@@ -493,9 +521,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/solution/" rel="tag"># solution</a>
+            <a href="/tags/Tensorflow/" rel="tag"># Tensorflow</a>
           
-            <a href="/tags/deep-learning/" rel="tag"># deep learning</a>
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+            <a href="/tags/tutorial/" rel="tag"># tutorial</a>
           
         </div>
       
@@ -508,8 +538,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/16/利用机器学习实现数字识别及分类/" rel="next" title="利用机器学习实现数字识别及分类">
-                <i class="fa fa-chevron-left"></i> 利用机器学习实现数字识别及分类
+              <a href="/2017/02/22/matplotlib tutorial - 1/" rel="next" title="matplotlib tutorial - 1">
+                <i class="fa fa-chevron-left"></i> matplotlib tutorial - 1
               </a>
             
           </div>
@@ -517,10 +547,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/16/Soft修正函数/" rel="prev" title="Soft修正函数">
-                Soft修正函数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -569,8 +595,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/16/笔记1-从机器学习到深度学习-两个问题/"
-           data-title="笔记1-从机器学习到深度学习-两个问题" data-url="http://blog.shenhengheng.xyz/2017/02/16/笔记1-从机器学习到深度学习-两个问题/">
+      <div class="ds-thread" data-thread-key="2017/03/01/TensorFlow Tutotial-Start/"
+           data-title="tensorflow Tutotial:Start" data-url="http://blog.shenhengheng.xyz/2017/03/01/TensorFlow Tutotial-Start/">
       </div>
     
   </div>
@@ -720,7 +746,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#行人检测任务"><span class="nav-number">1.</span> <span class="nav-text">行人检测任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用于排名的分类（有时候也成为竞价排名）"><span class="nav-number">2.</span> <span class="nav-text">用于排名的分类（有时候也成为竞价排名）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Variables-变量"><span class="nav-number">1.</span> <span class="nav-text">Variables | 变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fetches-取回"><span class="nav-number">2.</span> <span class="nav-text">Fetches | 取回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feeds-供给"><span class="nav-number">3.</span> <span class="nav-text">Feeds | 供给</span></a></li></ol></div>
             
 
           </div>
