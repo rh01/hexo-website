@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.shenhengheng.xyz/"/>
-  <updated>2017-03-01T02:31:50.232Z</updated>
+  <updated>2017-03-01T06:02:54.780Z</updated>
   <id>http://blog.shenhengheng.xyz/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MNIST机器学习入门</title>
+    <link href="http://blog.shenhengheng.xyz/2017/03/01/MNIST%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/"/>
+    <id>http://blog.shenhengheng.xyz/2017/03/01/MNIST机器学习入门/</id>
+    <published>2017-03-01T02:38:47.000Z</published>
+    <updated>2017-03-01T06:02:54.780Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;MNIST-机器学习入门&quot;&gt;&lt;a href=&quot;#MNIST-机器学习入门&quot; class=&quot;headerlink&quot; title=&quot;MNIST 机器学习入门&quot;&gt;&lt;/a&gt;MNIST 机器学习入门&lt;/h2&gt;&lt;p&gt;本教程的目标读者是对机器学习和TensorFlow 都不太了解的新手．如果你已经了&lt;br&gt;解 &lt;a href=&quot;http://yann.lecun.com/exdb/mnist/&quot;&gt;MNIST&lt;/a&gt; 和 &lt;a href=&quot;http://blog.shenhengheng.xyz/2017/02/16/Soft%E4%BF%AE%E6%AD%A3%E5%87%BD%E6%95%B0/&quot;&gt;softmax 回归&lt;/a&gt;(softmax regression) 的相关知识，你可以阅读这个快速上手教程．&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tensorflow" scheme="http://blog.shenhengheng.xyz/categories/tensorflow/"/>
+    
+    
+      <category term="tensorflow" scheme="http://blog.shenhengheng.xyz/tags/tensorflow/"/>
+    
+      <category term="MINIST" scheme="http://blog.shenhengheng.xyz/tags/MINIST/"/>
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/tags/ml/"/>
+    
+  </entry>
   
   <entry>
     <title>tensorflow Tutotial:Start</title>

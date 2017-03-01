@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://blog.shenhengheng.xyz/2017/03/01/MNIST%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/</loc>
+    <lastmod>2017-03-01T06:02:54.780Z</lastmod>
+    <data>
+        <display>
+        <title>MNIST机器学习入门</title>
+        <pubTime>2017-03-01T02:38:47.000Z</pubTime>
+        
+        <tag>tensorflow</tag>
+         
+        <tag>MINIST</tag>
+         
+        <tag>ml</tag>
+         
+         
+           
+             
+              <breadCrumb title="tensorflow" url="http://blog.shenhengheng.xyz/categories/tensorflow/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.shenhengheng.xyz/2017/03/01/TensorFlow%20Tutotial-Start/</loc>
     <lastmod>2017-03-01T02:31:50.232Z</lastmod>
     <data>
