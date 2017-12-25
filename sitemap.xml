@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.shenhengheng.xyz/about/index.html</loc>
+    
+    <lastmod>2017-12-25T02:20:36.026Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.shenhengheng.xyz/2017/03/01/MNIST%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/</loc>
     
     <lastmod>2017-03-01T13:03:57.241Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://blog.shenhengheng.xyz/2017/03/01/TensorFlow%20Tutotial-Start/</loc>
     
     <lastmod>2017-03-01T02:31:50.232Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.shenhengheng.xyz/about/index.html</loc>
-    
-    <lastmod>2017-02-25T11:16:15.226Z</lastmod>
     
   </url>
   
