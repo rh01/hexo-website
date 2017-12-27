@@ -1,0 +1,1056 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="rmarkdown," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="恒行天下" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="title: “Tufte样式”subtitle: “一个R Markdown实现”author: “JJ Allaire，谢益辉”date: “r Sys.Date()“output:  tufte::tufte_html: default  tufte::tufte_book:    citation_package: natbib    latex_engine: xelatex  tuf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tufte样式">
+<meta property="og:url" content="http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-tufte-template-for-blog/index.html">
+<meta property="og:site_name" content="恒行天下">
+<meta property="og:description" content="title: “Tufte样式”subtitle: “一个R Markdown实现”author: “JJ Allaire，谢益辉”date: “r Sys.Date()“output:  tufte::tufte_html: default  tufte::tufte_book:    citation_package: natbib    latex_engine: xelatex  tuf">
+<meta property="og:updated_time" content="2017-12-19T08:54:15.419Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tufte样式">
+<meta name="twitter:description" content="title: “Tufte样式”subtitle: “一个R Markdown实现”author: “JJ Allaire，谢益辉”date: “r Sys.Date()“output:  tufte::tufte_html: default  tufte::tufte_book:    citation_package: natbib    latex_engine: xelatex  tuf">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-tufte-template-for-blog/"/>
+
+
+
+
+
+  <title> Tufte样式 | 恒行天下 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-92073513-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?14b57a75b075b6fd8618498ca810584c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">恒行天下</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">生恒爱之 生恒敬之</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-tufte-template-for-blog/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Shen Hengheng">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://olrs8j04a.bkt.clouddn.com/17-12-24/90775656.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="恒行天下">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="恒行天下" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Tufte样式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-15T08:00:00+08:00">
+                Dec 15 2017
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/rmarkdown/" itemprop="url" rel="index">
+                    <span itemprop="name">rmarkdown</span>
+                  </a>
+	
+                </span>
+
+                
+                
+              
+            </span>
+			
+			
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/15/2017-12-15-tufte-template-for-blog/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/15/2017-12-15-tufte-template-for-blog/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+		  
+	
+		  
+		  
+		  
+      <span>&nbsp; | &nbsp;
+      <span id="busuanzi_value_page_pv" ></span>次阅读
+      </span>    
+      
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>title: “Tufte样式”<br>subtitle: “一个R Markdown实现”<br>author: “JJ Allaire，谢益辉”<br>date: “<code>r Sys.Date()</code>“<br>output:<br>  tufte::tufte_html: default<br>  tufte::tufte_book:<br>    citation_package: natbib<br>    latex_engine: xelatex<br>  tufte::tufte_handout:<br>    citation_package: natbib<br>    latex_engine: xelatex<br>ctex: yes<br>biblio-title: 参考文献<br>bibliography: skeleton.bib</p>
+<h2 id="link-citations-yes"><a href="#link-citations-yes" class="headerlink" title="link-citations: yes"></a>link-citations: yes</h2><figure class="highlight plain"><figcaption><span>setup, include=FALSE&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(tufte)</div><div class="line"></div><div class="line"># tufte版本变化之后更新knitr缓存</div><div class="line">knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion(&apos;tufte&apos;))</div><div class="line">options(htmltools.dir.version = FALSE)</div></pre></td></tr></table></figure>
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>Tufte样式在Edward Tufte的书以及物理学家费曼的教科书很常见，它的一个显著特点就是边栏的使用。例如脚注和边栏注解，以及放在边栏里的小型插图。Tufte样式在LaTeX和HTML/CSS中都有实现^[参见Github库<a href="https://github.com/tufte-latex/tufte-latex" target="_blank" rel="external">tufte-latex</a>和 <a href="https://github.com/edwardtufte/tufte-css" target="_blank" rel="external">tufte-css</a>]。我们将这两种实现都纳入了<a href="https://github.com/rstudio/tufte" target="_blank" rel="external"><strong>tufte</strong>包</a>。若需要LaTeX/PDF输出，使用输出格式<code>tufte_handout</code>即可，类似地，<code>tufte_book</code>可以用来输出PDF书，<code>tufte_html</code>生成HTML网页。这些输出格式可以在YAML元数据中指定，或者传给<code>rmarkdown::render()</code>函数。若对<strong>rmarkdown</strong>包不熟悉，可参见 @R-rmarkdown。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">title:</span> <span class="string">"一个Tufte样式示例"</span></div><div class="line"><span class="attr">author:</span> <span class="string">"张三"</span></div><div class="line"><span class="attr">ctex:</span> <span class="literal">yes</span></div><div class="line"><span class="attr">output:</span></div><div class="line"><span class="attr">  tufte:</span>:tufte_handout:</div><div class="line"><span class="attr">    latex_engine:</span> xelatex</div><div class="line"><span class="attr">  tufte:</span>:tufte_html: default</div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
+<h1 id="章节标题"><a href="#章节标题" class="headerlink" title="章节标题"></a>章节标题</h1><p>Tufte样式不主张太深的章节目录，一般仅仅使用一级标题（Markdown中用一个井号<code>#</code>）和二级标题（两个井号）。</p>
+<h1 id="插图"><a href="#插图" class="headerlink" title="插图"></a>插图</h1><h2 id="边栏插图"><a href="#边栏插图" class="headerlink" title="边栏插图"></a>边栏插图</h2><p>插图在Tufte的书中非常常见，我们可以使用三种插图：边栏图、全宽图、主栏图。先说边栏图：使用<strong>knitr</strong>代码段选项<code>fig.margin = TRUE</code>即可将图形放置在边栏中，如：</p>
+<figure class="highlight plain"><figcaption><span>fig-margin, fig.margin = TRUE, fig.cap = "MPG与horsepower两个变量的散点图；颜色代表自动挡或手动挡。", fig.width=3.5, fig.height=3.5, cache=TRUE&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line">mtcars2 &lt;- mtcars</div><div class="line">mtcars2$am &lt;- factor(</div><div class="line">  mtcars$am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)</div><div class="line">)</div><div class="line">ggplot(mtcars2, aes(hp, mpg, color = am)) +</div><div class="line">  geom_point() + geom_smooth() +</div><div class="line">  theme(legend.position = &apos;bottom&apos;)+ theme(panel.background = element_rect(fill = &apos;#f5f5d5&apos;, colour = &apos;#f5f5d5&apos;))</div></pre></td></tr></table></figure>
+<p>注意我们使用代码段选项<code>fig.cap</code>设定了图的标题。当然我们也可以设置图的长宽。</p>
+<h2 id="任意数学公式"><a href="#任意数学公式" class="headerlink" title="任意数学公式"></a>任意数学公式</h2><p>对于数学公式，<code>$\LaTeX$</code>的支持，可以使用(inline: <code>`$ $` </code>; display style: <code>`$$ $$` </code>)。例如下面有一个微积分第一基本定理。</p>
+<blockquote>
+<p>根据微积分第一基本定理我们知道，对<code>$x \in [a, b]$</code>有<br><code>$$\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x).$$</code></p>
+</blockquote>
+<p>为了文本内容的可移植性（同样的内容可以生成HTML和LaTeX文档）。</p>
+<h2 id="全宽插图"><a href="#全宽插图" class="headerlink" title="全宽插图"></a>全宽插图</h2><p>代码段选项<code>fig.fullwidth = TRUE</code>可以使得一幅图占用全部页宽，例如：</p>
+<figure class="highlight plain"><figcaption><span>fig-fullwidth, fig.width = 10, fig.height = 2, fig.fullwidth = TRUE, fig.cap = "一幅全宽图形。", warning=FALSE, cache=TRUE&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line">ggplot(diamonds, aes(carat, price)) + geom_smooth() +</div><div class="line">  facet_grid(~ cut) + theme(panel.background = element_rect(fill = &apos;#f5f5d5&apos;, colour = &apos;#f5f5d5&apos;))</div></pre></td></tr></table></figure>
+<p>其它和图形有关的代码段选项仍然可以使用，一般情况下，全款图形的<code>fig.width</code>选项会较大，而<code>fig.height</code>相对较小。上图的尺寸是 <code>$10 \times 2$</code> 英寸.</p>
+<h2 id="主栏插图"><a href="#主栏插图" class="headerlink" title="主栏插图"></a>主栏插图</h2><p>默认情况下，R代码段生成的图形放置在主栏里，其标题放在边栏中，例如：</p>
+<figure class="highlight plain"><figcaption><span>fig-main, fig.cap = "一幅主栏插图。", cache=TRUE&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(diamonds, aes(cut, price)) + geom_boxplot() + theme(panel.background = element_rect(fill = &apos;#f5f5d5&apos;, colour = &apos;#f5f5d5&apos;))</div></pre></td></tr></table></figure>
+<h1 id="边栏附注"><a href="#边栏附注" class="headerlink" title="边栏附注"></a>边栏附注</h1><p>Tufte样式的文档中，脚注会被自动转换为边栏附注^[这里本来是一个脚注]。脚注是带编号的，另一种边栏附注是不带编号的，这种附注需要用<strong>tufte</strong>包中的R函数<code>margin_note()</code>在<strong>knitr</strong>行内代码中生成。</p>
+<p><code>r margin_note(&quot;这是一个边栏附注，它没有编号。&quot;)</code>与边栏插图一样，边栏附注中我们也不建议写太复杂的内容，通常只是一句简单的文字。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>HTML输出中，参考文献默认也放在边栏中。例如这里我们可以引用[@R-base]。这个功能需要在YAML元数据中设置<code>link-citations: yes</code>，而且<code>pandoc-citeproc</code>程序的版本应该至少是0.7.2。若这两个条件不满足，参考文献会被放在文档末尾。</p>
+<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><p>我们可以用<strong>knitr</strong>包中的<code>kable()</code>函数生成简单的表格。HTML输出中表格的标题也会被放在边栏中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">knitr::kable(</div><div class="line">  mtcars[1:6, 1:6], caption = &apos;mtcars数据的前几行。&apos;</div><div class="line">)</div></pre></td></tr></table></figure>
+<h1 id="引文"><a href="#引文" class="headerlink" title="引文"></a>引文</h1><p>Markdown语法使用<code>&gt;</code>来生成引文，如果需要在引文下面用行内代码以及<code>quote_footer()</code>函数加上一句引文来源，例如：</p>
+<blockquote>
+<p>“多亏了我的律师，要不然我现在还在牢里。两个人一起挖确实比一个人快很多啊。”</p>
+<p><code>r tufte::quote_footer(&#39;--- Joe Martin&#39;)</code></p>
+</blockquote>
+<p>如果不用这个函数的话，引文底部的话只是一个普通段落：</p>
+<blockquote>
+<p>“伟人论道，凡人论事，小人论酒。”</p>
+<p><code>r tufte::quote_footer(&#39;--- Fran Lebowitz&#39;)</code></p>
+</blockquote>
+<h1 id="响应式页面"><a href="#响应式页面" class="headerlink" title="响应式页面"></a>响应式页面</h1><p>这个包生成的HTML页面是响应式的：如果页宽小于760像素，边栏内容会自动隐藏。此时我们可以点击脚注的序号显示它，其它边栏附注则可以通过点击圆圈加号的符号显示。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>希望诸位喜欢R Markdown的超级简洁性，同时我们感谢Tufte-CSS和Tufte-LaTeX项目的作者们，没有他们的辛勤劳动，就没有这个<strong>tufte</strong>包。这份文档的R Markdown源文档可以在<a href="https://github.com/rstudio/tufte/raw/master/inst/rmarkdown/templates/tufte_ctex/skeleton/skeleton.Rmd" target="_blank" rel="external">Github上找到</a>，或者直接使用RStudio菜单<code>File -&gt; New File -&gt; R Markdown -&gt; From Template</code>新建一个文档，或直接从R里面打开这个Rmd文件：</p>
+<figure class="highlight plain"><figcaption><span>eval=FALSE&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">file.edit(</div><div class="line">  tufte:::template_resources(</div><div class="line">    &apos;tufte_ctex&apos;, &apos;..&apos;, &apos;skeleton&apos;, &apos;skeleton.Rmd&apos;</div><div class="line">  )</div><div class="line">)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>bib, include=FALSE&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># create a bib file for the R packages used in this document</div><div class="line">knitr::write_bib(c(&apos;base&apos;, &apos;rmarkdown&apos;), file = &apos;skeleton.bib&apos;)</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://olrs8j04a.bkt.clouddn.com/17-12-24/40005304.jpg" alt="Shen Hengheng WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://olrs8j04a.bkt.clouddn.com/17-12-24/44316385.jpg" alt="Shen Hengheng Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/rmarkdown/" rel="tag"># rmarkdown</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/15/2017-12-15-ctex-template-for-rstudio/" rel="next" title="CTeX样式">
+                <i class="fa fa-chevron-left"></i> CTeX样式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/19/2017-12-19-example/" rel="prev" title="Display Image Using R">
+                Display Image Using R <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/12/15/2017-12-15-tufte-template-for-blog/"
+           data-title="Tufte样式" data-url="http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-tufte-template-for-blog/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://olrs8j04a.bkt.clouddn.com/17-12-24/90775656.jpg"
+               alt="Shen Hengheng" />
+          <p class="site-author-name" itemprop="name">Shen Hengheng</p>
+          <p class="site-description motion-element" itemprop="description">我是一名 AI 爱好者，着习于机器学习和深度学习。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/rh01" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/shenhengheng" target="_blank" title="twitter">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/shenhengheng" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.readailib.com" title="readailib" target="_blank">readailib</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://rh01.github.io" title="ShenHengheng" target="_blank">ShenHengheng</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://data.shenhengheng.xyz" title="Projects" target="_blank">Projects</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://iotppt.shenhengheng.xyz" title="IoT演讲" target="_blank">IoT演讲</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#link-citations-yes"><span class="nav-number">1.</span> <span class="nav-text">link-citations: yes</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number"></span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#章节标题"><span class="nav-number"></span> <span class="nav-text">章节标题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插图"><span class="nav-number"></span> <span class="nav-text">插图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#边栏插图"><span class="nav-number">1.</span> <span class="nav-text">边栏插图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任意数学公式"><span class="nav-number">2.</span> <span class="nav-text">任意数学公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全宽插图"><span class="nav-number">3.</span> <span class="nav-text">全宽插图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主栏插图"><span class="nav-number">4.</span> <span class="nav-text">主栏插图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#边栏附注"><span class="nav-number"></span> <span class="nav-text">边栏附注</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number"></span> <span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表格"><span class="nav-number"></span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引文"><span class="nav-number"></span> <span class="nav-text">引文</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#响应式页面"><span class="nav-number"></span> <span class="nav-text">响应式页面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number"></span> <span class="nav-text">结语</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shen Hengheng</span>
+</div>
+
+
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+您是第<span id="busuanzi_value_site_uv"></span>个来到的小伙伴
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"shenhengheng"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<!-- 背景动画 -->
+<script type="text/javascript" src="/js/src/particle.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+
+</html>

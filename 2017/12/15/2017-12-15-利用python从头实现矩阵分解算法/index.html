@@ -1,0 +1,1063 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="matrix," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="恒行天下" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="该程序主要是我的《矩阵分析与应用》课程的大作业的解决方案及程序说明。大作业的要求为：
+
+要求完成课堂上讲的关于矩阵分解的LU、QR（Gram-Schmidt）、Orthogonal Reduction (Householder reduction 和Givens reduction)程序实现，要求如下：
+
+一个综合程序，根据选择参数的不同，实现不同的矩阵分解；\
+可以用matlab等编写程序，需附">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用python从头实现矩阵分解算法">
+<meta property="og:url" content="http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-利用python从头实现矩阵分解算法/index.html">
+<meta property="og:site_name" content="恒行天下">
+<meta property="og:description" content="该程序主要是我的《矩阵分析与应用》课程的大作业的解决方案及程序说明。大作业的要求为：
+
+要求完成课堂上讲的关于矩阵分解的LU、QR（Gram-Schmidt）、Orthogonal Reduction (Householder reduction 和Givens reduction)程序实现，要求如下：
+
+一个综合程序，根据选择参数的不同，实现不同的矩阵分解；\
+可以用matlab等编写程序，需附">
+<meta property="og:updated_time" content="2017-12-18T03:52:43.807Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用python从头实现矩阵分解算法">
+<meta name="twitter:description" content="该程序主要是我的《矩阵分析与应用》课程的大作业的解决方案及程序说明。大作业的要求为：
+
+要求完成课堂上讲的关于矩阵分解的LU、QR（Gram-Schmidt）、Orthogonal Reduction (Householder reduction 和Givens reduction)程序实现，要求如下：
+
+一个综合程序，根据选择参数的不同，实现不同的矩阵分解；\
+可以用matlab等编写程序，需附">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-利用python从头实现矩阵分解算法/"/>
+
+
+
+
+
+  <title> 利用python从头实现矩阵分解算法 | 恒行天下 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-92073513-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?14b57a75b075b6fd8618498ca810584c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">恒行天下</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">生恒爱之 生恒敬之</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-利用python从头实现矩阵分解算法/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Shen Hengheng">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://olrs8j04a.bkt.clouddn.com/17-12-24/90775656.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="恒行天下">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="恒行天下" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                利用python从头实现矩阵分解算法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-15T08:00:00+08:00">
+                Dec 15 2017
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/math/" itemprop="url" rel="index">
+                    <span itemprop="name">math</span>
+                  </a>
+	
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/math/matrix/" itemprop="url" rel="index">
+                    <span itemprop="name">matrix</span>
+                  </a>
+	
+                </span>
+
+                
+                
+              
+            </span>
+			
+			
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/15/2017-12-15-利用python从头实现矩阵分解算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/15/2017-12-15-利用python从头实现矩阵分解算法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+		  
+	
+		  
+		  
+		  
+      <span>&nbsp; | &nbsp;
+      <span id="busuanzi_value_page_pv" ></span>次阅读
+      </span>    
+      
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>该程序主要是我的《矩阵分析与应用》课程的大作业的解决方案及程序说明。大作业的要求为：</p>
+<blockquote>
+<p>要求完成课堂上讲的关于矩阵分解的<strong>LU</strong>、<strong>QR（Gram-Schmidt）</strong>、<strong>Orthogonal Reduction (Householder reduction 和Givens reduction)</strong>程序实现，要求如下：</p>
+<ul>
+<li>一个综合程序，根据选择参数的不同，实现不同的矩阵分解；\</li>
+<li>可以用<code>matlab</code>等编写程序，需附上简单的程序说明，比如参数代表什么意思，输入什么，输出什么等等；\</li>
+<li>一定是可执行文件，例如<code>.m</code>文件等,不能是<code>word</code>或者<code>txt</code>文档。附上源代码，不能为直接调用<code>matlab</code>等函数库.</li>
+</ul>
+</blockquote>
+<h1 id="程序说明"><a href="#程序说明" class="headerlink" title="程序说明"></a>程序说明</h1><p>项目的地址为<a href="https://github.com/rh01/matrix-decomposition" target="_blank" rel="external">https://github.com/rh01/matrix-decomposition</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- factorization.py</div><div class="line">- utils.py</div></pre></td></tr></table></figure>
+<h2 id="utils-py"><a href="#utils-py" class="headerlink" title="utils.py"></a>utils.py</h2><p>共有两个源文件组成，其中utils文件主要是一些实现好的工具函数，有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">def mult_matrix(M, N):</div><div class="line">    &quot;&quot;&quot;Multiply square matrices of same dimension M and N&quot;&quot;&quot;</div><div class="line"></div><div class="line">def pivot_matrix(M):</div><div class="line">    &quot;&quot;&quot;Returns the pivoting matrix for M, used in Doolittle&apos;s method.&quot;&quot;&quot;</div><div class="line"></div><div class="line">def trans_matrix(M):</div><div class="line">    &quot;&quot;&quot;Take the transpose of a matrix.&quot;&quot;&quot;</div><div class="line">    </div><div class="line">def norm(x):</div><div class="line">    &quot;&quot;&quot;Return the Euclidean norm of the vector x.&quot;&quot;&quot;</div><div class="line"></div><div class="line">def Q_i(Q_min, i, j, k):</div><div class="line">    &quot;&quot;&quot;Construct the Q_t matrix by left-top padding the matrix Q                 </div><div class="line">    with elements from the identity matrix.&quot;&quot;&quot;</div></pre></td></tr></table></figure>
+<p>由于实现的为矩阵运算，并且未使用到高级的矩阵运算工具软件<strong>numpy</strong>，因此程序里面的数据结构为python的基本数据结构<code>list</code>，所以说整个工程相对来说计算比较复杂。所以我们提前写好了简化计算的函数工具.</p>
+<h2 id="factorization-py"><a href="#factorization-py" class="headerlink" title="factorization.py"></a>factorization.py</h2><p>这个是主函数实现部分，基本上所有的算法都在这个文件中实现，将函数的结构列在下面:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">LU_decomposition</span><span class="params">(A, verbose=False)</span>:</span></div><div class="line">    <span class="string">"""Performs an LU Decomposition of A (which must be square)         </span></div><div class="line">    into PA = LU. The function returns P, L and U."""</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Gram_Schimidt</span><span class="params">(A,verbose=False)</span>:</span></div><div class="line">    <span class="string">"""Performs a Gram Schimidt based QR Decomposition of the </span></div><div class="line">    matrix A. The function returns Q, an orthogonal matrix and R, an    </div><div class="line">    upper triangular matrix such that A = QR."""</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">householder_reduction</span><span class="params">(A, verbose=False)</span>:</span></div><div class="line">    <span class="string">"""Performs a Householder Reflections based QR Decomposition of the </span></div><div class="line">    matrix A. The function returns Q, an orthogonal matrix and R, an    </div><div class="line">    upper triangular matrix such that A = QR."""</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Givens_reduction</span><span class="params">(A,verbose=False)</span>:</span></div><div class="line">    <span class="string">"""Performs a Givens Reflections based QR Decomposition of the</span></div><div class="line">    matrix A. The function returns Q, an orthogonal matrix and R, an</div><div class="line">    upper triangular matrix such that A = QR."""</div></pre></td></tr></table></figure>
+<h1 id="测试部分"><a href="#测试部分" class="headerlink" title="测试部分"></a>测试部分</h1><h2 id="PLU-decomposition"><a href="#PLU-decomposition" class="headerlink" title="PLU_decomposition"></a>PLU_decomposition</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">the A matrix <span class="keyword">is</span>:</div><div class="line">[[<span class="number">12</span>, <span class="number">-51</span>, <span class="number">4</span>], [<span class="number">6</span>, <span class="number">167</span>, <span class="number">-68</span>], [<span class="number">-4</span>, <span class="number">24</span>, <span class="number">-41</span>]]</div><div class="line">please choose the way to decompose A . </div><div class="line">Press <span class="string">'1'</span> to realize the PLU_decomposition of A. </div><div class="line">Press <span class="string">'2'</span> to realize the Gram_Schimidt of A.</div><div class="line">Press <span class="string">'3'</span> to realize the householder_reduction of A.</div><div class="line">Press <span class="string">'4'</span> to realize the Givens_reduction of A.</div><div class="line">please choose the mode:<span class="number">1</span></div><div class="line">The L matrix <span class="keyword">is</span></div><div class="line">[[<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>], [<span class="number">0.5</span>, <span class="number">1.0</span>, <span class="number">0.0</span>], [<span class="number">-0.3333333333333333</span>, <span class="number">0.03636363636363636</span>, <span class="number">1.0</span>]]</div><div class="line">The U matrix <span class="keyword">is</span></div><div class="line">[[<span class="number">12.0</span>, <span class="number">-51.0</span>, <span class="number">4.0</span>], [<span class="number">0.0</span>, <span class="number">192.5</span>, <span class="number">-70.0</span>], [<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">-37.121212121212125</span>]]</div></pre></td></tr></table></figure>
+<h3 id="Gram-Schimidt"><a href="#Gram-Schimidt" class="headerlink" title="Gram_Schimidt"></a>Gram_Schimidt</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">the A matrix <span class="keyword">is</span>:</div><div class="line">[[<span class="number">12</span>, <span class="number">-51</span>, <span class="number">4</span>], [<span class="number">6</span>, <span class="number">167</span>, <span class="number">-68</span>], [<span class="number">-4</span>, <span class="number">24</span>, <span class="number">-41</span>]]</div><div class="line">please choose the way to decompose A . </div><div class="line">Press <span class="string">'1'</span> to realize the PLU_decomposition of A. </div><div class="line">Press <span class="string">'2'</span> to realize the Gram_Schimidt of A.</div><div class="line">Press <span class="string">'3'</span> to realize the householder_reduction of A.</div><div class="line">Press <span class="string">'4'</span> to realize the Givens_reduction of A.</div><div class="line">please choose the mode:<span class="number">2</span></div><div class="line">QR decomposition <span class="keyword">in</span> numpy <span class="keyword">is</span> </div><div class="line">(array([[<span class="number">-0.85714286</span>,  <span class="number">0.39428571</span>,  <span class="number">0.33142857</span>],</div><div class="line">       [<span class="number">-0.42857143</span>, <span class="number">-0.90285714</span>, <span class="number">-0.03428571</span>],</div><div class="line">       [ <span class="number">0.28571429</span>, <span class="number">-0.17142857</span>,  <span class="number">0.94285714</span>]]), array([[ <span class="number">-14.</span>,  <span class="number">-21.</span>,   <span class="number">14.</span>],</div><div class="line">       [   <span class="number">0.</span>, <span class="number">-175.</span>,   <span class="number">70.</span>],</div><div class="line">       [   <span class="number">0.</span>,    <span class="number">0.</span>,  <span class="number">-35.</span>]]))</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://olrs8j04a.bkt.clouddn.com/17-12-24/40005304.jpg" alt="Shen Hengheng WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://olrs8j04a.bkt.clouddn.com/17-12-24/44316385.jpg" alt="Shen Hengheng Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/matrix/" rel="tag"># matrix</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/15/2017-12-15-template-of-rmarkdown/" rel="next" title="Rmarkdown模板">
+                <i class="fa fa-chevron-left"></i> Rmarkdown模板
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/15/2017-12-15-ctex-template-for-rstudio/" rel="prev" title="CTeX样式">
+                CTeX样式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/12/15/2017-12-15-利用python从头实现矩阵分解算法/"
+           data-title="利用python从头实现矩阵分解算法" data-url="http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-利用python从头实现矩阵分解算法/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://olrs8j04a.bkt.clouddn.com/17-12-24/90775656.jpg"
+               alt="Shen Hengheng" />
+          <p class="site-author-name" itemprop="name">Shen Hengheng</p>
+          <p class="site-description motion-element" itemprop="description">我是一名 AI 爱好者，着习于机器学习和深度学习。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/rh01" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/shenhengheng" target="_blank" title="twitter">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/shenhengheng" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.readailib.com" title="readailib" target="_blank">readailib</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://rh01.github.io" title="ShenHengheng" target="_blank">ShenHengheng</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://data.shenhengheng.xyz" title="Projects" target="_blank">Projects</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://iotppt.shenhengheng.xyz" title="IoT演讲" target="_blank">IoT演讲</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序说明"><span class="nav-number">1.</span> <span class="nav-text">程序说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#utils-py"><span class="nav-number">1.1.</span> <span class="nav-text">utils.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#factorization-py"><span class="nav-number">1.2.</span> <span class="nav-text">factorization.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试部分"><span class="nav-number">2.</span> <span class="nav-text">测试部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PLU-decomposition"><span class="nav-number">2.1.</span> <span class="nav-text">PLU_decomposition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gram-Schimidt"><span class="nav-number">2.1.1.</span> <span class="nav-text">Gram_Schimidt</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shen Hengheng</span>
+</div>
+
+
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+您是第<span id="busuanzi_value_site_uv"></span>个来到的小伙伴
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"shenhengheng"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<!-- 背景动画 -->
+<script type="text/javascript" src="/js/src/particle.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+
+</html>

@@ -2,9 +2,142 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/24/2017-12-23-svm/</loc>
+    
+    <lastmod>2017-12-25T02:43:59.554Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/23/2017-12-23-hmm/</loc>
+    
+    <lastmod>2017-12-25T02:43:47.342Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.shenhengheng.xyz/about/index.html</loc>
     
     <lastmod>2017-12-25T02:20:36.026Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-aphot-rpi/</loc>
+    
+    <lastmod>2017-12-21T02:40:32.533Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-logistic-regression/</loc>
+    
+    <lastmod>2017-12-21T02:32:05.802Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-bayesian-learning/</loc>
+    
+    <lastmod>2017-12-21T02:29:11.615Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-polynomial-regression/</loc>
+    
+    <lastmod>2017-12-21T02:23:52.471Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-overfitting/</loc>
+    
+    <lastmod>2017-12-21T02:16:32.907Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-multi-variable-linear-regression/</loc>
+    
+    <lastmod>2017-12-21T02:05:19.277Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-introduction-machine-learning/</loc>
+    
+    <lastmod>2017-12-21T01:48:55.673Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-single-variable-linear-regression/</loc>
+    
+    <lastmod>2017-12-21T01:14:59.981Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/20/2017-12-20-mail-server-rpi/</loc>
+    
+    <lastmod>2017-12-21T00:19:46.242Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/20/2017-12-20-opencv-rpi/</loc>
+    
+    <lastmod>2017-12-21T00:17:48.543Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/19/2017-12-19-example/</loc>
+    
+    <lastmod>2017-12-20T13:20:14.728Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-tufte-template-for-blog/</loc>
+    
+    <lastmod>2017-12-19T08:54:15.419Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-ctex-template-for-rstudio/</loc>
+    
+    <lastmod>2017-12-19T08:46:19.308Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-%E5%88%A9%E7%94%A8python%E4%BB%8E%E5%A4%B4%E5%AE%9E%E7%8E%B0%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95/</loc>
+    
+    <lastmod>2017-12-18T03:52:43.807Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-template-of-rmarkdown/</loc>
+    
+    <lastmod>2017-12-15T05:53:13.915Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/14/2017-12-14-add-comment-to-your-blog/</loc>
+    
+    <lastmod>2017-12-15T05:33:31.293Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.shenhengheng.xyz/2017/12/14/2017-12-14-welcome-to-readailib/</loc>
+    
+    <lastmod>2017-12-14T08:48:00.043Z</lastmod>
     
   </url>
   

@@ -1,0 +1,1116 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ml,blog,hmm," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="恒行天下" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="\noindent 很早就想写一篇关于隐马尔可夫模型的文章了，这次刻意的将模型及其有关算法复习了一下，才有了这个信心去写了这篇文章。这篇文章主要参考了李航老师的《统计机器学习^[https://www.amazon.cn/dp/B007TSFMTA/ref=sr_1_1?ie=UTF8&amp;amp;qid=1514031854&amp;amp;sr=8-1&amp;amp;keywords=%E7%BB%9F%E8%">
+<meta property="og:type" content="article">
+<meta property="og:title" content="隐马尔可夫模型">
+<meta property="og:url" content="http://blog.shenhengheng.xyz/2017/12/23/2017-12-23-hmm/index.html">
+<meta property="og:site_name" content="恒行天下">
+<meta property="og:description" content="\noindent 很早就想写一篇关于隐马尔可夫模型的文章了，这次刻意的将模型及其有关算法复习了一下，才有了这个信心去写了这篇文章。这篇文章主要参考了李航老师的《统计机器学习^[https://www.amazon.cn/dp/B007TSFMTA/ref=sr_1_1?ie=UTF8&amp;amp;qid=1514031854&amp;amp;sr=8-1&amp;amp;keywords=%E7%BB%9F%E8%">
+<meta property="og:image" content="http://olrs8j04a.bkt.clouddn.com/17-12-23/13276902.jpg">
+<meta property="og:image" content="http://olrs8j04a.bkt.clouddn.com/17-12-23/10240319.jpg">
+<meta property="og:image" content="http://olrs8j04a.bkt.clouddn.com/17-12-23/98038385.jpg">
+<meta property="og:image" content="http://olrs8j04a.bkt.clouddn.com/17-12-23/34045629.jpg">
+<meta property="og:image" content="http://olrs8j04a.bkt.clouddn.com/17-12-23/35121312.jpg">
+<meta property="og:image" content="http://olrs8j04a.bkt.clouddn.com/17-12-23/98688168.jpg">
+<meta property="og:updated_time" content="2017-12-25T02:43:47.342Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="隐马尔可夫模型">
+<meta name="twitter:description" content="\noindent 很早就想写一篇关于隐马尔可夫模型的文章了，这次刻意的将模型及其有关算法复习了一下，才有了这个信心去写了这篇文章。这篇文章主要参考了李航老师的《统计机器学习^[https://www.amazon.cn/dp/B007TSFMTA/ref=sr_1_1?ie=UTF8&amp;amp;qid=1514031854&amp;amp;sr=8-1&amp;amp;keywords=%E7%BB%9F%E8%">
+<meta name="twitter:image" content="http://olrs8j04a.bkt.clouddn.com/17-12-23/13276902.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.shenhengheng.xyz/2017/12/23/2017-12-23-hmm/"/>
+
+
+
+
+
+  <title> 隐马尔可夫模型 | 恒行天下 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-92073513-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?14b57a75b075b6fd8618498ca810584c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">恒行天下</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">生恒爱之 生恒敬之</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/12/23/2017-12-23-hmm/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Shen Hengheng">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://olrs8j04a.bkt.clouddn.com/17-12-24/90775656.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="恒行天下">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="恒行天下" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                隐马尔可夫模型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-23T08:00:00+08:00">
+                Dec 23 2017
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/blog/" itemprop="url" rel="index">
+                    <span itemprop="name">blog</span>
+                  </a>
+	
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/blog/ml/" itemprop="url" rel="index">
+                    <span itemprop="name">ml</span>
+                  </a>
+	
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/blog/ml/hmm/" itemprop="url" rel="index">
+                    <span itemprop="name">hmm</span>
+                  </a>
+	
+                </span>
+
+                
+                
+              
+            </span>
+			
+			
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/23/2017-12-23-hmm/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/23/2017-12-23-hmm/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+		  
+	
+		  
+		  
+		  
+      <span>&nbsp; | &nbsp;
+      <span id="busuanzi_value_page_pv" ></span>次阅读
+      </span>    
+      
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>\noindent 很早就想写一篇关于<strong>隐马尔可夫模型</strong>的文章了，这次刻意的将模型及其有关算法复习了一下，才有了这个信心去写了这篇文章。这篇文章主要参考了李航老师的《统计机器学习^[<a href="https://www.amazon.cn/dp/B007TSFMTA/ref=sr_1_1?ie=UTF8&amp;qid=1514031854&amp;sr=8-1&amp;keywords=%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95]》" target="_blank" rel="external">https://www.amazon.cn/dp/B007TSFMTA/ref=sr_1_1?ie=UTF8&amp;qid=1514031854&amp;sr=8-1&amp;keywords=%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95]》</a>  部分内容和徐亦达老师在油管上的教程^[<a href="https://www.youtube.com/watch?v=Ji6KbkyNmk8&amp;list=PLyAft-JyjIYoc9LN241WKqLPuggfSBBpt]。并且这里的隐马尔可夫模型主要是指**离散形式的动态模型**。" target="_blank" rel="external">https://www.youtube.com/watch?v=Ji6KbkyNmk8&amp;list=PLyAft-JyjIYoc9LN241WKqLPuggfSBBpt]。并且这里的隐马尔可夫模型主要是指**离散形式的动态模型**。</a></p>
+<p>隐马尔可夫模型主要是一种<strong>可用于标注问题的统计学习模型</strong>，描述由隐藏的马尔可夫链随机生成观测序列的过程，属于生成模型。近些年来主要用于语音信号处理，自然语言处理，生物信息，金融分析等领域，该教程涉及很多概率计算问题，所以希望读者能够有概率背景的情况下，阅读更佳。</p>
+<p>本部分主要介绍一下几个部分：</p>
+<ul>
+<li>HMM现象</li>
+<li>马尔可夫过程/链</li>
+<li>算法<ul>
+<li>直接计算法</li>
+<li>前向-后向算法<ul>
+<li>前向算法</li>
+<li>后向算法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>学习算法</li>
+<li>总结</li>
+</ul>
+<h1 id="HMM现象"><a href="#HMM现象" class="headerlink" title="HMM现象"></a>HMM现象</h1><p>\begin{figure}[htbp]<br>\begin{center}<br>  \includegraphics[width=0.6\textwidth]{hmm4.png}<br>  \caption{HMM现象}\label{figure:hmm}<br>\end{center}<br>\end{figure}</p>
+<p><img src="http://olrs8j04a.bkt.clouddn.com/17-12-23/13276902.jpg" alt=""></p>
+<p>玩股票的朋友都知道，图\ref{figure:hmm}右，在市场规则下，股民只知道股票的涨停和不变这三种表面现象，而人们并不希望仅仅知道市场的涨停，而是想知道市场隐藏的信息，比如现在股票市场是熊市还是牛市，因为知道这些隐藏的信息之后，我们可以利用这些信息去长期跟进还是及时退出，以防市场大变。在这里我们称这种人们表面上能观察出来的现象为观测（observation），而那些隐藏的变量被称作状态。</p>
+<p>有了上面比较直观的介绍以后，我们就可以定义什么是隐马尔可夫模型了。</p>
+<p><strong>定义10.1（隐马尔可夫模型）</strong>　隐马尔可夫模型是关于时序的概率模型，描述由一个隐藏的马尔可夫链随机生成不可观测的状态随机序列，再由各个状态生成一个观测而产生观测随机序列的过程。隐藏的马尔可夫链随机生成的状态的序列，称为状态序列（state sequence）；每个状态生成一个观测，而由此产生的观测的随机序列，称为观测序列（observation sequence）。序列的每一个位置又可以看作是一个时刻。</p>
+<p>比如：上图的Bull-&gt;Bear-&gt;Event就是其中一个状态序列，而其产生的观测形成的序列up-&gt;down-&gt;unchange被称作观测序列，而这些序列在一定假设下，具有非常好的概率性质。</p>
+<h1 id="马尔可夫链"><a href="#马尔可夫链" class="headerlink" title="马尔可夫链"></a>马尔可夫链</h1><p>\begin{figure}[htbp]<br>\begin{center}<br>  \includegraphics[width=0.6\textwidth]{markov.png}<br>  \caption{HMM的概率图模型}\label{figure:markov}<br>\end{center}<br>\end{figure}<br><img src="http://olrs8j04a.bkt.clouddn.com/17-12-23/10240319.jpg" alt=""></p>
+<p>上图\ref{figure:markov}是隐马尔可夫的概率图模型，概率图反应了事件的依赖和独立关系。</p>
+<p>首先我们要说明q表示状态，不可观测。y表示可观测的现象。假设状态与状态之间、状态与观测现象之间均满足马尔可夫过程，其中该过程要求具备“无记忆”的性质（马尔可夫性质）：下一状态的概率分布只能由当前状态决定，在时间序列中前面的事件均与之无关。 用数学语言表示为：</p>
+<p>$$\Pr(X<em>NaN=x\mid X</em>{1}=x<em>{1},X</em>{2}=x<em>{2},\ldots ,X</em>{n}=x<em>{n})=\Pr(X</em>NaN=x\mid X<em>{n}=x</em>{n})$$</p>
+<p>那么根据概率图模型，我们得出了两个重要的公式：</p>
+<p><strong>离散</strong>状态转移概率：<br>$$p(q_t |q<em>1, . . . , q</em>{t−1}, y<em>1, . . . , y</em>{t−1}) = p(q<em>t |q</em>{t−1})$$</p>
+<p><strong>离散/连续</strong>观测概率：<br>$$p(y_t |q<em>1, . . . , q</em>{t−1}, y<em>1, . . . , y</em>{t−1})  = p(y_t |q_t )$$</p>
+<p>那么有了这个公式我们可以计算出图\ref{figure:markov}的转移概率矩阵，计算过程见图\ref{figure:hmm2}<br>\begin{figure}[htbp]<br>\begin{center}<br>  \includegraphics[width=0.6\textwidth]{hmm2.png}<br>  \caption{状态转移概率计算}\label{figure:hmm2}<br>\end{center}<br>\end{figure}</p>
+<p><img src="http://olrs8j04a.bkt.clouddn.com/17-12-23/98038385.jpg" alt=""></p>
+<p>$A$是状态转移概率矩阵,$A$描述了状态之间转换关系及其分布。</p>
+<p>其中$a<em>{ij}=P(i</em>{t+1}=q<em>j|i</em>{t}=q_i),\; \; i=1,2,…,N;j=1,2,…,N;$， 是在时刻$t$处于状态$q_i$的条件下在时刻$t+1$转移到状态$q_j$ 的概率。</p>
+<p>同样地，我们可以计算出观测概率矩阵，具体计算过程见\ref{figure:hmm3}<br>\begin{figure}[htbp]<br>\begin{center}<br>  \includegraphics[width=0.6\textwidth]{hmm3.png}<br>  \caption{观测概率的计算}\label{figure:hmm3}<br>\end{center}<br>\end{figure}</p>
+<p><img src="http://olrs8j04a.bkt.clouddn.com/17-12-23/34045629.jpg" alt=""></p>
+<p>$B$是观测概率矩阵, 其中$b<em>j(k)=P(o</em>{t}=v<em>k|i</em>{t}=q_j)\; \; k=1,2,…,M;j=1,2,…,N;$， 是在时刻$t$处于状态$q_j$的条件下生成观测$v_k$的概率。</p>
+<p>有了这些性质之后我们就可以计算观测序列的概率了。比如利用图\ref{figure:hmm2}和图\ref{figure:hmm3}计算$Pr(y_1=up, y_2 = up, y_3=down)$的概率.</p>
+<p>\begin{align<em>}<br>P(y_1,y_2,y<em>3) &amp;= \sum</em>{q<em>1=1}^{k} \sum</em>{q<em>2=1}^{k} \sum</em>{q_3=1}^{k} P(y_1,y_2,y_3,q_1,q_2,q<em>3) \<br>&amp;= \sum</em>{q<em>1=1}^{k} \sum</em>{q<em>2=1}^{k} \sum</em>{q_3=1}^{k} P(y_3|y_1,y_2,q_1,q_2,q_3)P(y_1,y_2,q_1,q_2,q<em>3) \<br>&amp;= \sum</em>{q<em>1=1}^{k} \sum</em>{q<em>2=1}^{k} \sum</em>{q_3=1}^{k} P(y_3|q_3)P(y_1,y_2,q_1,q_2,q<em>3) \<br>&amp;= \sum</em>{q<em>1=1}^{k} \sum</em>{q<em>2=1}^{k} \sum</em>{q_3=1}^{k} P(y_3|q_3)P(q_3|y_1,y_2,q_1,q_2)P(y_1,y_2,q_1,q<em>2) \<br>&amp;= \sum</em>{q<em>1=1}^{k} \sum</em>{q<em>2=1}^{k} \sum</em>{q_3=1}^{k} P(y_3|q_3)P(q_3|q_2)P(y_1,y_2,q_1,q<em>2) \<br>&amp;= \sum</em>{q<em>1=1}^{k} \sum</em>{q<em>2=1}^{k} \sum</em>{q_3=1}^{k} P(y_3|q_3)P(q_3|q_2)P(y_2|y_1,q_1,q_2)P(y_1,q_1,q<em>2) \<br>&amp;= \sum</em>{q<em>1=1}^{k} \sum</em>{q<em>2=1}^{k} \sum</em>{q_3=1}^{k} P(y_3|q_3)P(q_3|q_2)P(y_2|q_2)P(y_1,q_1,q<em>2) \<br>&amp;= \sum</em>{q<em>1=1}^{k} \sum</em>{q<em>2=1}^{k} \sum</em>{q_3=1}^{k} P(y_3|q_3)P(q_3|q_2)P(y_2|q_2)P(q_2|q_1)P(y_1|q_1)P(q_1)<br>\end{align</em>}</p>
+<p>但是发现除了A和B我们已知，还无法计算$P(y_1,y_2,y_3)$，还需要知道$P(q_1)$的分布情况，所以在这里引出了另外一个条件，$P(q_1)$的分布。也就是初始状态概率。为了符号化，这里$\pi$是初始状态概率向量$\pi = (\pi_i)$： 其中$\pi_i = P(i_1 = q_i)$， 是时刻t＝1处于状态$q_i$ 的概率。</p>
+<p><strong>总结：</strong><br>隐马尔可夫模型由初始状态概率向量$\pi$、状态转移概率矩阵$A$和观测概率矩阵$B$决定。$\pi$和$A$决定状态序列，$B$决定观测序列。因此，隐马尔可夫模型$\lambda$可以用三元符号表示，即<br>$$\lambda=(A,B,\pi)$$<br>$A$,$B$,$\pi$称为隐马尔可夫模型的三要素。</p>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><p>HMM的三个基本计算问题：<br>\begin{align<em>}<br> &amp;\text{Evaluate} \; \; p(Y|\lambda) \<br> &amp;\lambda<em>{MLE} = \text{argmax}</em>{\lambda}p(Y|\lambda) \<br> &amp;\text{argmax}_Q p(Y|Q,\lambda)<br>\end{align</em>}</p>
+<h2 id="直接计算法"><a href="#直接计算法" class="headerlink" title="直接计算法"></a>直接计算法</h2><p>首先解决第一个问题，$\text{Evaluate} \; \; p(Y|\lambda)$,</p>
+<p>\begin{align<em>}<br>P(Y|\lambda) &amp;= \sum<em>{Q}[p(Y,Q|\lambda)] =\sum</em>{q<em>1=1}^{k} …, \sum</em>{q_T=1}^{k} [p(y_1,…,y_T,q_1,…,q<em>T|\lambda)] \<br>&amp;=\sum</em>{q<em>1=1}^{k} …, \sum</em>{q_T=1}^{k} [p(y_1,…,y_T,q_1,…,q<em>T|\lambda)] \<br>&amp;= \sum</em>{q<em>1=1}^{k} …,\sum</em>{q_3=1}^{k} p(q_1)p(y_1|q_1)p(q_2|q_1)…p(q<em>t|q</em>{t-1}p(y_t|q<em>t))\<br>&amp;= \sum</em>{q<em>1=1}^{k} …,\sum</em>{q_3=1}^{k} \pi(p<em>1)\amalg</em>{t=2}^{T}a<em>{q</em>{t-1},q<em>t}b</em>{q_t}(y_t)<br>\end{align</em>}</p>
+<p>其中:<br>\begin{align<em>}<br>p(q<em>t = j|q</em>{t−1} = i) &amp;\equiv a_{i,j} \<br>p(y_t |q_t = j) &amp;\equiv bj (y_t)<br>\end{align</em>}<br>但是，利用上面公式计算量很大，是$O(TN^T)$阶的，这种算法不可行。</p>
+<h2 id="前向-后向算法"><a href="#前向-后向算法" class="headerlink" title="前向-后向算法"></a>前向-后向算法</h2><h3 id="前向算法"><a href="#前向算法" class="headerlink" title="前向算法"></a>前向算法</h3><p><strong>定义10.2（前向概率）</strong>　给定隐马尔可夫模型，定义到时刻t部分观测序列为$o_1,o_2,…,o_t$且状态为$q_i$的概率为前向概率，记作<br>$$\alpha_t(i)=P(o_1,o_2,…,o_t,i_t=q_t|\lambda)$$</p>
+<p>下面是前向算法的概率图模型。</p>
+<p>\begin{figure}[htbp]<br>\begin{center}<br>  \includegraphics[width=0.6\textwidth]{forward.png}<br>  \caption{前向算法的概率图模型}\label{figure:forward}<br>\end{center}<br>\end{figure}</p>
+<p><img src="http://olrs8j04a.bkt.clouddn.com/17-12-23/35121312.jpg" alt=""></p>
+<p>前向过程：<br>$$\alpha_t(i)=P(o_1,o_2,…,o_t,i_t=q<em>t|\lambda) \Longrightarrow p(Y|\lambda) = \sum</em>{i=1}^{k} \alpha_i(T)$$</p>
+<p>递推:对$t＝1,2,…，T-1$，</p>
+<p>\begin{align<em>}<br>\alpha_i(1) &amp;= p(y_1,q_1=i|\lambda) = p(q_1)p(y_1|q_1)=\pi_i b_i(y_1) \<br>\alpha_j(2) &amp;= p(y_1,y_2,q<em>2=j|\lambda) = \sum</em>{i=1}^{k}p(q_1=i)p(y1|q_1=i)p(q_2 = i | q_1 = i)p(y_2 | q<em>2 = j) \<br>&amp;= [\sum</em>{i=1}^k \alpha<em>i(1)\alpha</em>{i,j}]b_j(y_2) = p(q_1)p(y_1|q_1)=\pi_ib_i(y_1) \<br>&amp;… \<br>\alpha<em>j(t+1) &amp;=[\sum</em>{i=1}^k \alpha<em>i(t)\alpha</em>{i,j}]b<em>j(y</em>{t+1}) \<br>&amp;… \<br>\alpha<em>j(T) &amp;=[\sum</em>{i=1}^k \alpha<em>i(T-1)\alpha</em>{i,j}]b<em>j(y</em>{T})<br>\end{align</em>}</p>
+<h3 id="后向算法"><a href="#后向算法" class="headerlink" title="后向算法"></a>后向算法</h3><p><strong>定义10.3（后向概率）</strong>　给定隐马尔可夫模型，定义在时刻t状态为$q<em>i$的条件下，从t+1到T的部分观测序列为$o</em>{t+1}$,$o_{t+2}$,…,$o_T$的概率为后向概率，记作<br>$$\beta<em>t(i)=P(o</em>{t+1},o<em>{t+2},o</em>{t+3},…,o_T|i_t=q_i,\lambda)$$</p>
+<p>可以用递推的方法求得后向概率$\beta_t(i)$及观测序列概率$P(O|\lambda)$。<br>$$\beta<em>i (t) = p(y</em>{t+1}, . . . , y_T |q_t = i, \lambda)$$<br>下面是后向算法的概率图模型。</p>
+<p>\begin{figure}[htbp]<br>\begin{center}<br>  \includegraphics[width=0.6\textwidth]{backward.png}<br>  \caption{后向算法的概率图模型}\label{figure:backward}<br>\end{center}<br>\end{figure}<br><img src="http://olrs8j04a.bkt.clouddn.com/17-12-23/98688168.jpg" alt=""></p>
+<p>后向过程：<br>$$\beta<em>i (t) = p(y</em>{t+1}, . . . , y_T |q<em>t = i, \lambda) \Longrightarrow \sum</em>{i=1}^k \beta_i(1)\pi_ib_i(y_1)=p(Y|\lambda)$$</p>
+<p>迭代过程：</p>
+<p>\begin{align<em>}<br>\beta_i(T) &amp;= 1 \<br>\beta_i(T-1) &amp;= p(y<em>T|q</em>{T-1} = i) = \sum_{j=1}^kp(q<em>T=j|q</em>{T-1}=i)p(y_T|q<em>T=j)=\sum</em>{j=1}^{k}a_{i,j}b_j(T) \<br>\beta_i(T-2) &amp;= p(y<em>T,y</em>{T-1}|q<em>{T-2} = i) \<br>&amp;= \sum</em>{j=1}^k \sum_{l=1}^k p(q<em>T=l|q</em>{T-1}=j)p(y_T|q<em>T=l) p(q</em>{T-1}=j|q<em>{T-2}=i)p(y</em>{T-1}|q<em>{T-1}=j)\<br>&amp;=\sum</em>{j=1}^{k}a_{i,j}b<em>j(y</em>{T-1})\beta_j(T-1) \<br>&amp;…\<br>\beta<em>i(t) &amp;=\sum</em>{j=1}^k\alpha_{i,j}b_j(y_t+1)\beta_j(t + 1) \<br>&amp;…\<br>\beta<em>i(1)&amp;=\sum</em>{j=1}^k\alpha_{i,j}b_j(y_2)\beta_j(2)<br>\end{align</em>}</p>
+<p>在时刻t处位于序列$Y$状态$q_i$时的概率：</p>
+<p>$$p(q_t = i|Y,\lambda) = \frac{p(Y, q_t = i|\lambda)}{p(Y|\lambda)}=\frac{p(Y, q<em>t = i|\lambda)}{\sum</em>{j=1}^{k}p(Y, q_t =j|\lambda)}= \frac{\alpha_i(t)\beta<em>i{t}}{\sum</em>{j=1}^{k}\alpha_j(t)\beta_j(t)}$$</p>
+<p>\begin{align<em>}<br>p(Y, q_t = i|\lambda) &amp;= p(Y|q_t = i)p(q_t = i)\<br>&amp;= p(y_1, . . . y_t |q<em>t = i)p(y</em>{t+1},… y_T |q_t = i)p(q_t = i) \<br>&amp;= p(y_1, . . . y_t , q<em>t = i)p(y</em>{t+1},… y_T |q_t = i) \<br>&amp;= \alpha_i(t)\beta_i(t)<br>\end{align</em>}</p>
+<h1 id="学习算法"><a href="#学习算法" class="headerlink" title="学习算法"></a>学习算法</h1><p>后期更新，主要讲解学习算法之EM算法，利用EM算法来学习未知参数。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://olrs8j04a.bkt.clouddn.com/17-12-24/40005304.jpg" alt="Shen Hengheng WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://olrs8j04a.bkt.clouddn.com/17-12-24/44316385.jpg" alt="Shen Hengheng Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ml/" rel="tag"># ml</a>
+          
+            <a href="/tags/blog/" rel="tag"># blog</a>
+          
+            <a href="/tags/hmm/" rel="tag"># hmm</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/21/2017-12-21-introduction-machine-learning/" rel="next" title="机器学习简介">
+                <i class="fa fa-chevron-left"></i> 机器学习简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/24/2017-12-23-svm/" rel="prev" title="支持向量机算法">
+                支持向量机算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/12/23/2017-12-23-hmm/"
+           data-title="隐马尔可夫模型" data-url="http://blog.shenhengheng.xyz/2017/12/23/2017-12-23-hmm/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://olrs8j04a.bkt.clouddn.com/17-12-24/90775656.jpg"
+               alt="Shen Hengheng" />
+          <p class="site-author-name" itemprop="name">Shen Hengheng</p>
+          <p class="site-description motion-element" itemprop="description">我是一名 AI 爱好者，着习于机器学习和深度学习。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/rh01" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/shenhengheng" target="_blank" title="twitter">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/shenhengheng" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.readailib.com" title="readailib" target="_blank">readailib</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://rh01.github.io" title="ShenHengheng" target="_blank">ShenHengheng</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://data.shenhengheng.xyz" title="Projects" target="_blank">Projects</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://iotppt.shenhengheng.xyz" title="IoT演讲" target="_blank">IoT演讲</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HMM现象"><span class="nav-number">1.</span> <span class="nav-text">HMM现象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#马尔可夫链"><span class="nav-number">2.</span> <span class="nav-text">马尔可夫链</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法"><span class="nav-number">3.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接计算法"><span class="nav-number">3.1.</span> <span class="nav-text">直接计算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前向-后向算法"><span class="nav-number">3.2.</span> <span class="nav-text">前向-后向算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前向算法"><span class="nav-number">3.2.1.</span> <span class="nav-text">前向算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后向算法"><span class="nav-number">3.2.2.</span> <span class="nav-text">后向算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习算法"><span class="nav-number">4.</span> <span class="nav-text">学习算法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shen Hengheng</span>
+</div>
+
+
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+您是第<span id="busuanzi_value_site_uv"></span>个来到的小伙伴
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"shenhengheng"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<!-- 背景动画 -->
+<script type="text/javascript" src="/js/src/particle.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+
+</html>

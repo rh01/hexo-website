@@ -1,0 +1,1055 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ml," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="恒行天下" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="\noindent 本节主要讲解三个基本算法的之一：朴素贝叶斯算法，该算法主要是依据贝叶斯规则/公式/推理，它的主要作用在于，它和其他将要讲述的$k$近邻算法，感知机算法都一样，你的算法设计出来之后，至少你的算法的performance要比这三类算法的效果要好！另外贝叶斯学习算法基于一些统计上的假设而成立的，因此贝叶斯学习算法又称为统计学习的算法必须学习的算法.本节主要有以下部分内容：
+
+Baye">
+<meta property="og:type" content="article">
+<meta property="og:title" content="朴素贝叶斯算法">
+<meta property="og:url" content="http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-bayesian-learning/index.html">
+<meta property="og:site_name" content="恒行天下">
+<meta property="og:description" content="\noindent 本节主要讲解三个基本算法的之一：朴素贝叶斯算法，该算法主要是依据贝叶斯规则/公式/推理，它的主要作用在于，它和其他将要讲述的$k$近邻算法，感知机算法都一样，你的算法设计出来之后，至少你的算法的performance要比这三类算法的效果要好！另外贝叶斯学习算法基于一些统计上的假设而成立的，因此贝叶斯学习算法又称为统计学习的算法必须学习的算法.本节主要有以下部分内容：
+
+Baye">
+<meta property="og:updated_time" content="2017-12-21T02:29:11.615Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="朴素贝叶斯算法">
+<meta name="twitter:description" content="\noindent 本节主要讲解三个基本算法的之一：朴素贝叶斯算法，该算法主要是依据贝叶斯规则/公式/推理，它的主要作用在于，它和其他将要讲述的$k$近邻算法，感知机算法都一样，你的算法设计出来之后，至少你的算法的performance要比这三类算法的效果要好！另外贝叶斯学习算法基于一些统计上的假设而成立的，因此贝叶斯学习算法又称为统计学习的算法必须学习的算法.本节主要有以下部分内容：
+
+Baye">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-bayesian-learning/"/>
+
+
+
+
+
+  <title> 朴素贝叶斯算法 | 恒行天下 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-92073513-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?14b57a75b075b6fd8618498ca810584c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">恒行天下</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">生恒爱之 生恒敬之</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-bayesian-learning/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Shen Hengheng">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://olrs8j04a.bkt.clouddn.com/17-12-24/90775656.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="恒行天下">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="恒行天下" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                朴素贝叶斯算法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-21T08:00:00+08:00">
+                Dec 21 2017
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ml/" itemprop="url" rel="index">
+                    <span itemprop="name">ml</span>
+                  </a>
+	
+                </span>
+
+                
+                
+              
+            </span>
+			
+			
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/21/2017-12-21-bayesian-learning/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/21/2017-12-21-bayesian-learning/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+		  
+	
+		  
+		  
+		  
+      <span>&nbsp; | &nbsp;
+      <span id="busuanzi_value_page_pv" ></span>次阅读
+      </span>    
+      
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>\noindent 本节主要讲解三个基本算法的之一：<strong>朴素贝叶斯算法</strong>，该算法主要是依据<strong>贝叶斯规则/公式/推理</strong>，它的主要作用在于，它和其他将要讲述的<strong>$k$近邻算法</strong>，<strong>感知机算法</strong>都一样，你的算法设计出来之后，至少你的算法的<strong>performance</strong>要比这三类算法的效果要好！另外贝叶斯学习算法基于一些统计上的假设而成立的，因此贝叶斯学习算法又称为统计学习的算法必须学习的算法.本节主要有以下部分内容：</p>
+<ul>
+<li>Bayes’ Rule</li>
+<li>Applying Baye’s Rule to Classification</li>
+<li>The Posterior Probability :$\mathrm{P}(C|x) = \frac{\mathrm{P}(C)\mathrm{P}(x|C)}{\mathrm{P}(x)}$</li>
+<li>Extend to Multi-class classification</li>
+<li>Naive Bayes for Classification</li>
+<li>Zero-frequency Problem</li>
+</ul>
+<h1 id="贝叶斯定理-公式-规则"><a href="#贝叶斯定理-公式-规则" class="headerlink" title="贝叶斯定理/公式/规则"></a>贝叶斯定理/公式/规则</h1><p>假设${B_1,B_2,…,B_k}$是$S$集合的<strong>划分</strong>且对于$i=0,1,…,k$有$\mathrm{P}(B_i) &gt; 0$，那么<br>$$\mathrm{P}(B_j|A) = \frac{\mathrm{P}(A|B_j)\mathrm{P}(B<em>j)}{\sum</em>{i=1}^k \mathrm{P}(A|B_i)\mathrm{P}(B_i)}$$</p>
+<h1 id="在分类问题上应用贝叶斯分类器"><a href="#在分类问题上应用贝叶斯分类器" class="headerlink" title="在分类问题上应用贝叶斯分类器"></a>在分类问题上应用贝叶斯分类器</h1><h2 id="例子：信用卡评估：高风险-低风险"><a href="#例子：信用卡评估：高风险-低风险" class="headerlink" title="例子：信用卡评估：高风险/低风险"></a>例子：信用卡评估：高风险/低风险</h2><p>信用卡评估是这样的一个过程，银行通过对用户的历史交易信息来进行选择的，如果该用户在过去的交易中按时缴纳了本金和利息，并且银行从中获益，那么这些用户是属于<strong>低风险的</strong>，如果他们没有按时缴纳本金和利息或者拒绝还款的话，这类用户比银行定义为<strong>高风险的用户</strong>.</p>
+<p>我们现在的任务就是来学习如何对用户进行分类\textbf{高风险} vs <strong>低风险</strong>.那么我们现在有以下用户的每年的收入信息和消费信息，我们们用两个<strong>随机变量</strong> $X_1$ 和 $X_2$ 来表示.用户的信用度可以用伯努利随机变量$\mathrm{C} = 1$ 和 $\mathrm{C} = 0$ 来表示。其中$C=0$表示这是一个低风险的用户，$C=0$表示这是一个高风险的用户。</p>
+<p>当一个新的用户来进行贷款时，他提供他的每年的收入和消费，即$X_1 = x_1$ 和 $X_2 = x_2$.如果我们知道信用度C的概率受限于观测值$X = [x_1, x_2]$，并且有<br>\begin{align<em>}<br>&amp;\mathrm{if} \; \; \mathrm{P}(C = 1|[x_1 , x_2 ]) &gt; 0.5, \; then \; \mathrm{C}=1 \<br>&amp;\mathrm{if} \; \; \mathrm{P}(C = 1|[x_1 , x_2 ]) \leq 0.5, \; then \; \mathrm{C} = 0<br>\end{align</em>}</p>
+<p>我们估计的误差建立在$1 − max{\mathrm{P}(C = 1|[x_1 , x_2 ]),\mathrm{P}(C = 0|[x_1 , x_2 ])} &lt; 0.5$，一般地，有$P(\mathrm{C} = 1|[x_1 , x_2 ]) +\mathrm{P}(C = 0|[x_1 , x_2 ]) = 1$。</p>
+<h2 id="后验概率-mathrm-P-C-x-frac-mathrm-P-C-mathrm-P-x-C-mathrm-P-x"><a href="#后验概率-mathrm-P-C-x-frac-mathrm-P-C-mathrm-P-x-C-mathrm-P-x" class="headerlink" title="后验概率$\mathrm{P}(C|x) = \frac{\mathrm{P}(C)\mathrm{P}(x|C)}{\mathrm{P}(x)}$"></a>后验概率$\mathrm{P}(C|x) = \frac{\mathrm{P}(C)\mathrm{P}(x|C)}{\mathrm{P}(x)}$</h2><p>其中，对于标题的概率公式又叫做贝叶斯公式，它主要思想是利用先验来估计后验，即$P(C = 1)$ 叫做C=1的先验概率，比如信用卡评估问题上，我们已经有了大量的历史客户数据，$P(C = 1)$表示在这些数据中高风险的人占总人数的比例，肯定地，这是我们知道的！所以被称作先验概率。</p>
+<ul>
+<li>$P(x|C )$被称作类的似然，它是条件概率，意思为一个事件在已知属于C类的情况下，事件x发生的概率,</li>
+<li>$P(x)$表示事件x发生的概率，不管它是正类还是负类,</li>
+<li>$P(C=0|x) + P(C=1|x) = 1$，来源于事件的划分。</li>
+</ul>
+<p>另外还有以下性质：</p>
+<ul>
+<li>$P(X 1 , X 2 )$表示随机变量$X_1$和$X_2$的联合概率</li>
+<li>在假设前提下，两个随机变量是条件概率独立，有$P(X 1 , X 2 |C ) = P(X 1 |C )P(X 2 |C )$，这是贝叶斯规则重要的假设。尽管假非常简单，但是在实际应用中十分关键。</li>
+</ul>
+<p>现在我们将问题扩展到多类分类问题上，即$C_i ,\; i = 1, 2, . . . , K$.比如，在数字识别问题上，输入是一个2值化的图像，目标总共有10类，即0-9，我们可以认为这K类看作是输入空间的一个划分。那么贝叶斯分类器是将最高的后验概率的类看作是目标类，也就是$\mathrm{P}(C_i |x) = \mathrm{max}_k \mathrm{P}(C_k |x)$.同样地，对于多类分类问题，我们可以将所有的属性/特征看作是一个随机变量，那么对于贝叶斯分类器将该样本分为No.1类的概率为$Pr (y = 1|x) = Pr (y = 1|\mathbf{X}_1 = x_1 , \mathbf{X}_2 = x_2 , . . . , \mathbf{X}_n = x_n )$.</p>
+<p>但是朴素贝叶斯分类七有两个不合理的假设：</p>
+<ol>
+<li>每个属性/特征的重要性是一样的</li>
+<li>所有属性/特征都是条件概率独立的，有<br>$$Pr (y = 1|x) = \frac{1}{Pr(\mathbf{X} = x)} \Pi_{i=1}^{n} Pr (\mathbf{X}_i = x_i |y = 1)$$</li>
+</ol>
+<h1 id="天气数据的例子"><a href="#天气数据的例子" class="headerlink" title="天气数据的例子"></a>天气数据的例子</h1>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://olrs8j04a.bkt.clouddn.com/17-12-24/40005304.jpg" alt="Shen Hengheng WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://olrs8j04a.bkt.clouddn.com/17-12-24/44316385.jpg" alt="Shen Hengheng Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ml/" rel="tag"># ml</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/21/2017-12-21-multi-variable-linear-regression/" rel="next" title="多变量线性回归">
+                <i class="fa fa-chevron-left"></i> 多变量线性回归
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/21/2017-12-21-aphot-rpi/" rel="prev" title="在树莓派上配置AP">
+                在树莓派上配置AP <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/12/21/2017-12-21-bayesian-learning/"
+           data-title="朴素贝叶斯算法" data-url="http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-bayesian-learning/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://olrs8j04a.bkt.clouddn.com/17-12-24/90775656.jpg"
+               alt="Shen Hengheng" />
+          <p class="site-author-name" itemprop="name">Shen Hengheng</p>
+          <p class="site-description motion-element" itemprop="description">我是一名 AI 爱好者，着习于机器学习和深度学习。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/rh01" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/shenhengheng" target="_blank" title="twitter">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/shenhengheng" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.readailib.com" title="readailib" target="_blank">readailib</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://rh01.github.io" title="ShenHengheng" target="_blank">ShenHengheng</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://data.shenhengheng.xyz" title="Projects" target="_blank">Projects</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://iotppt.shenhengheng.xyz" title="IoT演讲" target="_blank">IoT演讲</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#贝叶斯定理-公式-规则"><span class="nav-number">1.</span> <span class="nav-text">贝叶斯定理/公式/规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在分类问题上应用贝叶斯分类器"><span class="nav-number">2.</span> <span class="nav-text">在分类问题上应用贝叶斯分类器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#例子：信用卡评估：高风险-低风险"><span class="nav-number">2.1.</span> <span class="nav-text">例子：信用卡评估：高风险/低风险</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后验概率-mathrm-P-C-x-frac-mathrm-P-C-mathrm-P-x-C-mathrm-P-x"><span class="nav-number">2.2.</span> <span class="nav-text">后验概率$\mathrm{P}(C|x) = \frac{\mathrm{P}(C)\mathrm{P}(x|C)}{\mathrm{P}(x)}$</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#天气数据的例子"><span class="nav-number">3.</span> <span class="nav-text">天气数据的例子</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shen Hengheng</span>
+</div>
+
+
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+您是第<span id="busuanzi_value_site_uv"></span>个来到的小伙伴
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"shenhengheng"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<!-- 背景动画 -->
+<script type="text/javascript" src="/js/src/particle.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+
+</html>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.shenhengheng.xyz/"/>
-  <updated>2017-03-01T13:03:57.241Z</updated>
+  <updated>2017-12-25T02:43:59.554Z</updated>
   <id>http://blog.shenhengheng.xyz/</id>
   
   <author>
@@ -14,6 +14,461 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>支持向量机算法</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/24/2017-12-23-svm/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/24/2017-12-23-svm/</id>
+    <published>2017-12-24T00:00:00.000Z</published>
+    <updated>2017-12-25T02:43:59.554Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/categories/ml/"/>
+    
+      <category term="svm" scheme="http://blog.shenhengheng.xyz/categories/ml/svm/"/>
+    
+      <category term="machine learning" scheme="http://blog.shenhengheng.xyz/categories/ml/svm/machine-learning/"/>
+    
+    
+      <category term="machine learning" scheme="http://blog.shenhengheng.xyz/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>隐马尔可夫模型</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/23/2017-12-23-hmm/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/23/2017-12-23-hmm/</id>
+    <published>2017-12-23T00:00:00.000Z</published>
+    <updated>2017-12-25T02:43:47.342Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;\noindent 很早就想写一篇关于&lt;strong&gt;隐马尔可夫模型&lt;/strong&gt;的文章了，这次刻意的将模型及其有关算法复习了一下，才有了这个信心去写了这篇文章。这篇文章主要参考了李航老师的《统计机器学习^[&lt;a href=&quot;https://www.amazon.cn/
+    
+    </summary>
+    
+      <category term="blog" scheme="http://blog.shenhengheng.xyz/categories/blog/"/>
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/categories/blog/ml/"/>
+    
+      <category term="hmm" scheme="http://blog.shenhengheng.xyz/categories/blog/ml/hmm/"/>
+    
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/tags/ml/"/>
+    
+      <category term="blog" scheme="http://blog.shenhengheng.xyz/tags/blog/"/>
+    
+      <category term="hmm" scheme="http://blog.shenhengheng.xyz/tags/hmm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习简介</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-introduction-machine-learning/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-introduction-machine-learning/</id>
+    <published>2017-12-21T00:00:00.000Z</published>
+    <updated>2017-12-21T01:48:55.673Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;\noindent 该笔记是来自 Andrew Ng 的 Machine Learning 课程的第一周的课堂记录，主要讲解了以下几个内容:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;机器学习的定义&lt;/li&gt;
+&lt;li&gt;机器学习的分类&lt;ul&gt;
+&lt;li&gt;第一类：监督学习&lt;/li&gt;
+&lt;li&gt;第二
+    
+    </summary>
+    
+      <category term="pi" scheme="http://blog.shenhengheng.xyz/categories/pi/"/>
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/categories/pi/ml/"/>
+    
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/tags/ml/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>单变量线性回归</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-single-variable-linear-regression/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-single-variable-linear-regression/</id>
+    <published>2017-12-21T00:00:00.000Z</published>
+    <updated>2017-12-21T01:14:59.981Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;\noindent 该笔记是来自 Andrew Ng 的 Machine Learning 课程的第二周:&lt;strong&gt;单变量线性回归&lt;/strong&gt;的课堂记录，主要讲解了以下几个内容:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;代价函数&lt;/li&gt;
+&lt;li&gt;梯度下降算法&lt;/li&gt;
+&lt;/
+    
+    </summary>
+    
+      <category term="blog" scheme="http://blog.shenhengheng.xyz/categories/blog/"/>
+    
+      <category term="comment" scheme="http://blog.shenhengheng.xyz/categories/blog/comment/"/>
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/categories/blog/comment/ml/"/>
+    
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/tags/ml/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>过拟合和正则化</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-overfitting/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-overfitting/</id>
+    <published>2017-12-21T00:00:00.000Z</published>
+    <updated>2017-12-21T02:16:32.907Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;\noindent 该笔记是来自 Andrew Ng 的 Machine Learning 课程的第三周:&lt;strong&gt;多分类和过拟合技术&lt;/strong&gt;的课堂记录，过拟合是机器学习优化的部分，主要讲解了以下几个内容:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;多类别的分类问题&lt;/li
+    
+    </summary>
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/categories/ml/"/>
+    
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/tags/ml/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>多项式回归</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-polynomial-regression/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-polynomial-regression/</id>
+    <published>2017-12-21T00:00:00.000Z</published>
+    <updated>2017-12-21T02:23:52.471Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;\noindent 该笔记是来自 Andrew Ng 的 Machine Learning 课程的第二周:&lt;strong&gt;多项式回归&lt;/strong&gt;的课堂记录，有了合适的特征之后，我们发现线性回归并不适用于所有数据，有时我们需要曲线来适应我们的数据，因此引出多项式回归模型
+    
+    </summary>
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/categories/ml/"/>
+    
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/tags/ml/"/>
+    
+      <category term="matrix" scheme="http://blog.shenhengheng.xyz/tags/matrix/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在树莓派上配置AP</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-aphot-rpi/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-aphot-rpi/</id>
+    <published>2017-12-21T00:00:00.000Z</published>
+    <updated>2017-12-21T02:40:32.533Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;有了一个新的树莓派之后，如果不将它配置成AP热点，你就失去了他的其中的一个优势，如果你的家里面没有无限路由器或者你的家里信号不能遍及，树莓派是你最好的选择，利用流量包转发的优势，大大地节约了成本，并且他支持多种转发机制，这是很重要的特点，是你的网络随时处于移动状态，不像传统
+    
+    </summary>
+    
+      <category term="blog" scheme="http://blog.shenhengheng.xyz/categories/blog/"/>
+    
+      <category term="pi" scheme="http://blog.shenhengheng.xyz/categories/blog/pi/"/>
+    
+    
+      <category term="blog" scheme="http://blog.shenhengheng.xyz/tags/blog/"/>
+    
+      <category term="pi" scheme="http://blog.shenhengheng.xyz/tags/pi/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>朴素贝叶斯算法</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-bayesian-learning/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-bayesian-learning/</id>
+    <published>2017-12-21T00:00:00.000Z</published>
+    <updated>2017-12-21T02:29:11.615Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;\noindent 本节主要讲解三个基本算法的之一：&lt;strong&gt;朴素贝叶斯算法&lt;/strong&gt;，该算法主要是依据&lt;strong&gt;贝叶斯规则/公式/推理&lt;/strong&gt;，它的主要作用在于，它和其他将要讲述的&lt;strong&gt;$k$近邻算法&lt;/strong&gt;，&lt;stron
+    
+    </summary>
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/categories/ml/"/>
+    
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/tags/ml/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>多变量线性回归</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-multi-variable-linear-regression/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-multi-variable-linear-regression/</id>
+    <published>2017-12-21T00:00:00.000Z</published>
+    <updated>2017-12-21T02:05:19.277Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;\noindent 该笔记是来自 Andrew Ng 的 Machine Learning 课程的第二周:&lt;strong&gt;多变量线性回归&lt;/strong&gt;的课堂记录，其实就是将单变量线性回归推广到多变量中去，主要讲解了以下几个内容:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;模型的表示&lt;/
+    
+    </summary>
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/categories/ml/"/>
+    
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/tags/ml/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>逻辑回归</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-logistic-regression/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-logistic-regression/</id>
+    <published>2017-12-21T00:00:00.000Z</published>
+    <updated>2017-12-21T02:32:05.802Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;\noindent 该笔记是来自 Andrew Ng 的 Machine Learning 课程的第三周:&lt;strong&gt;逻辑回归&lt;/strong&gt;的课堂记录，逻辑回归是机器学习分类算法的地一个算法，涵盖信息论的相关内容.主要讲解了以下几个内容:&lt;br&gt;\begin{ite
+    
+    </summary>
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/categories/ml/"/>
+    
+    
+      <category term="ml" scheme="http://blog.shenhengheng.xyz/tags/ml/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在树莓派上搭建OpenCV环境</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/20/2017-12-20-opencv-rpi/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/20/2017-12-20-opencv-rpi/</id>
+    <published>2017-12-20T00:00:00.000Z</published>
+    <updated>2017-12-21T00:17:48.543Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文主要介绍如何在树莓派上配置和安装OpenCV，本文原文出处^[www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv- 3/].&lt;/p&gt;
+&lt;h1 id=&quot;扩
+    
+    </summary>
+    
+      <category term="pi" scheme="http://blog.shenhengheng.xyz/categories/pi/"/>
+    
+    
+      <category term="pi" scheme="http://blog.shenhengheng.xyz/tags/pi/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在树莓派上搭建邮件服务器</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/20/2017-12-20-mail-server-rpi/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/20/2017-12-20-mail-server-rpi/</id>
+    <published>2017-12-20T00:00:00.000Z</published>
+    <updated>2017-12-21T00:19:46.242Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;上篇文章介绍了利用树莓派搭建AP，那么有了AP之后，由于小编是一名在校的学生，将我的树莓派和我宿舍的路由器连接上网之后，我的树莓派就拥有了全球唯一可访问的地址了，这样的话就可以为所欲为了.&lt;/p&gt;
+&lt;p&gt;说到为什么搭建邮件服务器，为什么要使用树莓派呢？为什么不使用VPS呢？
+    
+    </summary>
+    
+      <category term="rpi" scheme="http://blog.shenhengheng.xyz/categories/rpi/"/>
+    
+      <category term="mail server" scheme="http://blog.shenhengheng.xyz/categories/rpi/mail-server/"/>
+    
+    
+      <category term="rpi" scheme="http://blog.shenhengheng.xyz/tags/rpi/"/>
+    
+      <category term="mailserver" scheme="http://blog.shenhengheng.xyz/tags/mailserver/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Display Image Using R</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/19/2017-12-19-example/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/19/2017-12-19-example/</id>
+    <published>2017-12-19T00:00:00.000Z</published>
+    <updated>2017-12-20T13:20:14.728Z</updated>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight r&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;d
+    
+    </summary>
+    
+      <category term="blog" scheme="http://blog.shenhengheng.xyz/categories/blog/"/>
+    
+      <category term="comment" scheme="http://blog.shenhengheng.xyz/categories/blog/comment/"/>
+    
+    
+      <category term="disqus" scheme="http://blog.shenhengheng.xyz/tags/disqus/"/>
+    
+      <category term="gitalk" scheme="http://blog.shenhengheng.xyz/tags/gitalk/"/>
+    
+      <category term="rmarkdown" scheme="http://blog.shenhengheng.xyz/tags/rmarkdown/"/>
+    
+      <category term="blog" scheme="http://blog.shenhengheng.xyz/tags/blog/"/>
+    
+      <category term="matrix" scheme="http://blog.shenhengheng.xyz/tags/matrix/"/>
+    
+      <category term="pi" scheme="http://blog.shenhengheng.xyz/tags/pi/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Tufte样式</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-tufte-template-for-blog/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-tufte-template-for-blog/</id>
+    <published>2017-12-15T00:00:00.000Z</published>
+    <updated>2017-12-19T08:54:15.419Z</updated>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;title: “Tufte样式”&lt;br&gt;subtitle: “一个R Markdown实现”&lt;br&gt;author: “JJ Allaire，谢益辉”&lt;br&gt;date: “&lt;code&gt;r Sys.Date()&lt;/code&gt;“&lt;br&gt;output:&lt;br&gt;  tuft
+    
+    </summary>
+    
+      <category term="rmarkdown" scheme="http://blog.shenhengheng.xyz/categories/rmarkdown/"/>
+    
+    
+      <category term="rmarkdown" scheme="http://blog.shenhengheng.xyz/tags/rmarkdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CTeX样式</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-ctex-template-for-rstudio/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-ctex-template-for-rstudio/</id>
+    <published>2017-12-15T00:00:00.000Z</published>
+    <updated>2017-12-19T08:46:19.308Z</updated>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;title: “在R Markdown文档中使用中文”&lt;br&gt;author:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;谢益辉&lt;/li&gt;
+&lt;li&gt;邱怡轩&lt;/li&gt;
+&lt;li&gt;于淼&lt;br&gt;documentclass: ctexart&lt;br&gt;output:&lt;br&gt;rticles::ct
+    
+    </summary>
+    
+      <category term="rmarkdown" scheme="http://blog.shenhengheng.xyz/categories/rmarkdown/"/>
+    
+    
+      <category term="rmarkdown" scheme="http://blog.shenhengheng.xyz/tags/rmarkdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用python从头实现矩阵分解算法</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-%E5%88%A9%E7%94%A8python%E4%BB%8E%E5%A4%B4%E5%AE%9E%E7%8E%B0%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-利用python从头实现矩阵分解算法/</id>
+    <published>2017-12-15T00:00:00.000Z</published>
+    <updated>2017-12-18T03:52:43.807Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;该程序主要是我的《矩阵分析与应用》课程的大作业的解决方案及程序说明。大作业的要求为：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;要求完成课堂上讲的关于矩阵分解的&lt;strong&gt;LU&lt;/strong&gt;、&lt;strong&gt;QR（Gram-Schmidt）&lt;/strong&gt;、&lt;str
+    
+    </summary>
+    
+      <category term="math" scheme="http://blog.shenhengheng.xyz/categories/math/"/>
+    
+      <category term="matrix" scheme="http://blog.shenhengheng.xyz/categories/math/matrix/"/>
+    
+    
+      <category term="matrix" scheme="http://blog.shenhengheng.xyz/tags/matrix/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rmarkdown模板</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-template-of-rmarkdown/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-template-of-rmarkdown/</id>
+    <published>2017-12-15T00:00:00.000Z</published>
+    <updated>2017-12-15T05:53:13.915Z</updated>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;setup, include=FALSE&amp;#125;&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div clas
+    
+    </summary>
+    
+      <category term="rmarkdown" scheme="http://blog.shenhengheng.xyz/categories/rmarkdown/"/>
+    
+      <category term="template" scheme="http://blog.shenhengheng.xyz/categories/rmarkdown/template/"/>
+    
+    
+      <category term="rmarkdown" scheme="http://blog.shenhengheng.xyz/tags/rmarkdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>为我的博客安装评论插件</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/14/2017-12-14-add-comment-to-your-blog/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/14/2017-12-14-add-comment-to-your-blog/</id>
+    <published>2017-12-14T00:00:00.000Z</published>
+    <updated>2017-12-15T05:33:31.293Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天尝试了一下不同得评论系统，现在将我设置评论系统的安装方法以及设置步骤总结出来，分享给大家.&lt;/p&gt;
+&lt;h2 id=&quot;1-Disqus&quot;&gt;&lt;a href=&quot;#1-Disqus&quot; class=&quot;headerlink&quot; title=&quot;1.Disqus&quot;&gt;&lt;/a&gt;1.Disqu
+    
+    </summary>
+    
+      <category term="blog" scheme="http://blog.shenhengheng.xyz/categories/blog/"/>
+    
+      <category term="comment" scheme="http://blog.shenhengheng.xyz/categories/blog/comment/"/>
+    
+      <category term="technique" scheme="http://blog.shenhengheng.xyz/categories/blog/comment/technique/"/>
+    
+    
+      <category term="disqus" scheme="http://blog.shenhengheng.xyz/tags/disqus/"/>
+    
+      <category term="gitalk" scheme="http://blog.shenhengheng.xyz/tags/gitalk/"/>
+    
+      <category term="gitment" scheme="http://blog.shenhengheng.xyz/tags/gitment/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Welcome to ReadAILib</title>
+    <link href="http://blog.shenhengheng.xyz/2017/12/14/2017-12-14-welcome-to-readailib/"/>
+    <id>http://blog.shenhengheng.xyz/2017/12/14/2017-12-14-welcome-to-readailib/</id>
+    <published>2017-12-14T00:00:00.000Z</published>
+    <updated>2017-12-14T08:48:00.043Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hello Everyone, Welcome to ReadAILib.&lt;/p&gt;
+&lt;p&gt;大家好，本网站主要是由&lt;a href=&quot;&quot;&gt;blogdown&lt;/a&gt;和&lt;a href=&quot;&quot;&gt;Hugo&lt;/a&gt;生成的静态网站，为了方便起见，这里傻瓜式地照搬了yihui的模板（默认），这
+    
+    </summary>
+    
+      <category term="welcome" scheme="http://blog.shenhengheng.xyz/categories/welcome/"/>
+    
+    
+      <category term="blog" scheme="http://blog.shenhengheng.xyz/tags/blog/"/>
+    
+  </entry>
   
   <entry>
     <title>MNIST机器学习入门</title>
@@ -36,330 +491,6 @@
       <category term="MINIST" scheme="http://blog.shenhengheng.xyz/tags/MINIST/"/>
     
       <category term="ml" scheme="http://blog.shenhengheng.xyz/tags/ml/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>tensorflow Tutotial:Start</title>
-    <link href="http://blog.shenhengheng.xyz/2017/03/01/TensorFlow%20Tutotial-Start/"/>
-    <id>http://blog.shenhengheng.xyz/2017/03/01/TensorFlow Tutotial-Start/</id>
-    <published>2017-03-01T02:23:40.000Z</published>
-    <updated>2017-03-01T02:31:50.232Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;使用图(graphs) 来表示计算.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;在会话(&lt;strong&gt;Session&lt;/strong&gt;) 中执行图.&lt;/li&gt;
-&lt;li&gt;使用张量(&lt;strong&gt;tensors&lt;/strong&gt;) 来代表数据.&lt;/li&gt;
-&lt;li&gt;通过变量(&lt;strong&gt;Variables&lt;/strong&gt;) 维护状态.&lt;/li&gt;
-&lt;li&gt;使用供给(&lt;strong&gt;feeds&lt;/strong&gt;) 和取回(&lt;strong&gt;fetches&lt;/strong&gt;) 将数据传入或传出任何操作.
-    
-    </summary>
-    
-      <category term="tutorial" scheme="http://blog.shenhengheng.xyz/categories/tutorial/"/>
-    
-    
-      <category term="Tensorflow" scheme="http://blog.shenhengheng.xyz/tags/Tensorflow/"/>
-    
-      <category term="machine learning" scheme="http://blog.shenhengheng.xyz/tags/machine-learning/"/>
-    
-      <category term="tutorial" scheme="http://blog.shenhengheng.xyz/tags/tutorial/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>matplotlib tutorial - 1</title>
-    <link href="http://blog.shenhengheng.xyz/2017/02/22/matplotlib%20tutorial%20-%201/"/>
-    <id>http://blog.shenhengheng.xyz/2017/02/22/matplotlib tutorial - 1/</id>
-    <published>2017-02-22T09:41:44.000Z</published>
-    <updated>2017-02-22T10:52:33.575Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;matplotlib 教程（未更新完….）&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Data visualization" scheme="http://blog.shenhengheng.xyz/categories/Data-visualization/"/>
-    
-    
-      <category term="data science" scheme="http://blog.shenhengheng.xyz/tags/data-science/"/>
-    
-      <category term="matplotlib" scheme="http://blog.shenhengheng.xyz/tags/matplotlib/"/>
-    
-      <category term="Data visualization" scheme="http://blog.shenhengheng.xyz/tags/Data-visualization/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>爬虫实战第二节课笔记及相关代码</title>
-    <link href="http://blog.shenhengheng.xyz/2017/02/19/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0%E5%8F%8A%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/"/>
-    <id>http://blog.shenhengheng.xyz/2017/02/19/爬虫实战第二节课笔记及相关代码/</id>
-    <published>2017-02-19T09:04:35.000Z</published>
-    <updated>2017-02-19T09:07:20.415Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;网络爬虫更新第二节课笔记&lt;br&gt;
-    
-    </summary>
-    
-      <category term="爬虫" scheme="http://blog.shenhengheng.xyz/categories/%E7%88%AC%E8%99%AB/"/>
-    
-    
-      <category term="爬虫" scheme="http://blog.shenhengheng.xyz/tags/%E7%88%AC%E8%99%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>爬虫实战第一节课笔记及相关代码</title>
-    <link href="http://blog.shenhengheng.xyz/2017/02/18/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0%E5%8F%8A%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81/"/>
-    <id>http://blog.shenhengheng.xyz/2017/02/18/爬虫实战第一节课笔记及相关代码/</id>
-    <published>2017-02-18T07:35:21.000Z</published>
-    <updated>2017-02-19T09:06:18.165Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;网络爬虫更新第一节课笔记&lt;br&gt;
-    
-    </summary>
-    
-      <category term="爬虫" scheme="http://blog.shenhengheng.xyz/categories/%E7%88%AC%E8%99%AB/"/>
-    
-    
-      <category term="爬虫" scheme="http://blog.shenhengheng.xyz/tags/%E7%88%AC%E8%99%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>申请Coursera助学金-干货</title>
-    <link href="http://blog.shenhengheng.xyz/2017/02/16/%E7%94%B3%E8%AF%B7Coursera%E5%8A%A9%E5%AD%A6%E9%87%91-%E5%B9%B2%E8%B4%A7/"/>
-    <id>http://blog.shenhengheng.xyz/2017/02/16/申请Coursera助学金-干货/</id>
-    <published>2017-02-16T08:23:05.000Z</published>
-    <updated>2017-02-16T08:37:25.810Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;对于没有钱的学生党来说，Coursera的课程太贵，没有办法，只能通过申请助学金来实现正规的学习，过去Coursera还支持旁听，现在没有了，无奈的我们只能通过Apply Finitial Aid来学习了，想想都痛苦&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="申请材料" scheme="http://blog.shenhengheng.xyz/categories/%E7%94%B3%E8%AF%B7%E6%9D%90%E6%96%99/"/>
-    
-    
-      <category term="Applay Aid" scheme="http://blog.shenhengheng.xyz/tags/Applay-Aid/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>RStudio在使用Github时出现的问题的解决方案</title>
-    <link href="http://blog.shenhengheng.xyz/2017/02/16/RStudio%E5%9C%A8%E4%BD%BF%E7%94%A8Github%E6%97%B6%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    <id>http://blog.shenhengheng.xyz/2017/02/16/RStudio在使用Github时出现的问题的解决方案/</id>
-    <published>2017-02-16T08:06:46.000Z</published>
-    <updated>2017-02-16T08:24:33.981Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在使用&lt;a href=&quot;www.github.com&quot;&gt;Github&lt;/a&gt;时，往往出现这种情况，我在使用&lt;a href=&quot;www.github.com&quot;&gt;Github&lt;/a&gt; client时，比如 &lt;a href=&quot;&quot;&gt;Android Studio&lt;/a&gt;，&lt;a href=&quot;&quot;&gt;Github Desktop&lt;/a&gt;，&lt;a href=&quot;&quot;&gt;Rstudio&lt;/a&gt;，&lt;a href=&quot;&quot;&gt;PyCharm&lt;/a&gt; 等等时，我为了工程项目更好的同步到&lt;a href=&quot;http://github.com/rh01&quot;&gt;我的github&lt;/a&gt; 上，往往使用客户端的 &lt;strong&gt;Git Push&lt;/strong&gt; 比较迅速，但是在配置方面，很麻烦，所以在我配置的时候出现了这样一则错误， &lt;strong&gt;unable to read askpass response from…&lt;/strong&gt; ,结合网上资源，将解决方案放出！&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Rstudio" scheme="http://blog.shenhengheng.xyz/categories/Rstudio/"/>
-    
-    
-      <category term="solution" scheme="http://blog.shenhengheng.xyz/tags/solution/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈latex</title>
-    <link href="http://blog.shenhengheng.xyz/2017/02/16/%E6%B5%85%E8%B0%88latex/"/>
-    <id>http://blog.shenhengheng.xyz/2017/02/16/浅谈latex/</id>
-    <published>2017-02-16T07:58:09.000Z</published>
-    <updated>2017-02-16T08:04:56.832Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;LaTeX是在克努特老先生（注：他的著作有TeX系统，计算机程序设计艺术）发明出来TeX系统的基础之上完善的。刚开始主要适用于文章和数学公式的排版。他是我最喜欢的排版技术之一。TeX系统是在1982年发布的。目前的TeX系统的版本不断修正，们目前的版本号不断接近 $\pi$.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="latex" scheme="http://blog.shenhengheng.xyz/categories/latex/"/>
-    
-    
-      <category term="latex" scheme="http://blog.shenhengheng.xyz/tags/latex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Soft修正函数</title>
-    <link href="http://blog.shenhengheng.xyz/2017/02/16/Soft%E4%BF%AE%E6%AD%A3%E5%87%BD%E6%95%B0/"/>
-    <id>http://blog.shenhengheng.xyz/2017/02/16/Soft修正函数/</id>
-    <published>2017-02-16T07:51:40.000Z</published>
-    <updated>2017-02-16T07:55:57.478Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;softmax 模型和激活函数&lt;br&gt;
-    
-    </summary>
-    
-      <category term="深度学习" scheme="http://blog.shenhengheng.xyz/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="机器学习" scheme="http://blog.shenhengheng.xyz/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="机器学习" scheme="http://blog.shenhengheng.xyz/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="激活函数" scheme="http://blog.shenhengheng.xyz/tags/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>笔记1-从机器学习到深度学习-两个问题</title>
-    <link href="http://blog.shenhengheng.xyz/2017/02/16/%E7%AC%94%E8%AE%B01-%E4%BB%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%88%B0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E4%B8%A4%E4%B8%AA%E9%97%AE%E9%A2%98/"/>
-    <id>http://blog.shenhengheng.xyz/2017/02/16/笔记1-从机器学习到深度学习-两个问题/</id>
-    <published>2017-02-16T07:47:31.000Z</published>
-    <updated>2017-02-16T07:49:42.559Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这篇笔记主要摘出一部分的问题和解决方案来谈谈我学习 &lt;a href=&quot;https://classroom.udacity.com/courses/ud730&quot;&gt;Deep Learning&lt;/a&gt; 时的一些感想和收获。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="深度学习" scheme="http://blog.shenhengheng.xyz/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="机器学习" scheme="http://blog.shenhengheng.xyz/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="solution" scheme="http://blog.shenhengheng.xyz/tags/solution/"/>
-    
-      <category term="deep learning" scheme="http://blog.shenhengheng.xyz/tags/deep-learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>利用机器学习实现数字识别及分类</title>
-    <link href="http://blog.shenhengheng.xyz/2017/02/16/%E5%88%A9%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E7%8E%B0%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB%E5%8F%8A%E5%88%86%E7%B1%BB/"/>
-    <id>http://blog.shenhengheng.xyz/2017/02/16/利用机器学习实现数字识别及分类/</id>
-    <published>2017-02-16T07:34:46.000Z</published>
-    <updated>2017-02-16T07:46:11.054Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;利用opencv对图像进行边缘检测，轮廓检测等等，人工构建特征和训练集，结合 &lt;a href=&quot;https://en.wikipedia.org/wiki/Euclidean_distance&quot;&gt;Euclidean distance&lt;/a&gt; 来计算相似度，进而可实现0～9的数字的分类。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="machine learning" scheme="http://blog.shenhengheng.xyz/categories/machine-learning/"/>
-    
-      <category term="algorithm" scheme="http://blog.shenhengheng.xyz/categories/machine-learning/algorithm/"/>
-    
-      <category term="图像处理" scheme="http://blog.shenhengheng.xyz/categories/machine-learning/algorithm/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-    
-      <category term="machine learning" scheme="http://blog.shenhengheng.xyz/tags/machine-learning/"/>
-    
-      <category term="digit recognition" scheme="http://blog.shenhengheng.xyz/tags/digit-recognition/"/>
-    
-      <category term="classification" scheme="http://blog.shenhengheng.xyz/tags/classification/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>系列01-利用Python爬虫来抓取银行的牌告汇率</title>
-    <link href="http://blog.shenhengheng.xyz/2017/02/16/%E5%88%A9%E7%94%A8Python%E7%88%AC%E8%99%AB%E6%9D%A5%E6%8A%93%E5%8F%96%E9%93%B6%E8%A1%8C%E7%9A%84%E7%89%8C%E5%91%8A%E6%B1%87%E7%8E%87/"/>
-    <id>http://blog.shenhengheng.xyz/2017/02/16/利用Python爬虫来抓取银行的牌告汇率/</id>
-    <published>2017-02-16T06:43:16.000Z</published>
-    <updated>2017-02-16T06:50:30.828Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;python爬虫抓取台湾银行的牌告汇率,让你更加获益&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;台湾银行网站为 &lt;a href=&quot;http://rate.bot.com.tw/xrt?Lang=zh-TW&quot;&gt;http://rate.bot.com.tw/xrt?Lang=zh-TW&lt;/a&gt;&lt;br&gt;视频为：&lt;a href=&quot;https://www.youtube.com/watch?v=-c5rrzjsN34&quot;&gt;https://www.youtube.com/watch?v=-c5rrzjsN34&lt;/a&gt;&lt;br&gt;简介：利用pandas爬去牌告汇率，然后生成excel文件&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="爬虫" scheme="http://blog.shenhengheng.xyz/categories/%E7%88%AC%E8%99%AB/"/>
-    
-    
-      <category term="crawler" scheme="http://blog.shenhengheng.xyz/tags/crawler/"/>
-    
-      <category term="ant" scheme="http://blog.shenhengheng.xyz/tags/ant/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>利用pandas实现输出漂亮的图表</title>
-    <link href="http://blog.shenhengheng.xyz/2017/02/16/%E5%88%A9%E7%94%A8pandas%E5%AE%9E%E7%8E%B0%E8%BE%93%E5%87%BA%E6%BC%82%E4%BA%AE%E7%9A%84%E5%9B%BE%E8%A1%A8/"/>
-    <id>http://blog.shenhengheng.xyz/2017/02/16/利用pandas实现输出漂亮的图表/</id>
-    <published>2017-02-16T06:30:40.000Z</published>
-    <updated>2017-02-16T06:39:54.791Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;利用python的数据分析 pandas 库来可视化近期货币的走势，具体代码见-&amp;gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="数据科学" scheme="http://blog.shenhengheng.xyz/categories/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
-    
-      <category term="爬虫" scheme="http://blog.shenhengheng.xyz/categories/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/%E7%88%AC%E8%99%AB/"/>
-    
-    
-      <category term="pandas" scheme="http://blog.shenhengheng.xyz/tags/pandas/"/>
-    
-      <category term="data Visualization" scheme="http://blog.shenhengheng.xyz/tags/data-Visualization/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>old-利用opencv实现脸部识别</title>
-    <link href="http://blog.shenhengheng.xyz/2017/02/16/old-%E5%88%A9%E7%94%A8opencv%E5%AE%9E%E7%8E%B0%E8%84%B8%E9%83%A8%E8%AF%86%E5%88%AB/"/>
-    <id>http://blog.shenhengheng.xyz/2017/02/16/old-利用opencv实现脸部识别/</id>
-    <published>2017-02-16T06:19:10.000Z</published>
-    <updated>2017-02-16T06:40:51.344Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;利用很简单的&lt;a href=&quot;www.opencv.org&quot;&gt;OpenCV&lt;/a&gt;库在JuPyter上实现了一个简单的练习，人脸检测。使用了OpenCV成熟的级联分类器,又称为 &lt;strong&gt;分类器&lt;/strong&gt; &lt;a href=&quot;https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml&quot;&gt;haarcascade_frontalface_default.xml&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="OpenCV" scheme="http://blog.shenhengheng.xyz/categories/OpenCV/"/>
-    
-    
-      <category term="opencv" scheme="http://blog.shenhengheng.xyz/tags/opencv/"/>
-    
-      <category term="face detection" scheme="http://blog.shenhengheng.xyz/tags/face-detection/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>爬虫实战第一天-抓取淘宝网站的名称和价格</title>
-    <link href="http://blog.shenhengheng.xyz/2017/02/16/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E7%AC%AC%E4%B8%80%E5%A4%A9-%E6%8A%93%E5%8F%96%E6%B7%98%E5%AE%9D%E7%BD%91%E7%AB%99%E7%9A%84%E5%90%8D%E7%A7%B0%E5%92%8C%E4%BB%B7%E6%A0%BC/"/>
-    <id>http://blog.shenhengheng.xyz/2017/02/16/爬虫实战第一天-抓取淘宝网站的名称和价格/</id>
-    <published>2017-02-16T05:52:29.000Z</published>
-    <updated>2017-02-16T06:39:53.560Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;之前在YouTube上学习过一系列的&lt;a href=&quot;https://www.youtube.com/watch?v=vOjRcxTLUEI&amp;amp;t=2s&quot;&gt;爬虫实战课程&lt;/a&gt;,&lt;strong&gt;淘宝&lt;/strong&gt;（这里的淘宝指的是 &lt;strong&gt;台湾淘宝&lt;/strong&gt;）使用AJAX 的方式填入页面内容。因此在这里便可以从XHR 以及JS 下手，找寻入口点，再使用正规表达式(&lt;strong&gt;re&lt;/strong&gt;)，便可以快速的剖析出重要资讯，&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="爬虫" scheme="http://blog.shenhengheng.xyz/categories/%E7%88%AC%E8%99%AB/"/>
-    
-    
-      <category term="crawler" scheme="http://blog.shenhengheng.xyz/tags/crawler/"/>
-    
-      <category term="ant" scheme="http://blog.shenhengheng.xyz/tags/ant/"/>
     
   </entry>
   

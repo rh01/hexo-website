@@ -301,7 +301,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/02/16/申请Coursera助学金-干货/">
+  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-polynomial-regression/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Shen Hengheng">
@@ -326,8 +326,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/02/16/申请Coursera助学金-干货/" itemprop="url">
-                  申请Coursera助学金-干货
+                <a class="post-title-link" href="/2017/12/21/2017-12-21-polynomial-regression/" itemprop="url">
+                  多项式回归
                 </a>
               
             
@@ -343,8 +343,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-16T16:23:05+08:00">
-                Feb 16 2017
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-21T08:00:00+08:00">
+                Dec 21 2017
               </time>
             
 
@@ -366,8 +366,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/申请材料/" itemprop="url" rel="index">
-                    <span itemprop="name">申请材料</span>
+                  <a href="/categories/ml/" itemprop="url" rel="index">
+                    <span itemprop="name">ml</span>
                   </a>
 	
                 </span>
@@ -387,8 +387,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/16/申请Coursera助学金-干货/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/申请Coursera助学金-干货/" itemprop="commentCount"></span>
+                <a href="/2017/12/21/2017-12-21-polynomial-regression/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/21/2017-12-21-polynomial-regression/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -420,16 +420,51 @@
 
       
         
-          <blockquote>
-<p>对于没有钱的学生党来说，Coursera的课程太贵，没有办法，只能通过申请助学金来实现正规的学习，过去Coursera还支持旁听，现在没有了，无奈的我们只能通过Apply Finitial Aid来学习了，想想都痛苦</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/16/申请Coursera助学金-干货/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>\noindent 该笔记是来自 Andrew Ng 的 Machine Learning 课程的第二周:<strong>多项式回归</strong>的课堂记录，有了合适的特征之后，我们发现线性回归并不适用于所有数据，有时我们需要曲线来适应我们的数据，因此引出多项式回归模型，主要讲解了以下几个内容:</p>
+<ul>
+<li>将多项式回归模型转换为线性模型</li>
+<li>正规方程</li>
+</ul>
+<h1 id="将多项式回归模型转换为线性模型"><a href="#将多项式回归模型转换为线性模型" class="headerlink" title="将多项式回归模型转换为线性模型"></a>将多项式回归模型转换为线性模型</h1><p>什么是多项式模型？比如一个二次模型$$h<em>{\theta} = \theta</em>{0} + \theta<em>{1}x + \theta</em>{2}x^2$$,三次模型$$h<em>{\theta} = \theta</em>{0} + \theta<em>{1}x + \theta</em>{2}x^2 + \theta_{3}x^3$$</p>
+<p>通常情况下，在模型进行选择时，首先要观察数据，然后再决定准备尝试什么样的模型，比如下面图\ref{figure:polynomial} 中的数据分布，我们可以通过观察可以看到，数据的分布用线性模型并不能达到很好的效果，所以在这里尝试用一个多项式模型来拟合我们的训练数据。</p>
+<p>\begin{figure}[htbp]<br>\begin{center}<br>  \includegraphics[width=0.6\textwidth]{polynomial.png}<br>  \caption{多项式拟合}\label{figure:polynomial}<br>\end{center}<br>\end{figure}</p>
+<p><img src="http://olrs8j04a.bkt.clouddn.com/17-12-21/67294778.jpg" alt=""></p>
+<p>可以尝试多项式函数表示我们的模型：</p>
+<p>$$h<em>{\theta} = \theta</em>{0} + \theta<em>{1}x + \theta</em>{2}x^2$$</p>
+<p>或者</p>
+<p>$$h<em>{\theta} = \theta</em>{0} + \theta<em>{1}x + \theta</em>{2}x^2 + \theta_{3}x^3$$</p>
+<p>或者</p>
+<p>$$h<em>{\theta} = \theta</em>{0} + \theta<em>{1}x + \theta</em>{2}x^{\frac{1}{2}}$$</p>
+<p>有趣的是，如果我们对这些高次项进行替换，比如在$h<em>{\theta} = \theta</em>{0} + \theta<em>{1}x + \theta</em>{2}x^2$中，将<br>$$x<em>{2} := x^{2}$$<br>将可以转换为$h</em>{\theta} = \theta<em>{0} + \theta</em>{1}x + \theta<em>{2}x</em>{2}$，这样转换为多变量线性回归模型了。</p>
+<p><strong>注意：</strong>在采用多项式回归模型，运行梯度下降算法前，特征缩放非常有必要！</p>
+<h1 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h1><p>目前为止，都在利用梯度下降算法进行优化我们的代价函数，但对于某些的现性回归问题，正规方程是更好的解决方案。不像梯度算法那样，求解出参数$\theta$需要进行很多次迭代才能求出，而正规方程直接<strong>一次性</strong>求出参数！其实正规方程的背后就是借助于\textbf{微积分}来做的，即通过求解下面的方程找出使得代价函数最小的参数.</p>
+<p>$$\frac{\partial}{\partial<em>{j}}J(\theta</em>{j}) = 0 $$</p>
+<p>比如：$J(\theta) = a\theta^{2} + b\theta + c$，那么通过$\frac{d}{d_{\theta}}J(\theta) = … = 0$可以求解出$\theta$来.</p>
+<p><strong>经验：</strong> 使用正规方程^[最小二乘解]解出向量$$\theta = (x^{T}x)^{-1}x^{T}y$$</p>
+<h2 id="利用正规方程求解的例子"><a href="#利用正规方程求解的例子" class="headerlink" title="利用正规方程求解的例子"></a>利用正规方程求解的例子</h2><p>给你一组训练数据，$m$ = 4, $n$ = 4，则$X \in \mathbb{R}^{4*5}$, $y \in \mathbb{R}^{4}$，数据如图\ref{figure:data}</p>
+<p>\begin{figure}[htbp]<br>\begin{center}<br>  \includegraphics[width=0.6\textwidth]{data.png}<br>  \caption{数据}\label{figure:data}<br>\end{center}<br>\end{figure}</p>
+<p><img src="http://olrs8j04a.bkt.clouddn.com/17-12-21/66125159.jpg" alt=""></p>
+<p>用矩阵可以表示为：<br>$$X = \left[\begin{matrix}<br>1&amp;2104&amp;5 &amp;1&amp;45\<br>1&amp;1416&amp; 3&amp; 2&amp; 40\<br>1&amp;1534&amp; 3 &amp;2&amp; 30 \<br>1&amp;852&amp; 2&amp; 1&amp; 36<br>\end{matrix}<br>\right],<br>y = \left[\begin{matrix}<br>460\<br>232\<br>315\<br>178<br>\end{matrix}\right]$$</p>
+<p>那么就可以使用经验公式$\theta = (x^{T}x)^{-1}x^{T}y$求解了！</p>
+<p><strong>警告：</strong> 往往在使用公式求解时，存在不可逆矩阵，导致求逆矩阵失败，主要<strong>原因</strong>为，特征之间不独立，如同时包含英尺为单位的尺寸和米为单位的尺寸两个特征，也有可能特征数量大于训练集大于训练集数量，正规方程方法不能用！</p>
+<h2 id="梯度下降算法与正规方程的比较"><a href="#梯度下降算法与正规方程的比较" class="headerlink" title="梯度下降算法与正规方程的比较"></a>梯度下降算法与正规方程的比较</h2><p>梯度下降算法：</p>
+<ul>
+<li>不需要选择$\alpha$</li>
+<li>需要很多次迭代</li>
+<li>当特征数量$n$比较大时，也能很好的适应</li>
+<li>适应各种类型的数据</li>
+</ul>
+<p>正规方程：</p>
+<ul>
+<li>不需要选择$\alpha$</li>
+<li>一次计算即可得出结果，不需要很多次迭代</li>
+<li>需要计算$(x^{T}x)^{-1}$运算代价大，时间效率为$O(n^3)$，但是如果n&lt;10000时可以接受！</li>
+<li>只适应于现行模型，不适用与逻辑回归等其他类型</li>
+<li>不需要归一化特征变量</li>
+</ul>
+
+          
         
       
     </div>
@@ -468,7 +503,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/02/16/RStudio在使用Github时出现的问题的解决方案/">
+  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-aphot-rpi/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Shen Hengheng">
@@ -493,8 +528,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/02/16/RStudio在使用Github时出现的问题的解决方案/" itemprop="url">
-                  RStudio在使用Github时出现的问题的解决方案
+                <a class="post-title-link" href="/2017/12/21/2017-12-21-aphot-rpi/" itemprop="url">
+                  在树莓派上配置AP
                 </a>
               
             
@@ -510,8 +545,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-16T16:06:46+08:00">
-                Feb 16 2017
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-21T08:00:00+08:00">
+                Dec 21 2017
               </time>
             
 
@@ -533,338 +568,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Rstudio/" itemprop="url" rel="index">
-                    <span itemprop="name">Rstudio</span>
-                  </a>
-	
-                </span>
-
-                
-                
-              
-            </span>
-			
-			
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/02/16/RStudio在使用Github时出现的问题的解决方案/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/RStudio在使用Github时出现的问题的解决方案/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-		  
-	
-		  
-		  
-		  
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>在使用<a href="www.github.com">Github</a>时，往往出现这种情况，我在使用<a href="www.github.com">Github</a> client时，比如 <a href="">Android Studio</a>，<a href="">Github Desktop</a>，<a href="">Rstudio</a>，<a href="">PyCharm</a> 等等时，我为了工程项目更好的同步到<a href="http://github.com/rh01">我的github</a> 上，往往使用客户端的 <strong>Git Push</strong> 比较迅速，但是在配置方面，很麻烦，所以在我配置的时候出现了这样一则错误， <strong>unable to read askpass response from…</strong> ,结合网上资源，将解决方案放出！<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/16/RStudio在使用Github时出现的问题的解决方案/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/02/16/浅谈latex/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Shen Hengheng">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://olrs8j04a.bkt.clouddn.com/17-12-24/90775656.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="恒行天下">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="恒行天下" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/16/浅谈latex/" itemprop="url">
-                  浅谈latex
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-16T15:58:09+08:00">
-                Feb 16 2017
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/latex/" itemprop="url" rel="index">
-                    <span itemprop="name">latex</span>
-                  </a>
-	
-                </span>
-
-                
-                
-              
-            </span>
-			
-			
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/02/16/浅谈latex/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/浅谈latex/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-		  
-	
-		  
-		  
-		  
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>LaTeX是在克努特老先生（注：他的著作有TeX系统，计算机程序设计艺术）发明出来TeX系统的基础之上完善的。刚开始主要适用于文章和数学公式的排版。他是我最喜欢的排版技术之一。TeX系统是在1982年发布的。目前的TeX系统的版本不断修正，们目前的版本号不断接近 $\pi$.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/16/浅谈latex/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/02/16/Soft修正函数/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Shen Hengheng">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://olrs8j04a.bkt.clouddn.com/17-12-24/90775656.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="恒行天下">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="恒行天下" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/16/Soft修正函数/" itemprop="url">
-                  Soft修正函数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-16T15:51:40+08:00">
-                Feb 16 2017
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
+                  <a href="/categories/blog/" itemprop="url" rel="index">
+                    <span itemprop="name">blog</span>
                   </a>
 	
                 </span>
@@ -875,8 +580,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/blog/pi/" itemprop="url" rel="index">
+                    <span itemprop="name">pi</span>
                   </a>
 	
                 </span>
@@ -896,8 +601,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/16/Soft修正函数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/Soft修正函数/" itemprop="commentCount"></span>
+                <a href="/2017/12/21/2017-12-21-aphot-rpi/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/21/2017-12-21-aphot-rpi/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -929,14 +634,63 @@
 
       
         
-          <p>softmax 模型和激活函数<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/16/Soft修正函数/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>有了一个新的树莓派之后，如果不将它配置成AP热点，你就失去了他的其中的一个优势，如果你的家里面没有无限路由器或者你的家里信号不能遍及，树莓派是你最好的选择，利用流量包转发的优势，大大地节约了成本，并且他支持多种转发机制，这是很重要的特点，是你的网络随时处于移动状态，不像传统的路由器，如果固定到某个地方之后就不能动了，而树莓派是一个可以移动的热点。稳定是最主要的特点。</p>
+<p>本文参考^[<a href="http://www.shenhengheng.xyz/blog/raspberry-self-driving-car-configuration-first.html]。" target="_blank" rel="external">http://www.shenhengheng.xyz/blog/raspberry-self-driving-car-configuration-first.html]。</a></p>
+<h1 id="必需的包"><a href="#必需的包" class="headerlink" title="必需的包"></a>必需的包</h1><ol>
+<li>hostapd</li>
+<li>dnsmasq</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install dnsmasq hostapd</div></pre></td></tr></table></figure>
+<h1 id="配置网卡"><a href="#配置网卡" class="headerlink" title="配置网卡"></a>配置网卡</h1><p>将wlan1（购买的网卡）配置一个静态IP地址, 首先告诉树莓派DHCP获取IP时忽略WLAN1</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano /etc/dhcpcd.conf</div></pre></td></tr></table></figure>
+<p>在文件的最后添加：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">denyinterfaces wlan1</div></pre></td></tr></table></figure>
+<p>配置静态IP</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano /etc/network/interfaces</div></pre></td></tr></table></figure>
+<p>文件内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">allow-hotplug wlan1  </div><div class="line">iface wlan1 inet static  </div><div class="line">    address 172.24.1.1</div><div class="line">    netmask 255.255.255.0</div><div class="line">    network 172.24.1.0</div><div class="line">    broadcast 172.24.1.255</div><div class="line"><span class="comment">#    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf</span></div></pre></td></tr></table></figure>
+<p>重启DHCP服务。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install dhcpcd5 <span class="comment">#如果没有这个服务</span></div><div class="line">sudo service dhcpcd restart</div></pre></td></tr></table></figure>
+<p>然后重启WLAN1设备以适应配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ifdown wlan1; sudo ifup wlan1</div></pre></td></tr></table></figure>
+<h1 id="配置HOSTAPD文件"><a href="#配置HOSTAPD文件" class="headerlink" title="配置HOSTAPD文件"></a>配置HOSTAPD文件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano /etc/hostapd/hostapd.conf</div></pre></td></tr></table></figure>
+<p>内容是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># This is the name of the WiFi interface we configured above</span></div><div class="line">interface=wlan1</div><div class="line"></div><div class="line"><span class="comment"># Use the nl80211 driver with the brcmfmac driver</span></div><div class="line">driver=nl80211</div><div class="line"></div><div class="line"><span class="comment"># This is the name of the network</span></div><div class="line">ssid=Pi3-AP</div><div class="line"></div><div class="line"><span class="comment"># Use the 2.4GHz band</span></div><div class="line">hw_mode=g</div><div class="line"></div><div class="line"><span class="comment"># Use channel 6</span></div><div class="line">channel=6</div><div class="line"></div><div class="line"><span class="comment"># Enable 802.11n</span></div><div class="line">ieee80211n=1</div><div class="line"></div><div class="line"><span class="comment"># Enable WMM</span></div><div class="line">wmm_enabled=1</div><div class="line"></div><div class="line"><span class="comment"># Enable 40MHz channels with 20ns guard interval</span></div><div class="line">ht_capab=[HT40][SHORT-GI-20][DSSS_CCK-40]</div><div class="line"></div><div class="line"><span class="comment"># Accept all MAC addresses</span></div><div class="line">macaddr_acl=0</div><div class="line"></div><div class="line"><span class="comment"># Use WPA authentication</span></div><div class="line">auth_algs=1</div><div class="line"></div><div class="line"><span class="comment"># Require clients to know the network name</span></div><div class="line">ignore_broadcast_ssid=0</div><div class="line"></div><div class="line"><span class="comment"># Use WPA2</span></div><div class="line">wpa=2</div><div class="line"></div><div class="line"><span class="comment"># Use a pre-shared key</span></div><div class="line">wpa_key_mgmt=WPA-PSK</div><div class="line"></div><div class="line"><span class="comment"># The network passphrase</span></div><div class="line">wpa_passphrase=123456789</div><div class="line"></div><div class="line"><span class="comment"># Use AES, instead of TKIP</span></div><div class="line">rsn_pairwise=CCMP</div></pre></td></tr></table></figure>
+<p>检查配置是否起作用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo /usr/sbin/hostapd /etc/hostapd/hostapd.conf</div></pre></td></tr></table></figure>
+<p>如果成功，则会在你的移动设备上（智能手机）上检测到Pi3-AP的路由。如果你尝试连接，则不会成功分配地址，因为还没有做完！</p>
+<p>因为我们还需要告诉hostapd在启动时启动时查找配置文件。使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano /etc/default/hostapd</div></pre></td></tr></table></figure>
+<p>打开默认配置文件，找到该行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#DAEMON_CONF=""</span></div></pre></td></tr></table></figure>
+<p>并且用下面这行替换掉</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DAEMON_CONF=<span class="string">"/etc/hostapd/hostapd.conf"</span>.</div></pre></td></tr></table></figure>
+<h1 id="配置DNSMASQ"><a href="#配置DNSMASQ" class="headerlink" title="配置DNSMASQ"></a>配置DNSMASQ</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig  </div><div class="line">sudo nano /etc/dnsmasq.conf</div></pre></td></tr></table></figure>
+<p>将下面的内容粘贴上去：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">interface=wlan1      <span class="comment"># Use interface wlan0  </span></div><div class="line">listen-address=172.24.1.1 <span class="comment"># Explicitly specify the address to listen on  </span></div><div class="line"><span class="built_in">bind</span>-interfaces      <span class="comment"># Bind to the interface to make sure we aren't sending things elsewhere  </span></div><div class="line">server=8.8.8.8       <span class="comment"># Forward DNS requests to Google DNS  </span></div><div class="line">domain-needed        <span class="comment"># Don't forward short names  </span></div><div class="line">bogus-priv           <span class="comment"># Never forward addresses in the non-routed address spaces.  </span></div><div class="line">dhcp-range=172.24.1.50,172.24.1.150,12h <span class="comment"># Assign IP addresses between 172.24.1.50 and 172.24.1.150 with a 12 hour lease time</span></div></pre></td></tr></table></figure>
+<h1 id="建立IPV4-转发"><a href="#建立IPV4-转发" class="headerlink" title="建立IPV4 转发"></a>建立IPV4 转发</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano /etc/sysctl.conf</div></pre></td></tr></table></figure>
+<p>去掉</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#net.ipv4.ip_forward=1</span></div></pre></td></tr></table></figure>
+<p>前面的#</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo sh -c <span class="string">"echo 1 &gt; /proc/sys/net/ipv4/ip_forward"</span></div></pre></td></tr></table></figure>
+<p>上面这条命令是立即激活转发！</p>
+<p>还需要通过在wlan0接口和wlan1接口之间配置NAT来分享Pi的互联网连接到我们通过WiFi连接的设备。可以使用以下命令来执行此操作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE  </div><div class="line">sudo iptables -A FORWARD -i wlan0 -o wlan1 -m state --state RELATED,ESTABLISHED -j ACCEPT  </div><div class="line">sudo iptables -A FORWARD -i wlan1 -o wlan0 -j ACCEPT</div></pre></td></tr></table></figure>
+<p>但是，我们需要在每次重新启动Pi时应用这些规则，运行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo sh -c <span class="string">"iptables-save &gt; /etc/iptables.ipv4.nat"</span></div></pre></td></tr></table></figure>
+<p>为了避免每次重启都需要运行该命令，打开 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano /etc/rc.local</div></pre></td></tr></table></figure>
+<p>在exit 0前添加一行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables-restore &lt; /etc/iptables.ipv4.nat</div></pre></td></tr></table></figure>
+<h1 id="我们已经完成了"><a href="#我们已经完成了" class="headerlink" title="我们已经完成了"></a>我们已经完成了</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo service hostapd start  </div><div class="line">sudo service dnsmasq start</div></pre></td></tr></table></figure>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><ol>
+<li>树莓派3和树莓派2的配置过程是不一样的，上面的配置过程仅适用于树莓派3.</li>
+<li>上面的配置是WLAN1做AP，WLAN0将数据流转发给WLAN1的，那么转发也可以做以太网和wlan0转发，以太网和wlan1转发。过程类似。</li>
+<li>为了激活，必须重启！</li>
+</ol>
+
+          
         
       
     </div>
@@ -975,7 +729,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/02/16/笔记1-从机器学习到深度学习-两个问题/">
+  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-bayesian-learning/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Shen Hengheng">
@@ -1000,8 +754,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/02/16/笔记1-从机器学习到深度学习-两个问题/" itemprop="url">
-                  笔记1-从机器学习到深度学习-两个问题
+                <a class="post-title-link" href="/2017/12/21/2017-12-21-bayesian-learning/" itemprop="url">
+                  朴素贝叶斯算法
                 </a>
               
             
@@ -1017,8 +771,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-16T15:47:31+08:00">
-                Feb 16 2017
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-21T08:00:00+08:00">
+                Dec 21 2017
               </time>
             
 
@@ -1040,20 +794,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-	
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/ml/" itemprop="url" rel="index">
+                    <span itemprop="name">ml</span>
                   </a>
 	
                 </span>
@@ -1073,8 +815,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/16/笔记1-从机器学习到深度学习-两个问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/笔记1-从机器学习到深度学习-两个问题/" itemprop="commentCount"></span>
+                <a href="/2017/12/21/2017-12-21-bayesian-learning/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/21/2017-12-21-bayesian-learning/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1106,14 +848,466 @@
 
       
         
-          <p>这篇笔记主要摘出一部分的问题和解决方案来谈谈我学习 <a href="https://classroom.udacity.com/courses/ud730">Deep Learning</a> 时的一些感想和收获。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/16/笔记1-从机器学习到深度学习-两个问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>\noindent 本节主要讲解三个基本算法的之一：<strong>朴素贝叶斯算法</strong>，该算法主要是依据<strong>贝叶斯规则/公式/推理</strong>，它的主要作用在于，它和其他将要讲述的<strong>$k$近邻算法</strong>，<strong>感知机算法</strong>都一样，你的算法设计出来之后，至少你的算法的<strong>performance</strong>要比这三类算法的效果要好！另外贝叶斯学习算法基于一些统计上的假设而成立的，因此贝叶斯学习算法又称为统计学习的算法必须学习的算法.本节主要有以下部分内容：</p>
+<ul>
+<li>Bayes’ Rule</li>
+<li>Applying Baye’s Rule to Classification</li>
+<li>The Posterior Probability :$\mathrm{P}(C|x) = \frac{\mathrm{P}(C)\mathrm{P}(x|C)}{\mathrm{P}(x)}$</li>
+<li>Extend to Multi-class classification</li>
+<li>Naive Bayes for Classification</li>
+<li>Zero-frequency Problem</li>
+</ul>
+<h1 id="贝叶斯定理-公式-规则"><a href="#贝叶斯定理-公式-规则" class="headerlink" title="贝叶斯定理/公式/规则"></a>贝叶斯定理/公式/规则</h1><p>假设${B_1,B_2,…,B_k}$是$S$集合的<strong>划分</strong>且对于$i=0,1,…,k$有$\mathrm{P}(B_i) &gt; 0$，那么<br>$$\mathrm{P}(B_j|A) = \frac{\mathrm{P}(A|B_j)\mathrm{P}(B<em>j)}{\sum</em>{i=1}^k \mathrm{P}(A|B_i)\mathrm{P}(B_i)}$$</p>
+<h1 id="在分类问题上应用贝叶斯分类器"><a href="#在分类问题上应用贝叶斯分类器" class="headerlink" title="在分类问题上应用贝叶斯分类器"></a>在分类问题上应用贝叶斯分类器</h1><h2 id="例子：信用卡评估：高风险-低风险"><a href="#例子：信用卡评估：高风险-低风险" class="headerlink" title="例子：信用卡评估：高风险/低风险"></a>例子：信用卡评估：高风险/低风险</h2><p>信用卡评估是这样的一个过程，银行通过对用户的历史交易信息来进行选择的，如果该用户在过去的交易中按时缴纳了本金和利息，并且银行从中获益，那么这些用户是属于<strong>低风险的</strong>，如果他们没有按时缴纳本金和利息或者拒绝还款的话，这类用户比银行定义为<strong>高风险的用户</strong>.</p>
+<p>我们现在的任务就是来学习如何对用户进行分类\textbf{高风险} vs <strong>低风险</strong>.那么我们现在有以下用户的每年的收入信息和消费信息，我们们用两个<strong>随机变量</strong> $X_1$ 和 $X_2$ 来表示.用户的信用度可以用伯努利随机变量$\mathrm{C} = 1$ 和 $\mathrm{C} = 0$ 来表示。其中$C=0$表示这是一个低风险的用户，$C=0$表示这是一个高风险的用户。</p>
+<p>当一个新的用户来进行贷款时，他提供他的每年的收入和消费，即$X_1 = x_1$ 和 $X_2 = x_2$.如果我们知道信用度C的概率受限于观测值$X = [x_1, x_2]$，并且有<br>\begin{align<em>}<br>&amp;\mathrm{if} \; \; \mathrm{P}(C = 1|[x_1 , x_2 ]) &gt; 0.5, \; then \; \mathrm{C}=1 \<br>&amp;\mathrm{if} \; \; \mathrm{P}(C = 1|[x_1 , x_2 ]) \leq 0.5, \; then \; \mathrm{C} = 0<br>\end{align</em>}</p>
+<p>我们估计的误差建立在$1 − max{\mathrm{P}(C = 1|[x_1 , x_2 ]),\mathrm{P}(C = 0|[x_1 , x_2 ])} &lt; 0.5$，一般地，有$P(\mathrm{C} = 1|[x_1 , x_2 ]) +\mathrm{P}(C = 0|[x_1 , x_2 ]) = 1$。</p>
+<h2 id="后验概率-mathrm-P-C-x-frac-mathrm-P-C-mathrm-P-x-C-mathrm-P-x"><a href="#后验概率-mathrm-P-C-x-frac-mathrm-P-C-mathrm-P-x-C-mathrm-P-x" class="headerlink" title="后验概率$\mathrm{P}(C|x) = \frac{\mathrm{P}(C)\mathrm{P}(x|C)}{\mathrm{P}(x)}$"></a>后验概率$\mathrm{P}(C|x) = \frac{\mathrm{P}(C)\mathrm{P}(x|C)}{\mathrm{P}(x)}$</h2><p>其中，对于标题的概率公式又叫做贝叶斯公式，它主要思想是利用先验来估计后验，即$P(C = 1)$ 叫做C=1的先验概率，比如信用卡评估问题上，我们已经有了大量的历史客户数据，$P(C = 1)$表示在这些数据中高风险的人占总人数的比例，肯定地，这是我们知道的！所以被称作先验概率。</p>
+<ul>
+<li>$P(x|C )$被称作类的似然，它是条件概率，意思为一个事件在已知属于C类的情况下，事件x发生的概率,</li>
+<li>$P(x)$表示事件x发生的概率，不管它是正类还是负类,</li>
+<li>$P(C=0|x) + P(C=1|x) = 1$，来源于事件的划分。</li>
+</ul>
+<p>另外还有以下性质：</p>
+<ul>
+<li>$P(X 1 , X 2 )$表示随机变量$X_1$和$X_2$的联合概率</li>
+<li>在假设前提下，两个随机变量是条件概率独立，有$P(X 1 , X 2 |C ) = P(X 1 |C )P(X 2 |C )$，这是贝叶斯规则重要的假设。尽管假非常简单，但是在实际应用中十分关键。</li>
+</ul>
+<p>现在我们将问题扩展到多类分类问题上，即$C_i ,\; i = 1, 2, . . . , K$.比如，在数字识别问题上，输入是一个2值化的图像，目标总共有10类，即0-9，我们可以认为这K类看作是输入空间的一个划分。那么贝叶斯分类器是将最高的后验概率的类看作是目标类，也就是$\mathrm{P}(C_i |x) = \mathrm{max}_k \mathrm{P}(C_k |x)$.同样地，对于多类分类问题，我们可以将所有的属性/特征看作是一个随机变量，那么对于贝叶斯分类器将该样本分为No.1类的概率为$Pr (y = 1|x) = Pr (y = 1|\mathbf{X}_1 = x_1 , \mathbf{X}_2 = x_2 , . . . , \mathbf{X}_n = x_n )$.</p>
+<p>但是朴素贝叶斯分类七有两个不合理的假设：</p>
+<ol>
+<li>每个属性/特征的重要性是一样的</li>
+<li>所有属性/特征都是条件概率独立的，有<br>$$Pr (y = 1|x) = \frac{1}{Pr(\mathbf{X} = x)} \Pi_{i=1}^{n} Pr (\mathbf{X}_i = x_i |y = 1)$$</li>
+</ol>
+<h1 id="天气数据的例子"><a href="#天气数据的例子" class="headerlink" title="天气数据的例子"></a>天气数据的例子</h1>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-multi-variable-linear-regression/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Shen Hengheng">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://olrs8j04a.bkt.clouddn.com/17-12-24/90775656.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="恒行天下">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="恒行天下" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/12/21/2017-12-21-multi-variable-linear-regression/" itemprop="url">
+                  多变量线性回归
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-21T08:00:00+08:00">
+                Dec 21 2017
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ml/" itemprop="url" rel="index">
+                    <span itemprop="name">ml</span>
+                  </a>
+	
+                </span>
+
+                
+                
+              
+            </span>
+			
+			
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/21/2017-12-21-multi-variable-linear-regression/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/21/2017-12-21-multi-variable-linear-regression/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+		  
+	
+		  
+		  
+		  
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>\noindent 该笔记是来自 Andrew Ng 的 Machine Learning 课程的第二周:<strong>多变量线性回归</strong>的课堂记录，其实就是将单变量线性回归推广到多变量中去，主要讲解了以下几个内容:</p>
+<ul>
+<li>模型的表示</li>
+<li>梯度下降算法</li>
+<li>运算中的实用技巧<ul>
+<li>特征缩放</li>
+<li>学习率$\alpha$</li>
+</ul>
+</li>
+</ul>
+<h1 id="模型表达"><a href="#模型表达" class="headerlink" title="模型表达"></a>模型表达</h1><p>在单变量线性回归的房屋预测模型例子中，我们忽略了一个显示，往往购房者不仅仅考虑一个因素，因此多变量（特征）的引入是必需的，比如房屋的价格往往和卧室的数量（numbers of bedrooms），有多少个楼层(numbers of floors)，房屋的年龄(age of home)等等，我们选取这些特征来预测价格，实例数据如图\ref{figure:multi_features}<br>\begin{figure}[htbp]<br>\begin{center}<br>  \includegraphics[width=0.8\textwidth]{multi_feature.png}<br>  \caption{房屋价格预测模型-多变量}\label{figure:multi_features}<br>\end{center}<br>\end{figure}<br><img src="http://olrs8j04a.bkt.clouddn.com/17-12-21/12854191.jpg" alt=""></p>
+<p>为了后面描述的方便，特别对符号作出声明：</p>
+<ul>
+<li>$n$ 特征的数目</li>
+<li>$m$ 训练集中实例的数量</li>
+<li>$x’s$ 输入变量或者特征</li>
+<li>$y’s$ 输出变量或目标变量</li>
+<li>$x^{(i)}$ 第$i$个训练样本的输入特征</li>
+<li>$x^{(i)}_{j}$ 第$i$个训练样本的第$j$个特征</li>
+<li>$x_{j}$ 样本数据的第$j$个特征</li>
+</ul>
+<p>如图\ref{figure:multi<em>features}中，第一个训练样本为$x^{(1)}=\left[\begin{matrix}<br>2104 &amp;5 &amp;1&amp; 45 &amp;460\end{matrix}\right]$<br>则第一个训练样本的第一个特征为$x^{(1)}</em>{1} = 21040$样本数据的第一个特征<br>$x_{1}=<br>\left[<br>\begin{matrix}<br>2104 \<br>1416 \<br>1534\<br>852<br>\end{matrix}<br>\right]$</p>
+<p>同样地，支持多变量的假说函数表示为$$h<em>{\theta}(x) = \theta</em>{0} + \theta<em>{1}x</em>{1}  + \theta<em>{2}x</em>{2} + \theta<em>{3}x</em>{3} + …$$</p>
+<p>为了更方便的表示，令<br>define $x<em>{0}$ = 1<br>$$ X = \left[\begin{matrix}<br>x</em>{0}\<br>x<em>{1}\<br>x</em>{2}\<br>x<em>{3}\<br>… \<br>x</em>{n}<br>\end{matrix}<br>\right] \in \mathbb{R}^{n+1}, \theta = \left[\begin{matrix}<br>\theta<em>{0} \<br>\theta</em>{1} \<br>\theta<em>{2} \<br>\theta</em>{3} \<br>…\<br>\theta_{n}<br>\end{matrix}\right]$$</p>
+<p>所以假说函数$h<em>{\theta}$可以表示为$$h</em>{\theta}(x) = \theta<em>{0} + \theta</em>{1}x<em>{1}  + \theta</em>{2}x<em>{2} + \theta</em>{3}x_{3} + …<br>= \theta^{T}X$$</p>
+<h1 id="梯度下降算法"><a href="#梯度下降算法" class="headerlink" title="梯度下降算法"></a>梯度下降算法</h1><p>本节主要讲解如何设定该假设的参数，特别地，讲解如何使用梯度下降算法处理多元线性回归模型。现在我们已经知道：</p>
+<ul>
+<li>假说函数：$h<em>{\theta}(x) = \theta</em>{0} + \theta<em>{1}x</em>{1}  + \theta<em>{2}x</em>{2} + \theta<em>{3}x</em>{3} + …<br>= \theta^{T}X$</li>
+<li>参数： $\theta \in \mathbb{R}^{n+1}$</li>
+<li>代价误差函数：$J(\mathbb{\theta}) = \frac{1}{2m}\sum<em>{i=1}^{m}(h</em>{\theta}(x^{(i)})- y^{(i)})^{2}$</li>
+<li>Goals：$minimize_{\mathbb{\theta}}J(\mathbb{\theta})$</li>
+</ul>
+<p>梯度下降算法伪代码：<br><img src="http://olrs8j04a.bkt.clouddn.com/17-12-21/92129221.jpg" alt=""></p>
+<p>\begin{algorithm}[h]<br>  \caption{梯度下降算法多变量线性回归版本}<br>  \label{alg::Gradient Descent Simple}<br>  \begin{algorithmic}[1]<br>    \Require<br>    $\alpha$ 学习率;<br>    $\theta \in \mathbb{R}$ 参数;<br>    $J$ 代价误差函数;<br>    $:=$ 赋值;<br>    \Repeat \quad $for$ $j$ = $0,…,n$<br>      \State $\theta<em>{j} := \theta</em>{j} - \alpha\frac{1}{m} \sum<em>{i=1}^{m}(h</em>{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}$;<br>    \Until{收敛}<br>  \end{algorithmic}<br>\end{algorithm}  </p>
+<h1 id="运算中的适用技巧"><a href="#运算中的适用技巧" class="headerlink" title="运算中的适用技巧"></a>运算中的适用技巧</h1><h2 id="特征缩放-特征归一化"><a href="#特征缩放-特征归一化" class="headerlink" title="特征缩放^[特征归一化]"></a>特征缩放^[特征归一化]</h2><p>特征缩放（feature scaling）可以把特征缩放到一个相近的范围内，是一种能使得梯度下降算法快速收敛的一个技巧。</p>
+<p>例子：图\ref{figure:scale}中，$\theta<em>{2}$表示房屋的大小（$0～2000$ $feets$）， $\theta</em>{2}$表示卧室的数量($0~5$)，从图\ref{figure:scale}(a)可以看出等高线很扁，如果不进行特征的缩放，梯度下降算法需要经过很多次迭代才能到达最小值点。经过缩放后，收敛到最小值速度比不缩放的快。</p>
+<p>\begin{figure}[htbp]<br>\centering                                                          %居中<br>\subfigure[没有经过特征缩放处理，算法的收敛情况]{                    %第一张子图<br>\begin{minipage}{7cm}<br>\centering                                                          %子图居中<br>\includegraphics[scale=0.35]{large_diff.png}               %以pic.jpg的0.5倍大小输出<br>\end{minipage}}<br>\subfigure[经过特征缩放处理后，算法的收敛情况]{                    %第二张子图<br>\begin{minipage}{7cm}<br>\centering                                                          %子图居中<br>\includegraphics[scale=0.55]{small_diff.png}                %以pic.jpg的0.5倍大小输出<br>\end{minipage}}<br>\caption{特征缩放对算法收敛的影响} %                         %大图名称<br>\label{figure:scale}                                                        %图片引用标记<br>\end{figure}<br><img src="http://olrs8j04a.bkt.clouddn.com/17-12-21/78138706.jpg" alt=""></p>
+<p>为了实现特征缩放将会使用到一种叫做<strong>均值归一化</strong>的技术，使得$\theta<em>{1}$,$\theta</em>{2}$的范围在[-1,1]之间。主要的转换公式为：<br>$$X<em>{i} = \frac{X</em>{i} - \mu<em>{n}}{\mathbb{S}</em>{n}}$$</p>
+<p>其中$\mu<em>{n}$表示$X$的均值，$\mathbb{S}</em>{n}$表示$X$的范围，即$max - min$.</p>
+<p>比如$\theta<em>{1}$归一化的结果为$\theta</em>{1} = \frac{\theta_{1} - 1000}{2000}$</p>
+<h2 id="学习率-alpha"><a href="#学习率-alpha" class="headerlink" title="学习率$\alpha$"></a>学习率$\alpha$</h2><p>复习：梯度下降算法的迭代公式如下.</p>
+<p>$$\theta<em>{j} := \theta</em>{j} - \alpha\frac{\partial}{\partial<em>{\theta</em>{j}}}J(\theta)$$</p>
+<p>通过上面的公式，我们可以绘制出迭代次数与代价函数$J(\theta)$的关系曲线.通过曲线观测算发在何时起开始收敛。也有一些自动测试是否收敛的方法，例如将代价函数的变化与某个阈值（例如0.01）进行比较，通常图\ref{figure:J_theta}能直观的表示出$J(\theta)$的变化情况。</p>
+<p>\begin{figure}[htbp]<br>\begin{center}<br>  \includegraphics[width=0.5\textwidth]{J_theta.png}<br>  \caption{$J(\theta)$与迭代次数的关系}\label{figure:J_theta}<br>\end{center}<br>\end{figure}<br><img src="http://olrs8j04a.bkt.clouddn.com/17-12-21/99087502.jpg" alt=""></p>
+<p>那么上面的例子与学习率有什么关系？关系就是如果学习率$\alpha$选择不合适将会导致梯度算法不能工作，即不能到达最小值或者将会使得梯度下降算法运行效率低迟迟不能收敛！</p>
+<p><strong>总结：</strong></p>
+<ul>
+<li>如果$\alpha$过小，将会导致算法的收敛速度慢;</li>
+<li>如果$\alpha$过大，在梯度下降过程中，很容易掠过局部最小值，导致无法收敛甚至发散。如图\ref{figure:alpha}.</li>
+</ul>
+<p><strong>技巧：</strong> 可以尝试下面的学习率：$$\alpha = 0.001,0.003,0.01,0.03,0.1,0.3,1$$</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/12/21/2017-12-21-logistic-regression/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Shen Hengheng">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://olrs8j04a.bkt.clouddn.com/17-12-24/90775656.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="恒行天下">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="恒行天下" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/12/21/2017-12-21-logistic-regression/" itemprop="url">
+                  逻辑回归
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-21T08:00:00+08:00">
+                Dec 21 2017
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ml/" itemprop="url" rel="index">
+                    <span itemprop="name">ml</span>
+                  </a>
+	
+                </span>
+
+                
+                
+              
+            </span>
+			
+			
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/21/2017-12-21-logistic-regression/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/21/2017-12-21-logistic-regression/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+		  
+	
+		  
+		  
+		  
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>\noindent 该笔记是来自 Andrew Ng 的 Machine Learning 课程的第三周:<strong>逻辑回归</strong>的课堂记录，逻辑回归是机器学习分类算法的地一个算法，涵盖信息论的相关内容.主要讲解了以下几个内容:<br>\begin{itemize}<br>\setlength{\itemsep}{1pt}<br>\setlength{\parskip}{0pt}<br>\setlength{\parsep}{0pt}</p>
+<ul>
+<li>分类算法的应用</li>
+<li>二元分类问题</li>
+<li>边界函数</li>
+<li>代价函数</li>
+<li>梯度下降算法<br>\end{itemize}</li>
+</ul>
+<h1 id="分类算法的应用"><a href="#分类算法的应用" class="headerlink" title="分类算法的应用"></a>分类算法的应用</h1><p>分类的场景在现实社会中无处不在，比如</p>
+<ul>
+<li>Email:垃圾邮件分类</li>
+<li>金融交易是否存在欺诈</li>
+<li>肿瘤是恶性/良性</li>
+</ul>
+<p>分类问题和回归问题一样，只是现在要预测的值只占一小部分离散值。现在，将重点讨论<strong>二分类</strong>问题，其中$Y$只能接受两个值，<strong>0和1</strong>。（也可以推广到多个类），例如，如果我们试图为电子邮件构建一个垃圾邮件分类器，那么$X^{(i)}$可能是一封电子邮件的一些特征，如果它是一封垃圾邮件，$y$是1，否则为0。因此，$Y \in {0,1}$。0也被称为否定类，1是正类，它们有时也用符号<strong>“-”</strong>和<strong>“+”</strong>表示。</p>
+<h1 id="二分类问题"><a href="#二分类问题" class="headerlink" title="二分类问题"></a>二分类问题</h1><p>医疗诊断是机器学习在医学方面其中的一个应用，本小节主要借助乳腺癌诊断这个例子引出.给出一组数据，其中数据特征为肿瘤的大小，标记$y$是0或者1， 其中0表示恶性，1表示良性，将这些样本数据做图如下：</p>
+<p>\begin{figure}[htbp]<br>\begin{center}<br>  \includegraphics[width=0.7\textwidth]{tumor_logistic.png}<br>  \caption{乳腺癌数据}\label{figure:tumor_logistic}<br>\end{center}<br>\end{figure}</p>
+<center><br><img src="http://olrs8j04a.bkt.clouddn.com/17-12-21/24665725.jpg" alt=""><br></center>
+
+<p>我们可以尝试使用线性回归加上一个合适的\textbf{“阈值”}来实现分类问题，如图\ref{figure:tumor<em>logistic}所示，$h</em>{\theta}(x) = \theta^{T}x$，则基于阈值0.5的分类器算法如下：<br>\begin{align<em>}<br>&amp; h<em>\theta(x) \geq 0.5 \rightarrow y = 1 \<br>&amp; h</em>\theta(x) &lt; 0.5 \rightarrow y = 0<br>\end{align</em>}</p>
+<p>但是这将存在一个很大问题，该算法并不具有鲁棒性，即假设我们有观测到了一个非常大的尺寸的恶性肿瘤，将其作为实例加入到我们的训练集中，这样将会我们之前的假说$h$发生很大变化，如图\ref{figure:tumor_logistic}中最右侧的那个点加入到训练集中，将对$h(x)$影响很大，这时将0.5作为阈值来预测肿瘤是否为恶性就不再合适了。虽然很容易构造出模型来，但用原来的线性回归模型解决分类问题的这种方法表现很差。直观地说，也没有任何道理，通过图\ref{figure:tumor<em>logistic}很容易看出，存在$h</em>{\theta}(x)&gt;1$或者$h<em>{\theta}(x)&lt;0$，但，$Y \in {0,1}$。为了解决这个问题，我们改变$h</em>{\theta}(x)$的形式，使得输出变量$0 \leq  h_{\theta}(x) \leq  1$.我们将使用$Sigmoid$来表示假说函数，也叫为逻辑函数，又因为逻辑函数的输入为$\theta^{T}x$，所以我们的模型又叫做<strong>逻辑回归模型</strong>.</p>
+<p>逻辑回归模型为：<br>\begin{align<em>}<br>&amp; h_\theta (x) = g ( \theta^T x )\<br>&amp; z = \theta^T x \<br>&amp;g(z) = \dfrac{1}{1 + e^{-z}}<br>\end{align</em>}</p>
+<p>$g(z)$函数图像如图\ref{figure:sigmoid}所示.</p>
+<center><br><img src="http://olrs8j04a.bkt.clouddn.com/17-12-21/53893816.jpg" alt=""><br></center><br>\begin{figure}[htbp]<br>\begin{center}<br>    \includegraphics[width=0.7\textwidth]{sigmoid.png}<br>    \caption{Sigmoid函数图像}\label{figure:sigmoid}<br>\end{center}<br>\end{figure}<br><br><br><strong>另外</strong> ，对于给定的数据X，根据选择的参数，$h<em>{\theta}(x)$表示$y=1$发生的可能性。即$h</em>{\theta}(x) = {P}(y=1 | x,\theta)$,例如，$h<em>{\theta}(x)= 0.7$告诉我们$y=1$的概率为$70\%$，那么根据概率基本知识，$y=0$的概率为$30\%$.<br><br>基本的概率公式：<br>\begin{align*}<br>&amp; h</em>\theta(x) = P(y=1 | x ; \theta) = 1 - P(y=0 | x ; \theta) \<br>&amp; P(y = 0 | x;\theta) + P(y = 1 | x ; \theta) = 1<br>\end{align<em>}<br><br># 边界函数<br>## 线性决策边界<br>根据图\ref{figure:sigmoid}和上面的公式，有以下结论.<br>\begin{align</em>}<br>&amp;z=0, e^{0}=1 \Rightarrow g(z)=1/2 \<br>&amp; z \to \infty, e^{-\infty} \to 0 \Rightarrow g(z)=1 \<br>&amp;z \to -\infty, e^{\infty}\to \infty \Rightarrow g(z)=0 \<br>&amp; \theta^{T}x \geq 0 \rightarrow h<em>\theta(x) \geq 0.5 \rightarrow y = 1 \<br>&amp; \theta^{T}x &lt; 0 \rightarrow h</em>\theta(x) &lt; 0.5 \rightarrow y = 0<br>\end{align<em>}<br><br>假设有一个模型，模型表示如下<br><br>\begin{align</em>}<br>&amp; \theta =<br>\begin{bmatrix}<br>-3 \<br>1 \<br>1 \end{bmatrix}\<br>&amp; y = 1 \; if \; -3 + 1 x_1 + 1 x_2 \geq 0\<br>&amp; y = 1 \; if \; x_1 + x_2 \geq 3<br>\end{align*}<br><br>画出边界，如下图\ref{figure:example}所示.<br>\begin{figure}[htbp]<br>\begin{center}<br>    \includegraphics[width=0.5\textwidth]{example_log.png}<br>    \caption{线性决策边界}\label{figure:example}<br>\end{center}<br>\end{figure}<br><center><br><img src="http://olrs8j04a.bkt.clouddn.com/17-12-21/40568449.jpg" alt=""><br></center>
+
+<h2 id="非线性决策边界"><a href="#非线性决策边界" class="headerlink" title="非线性决策边界"></a>非线性决策边界</h2><p>往往在实际的数据中，数据往往是线性不可分的！所以在此基础之上，引申出非线性决策边界的概念。如图所示，这个边界是一个圆$z = \theta_0 + \theta_1 x_1^2 +\theta_2 x_2^2$或者一个其他的形状将$y = 0$的区域和$y = 1$的区域分开.<br>\begin{figure}[htbp]<br>\begin{center}<br>    \includegraphics[width=0.5\textwidth]{unlinear.png}<br>    \caption{非线性决策边界}\label{figure:unlinear}<br>\end{center}<br>\end{figure}</p>
+<center><br><img src="http://olrs8j04a.bkt.clouddn.com/17-12-21/68833588.jpg" alt=""><br></center>
+
+
+<p>图\ref{figure:unlinear}，模型描述为：<br>\begin{align<em>}<br>h<em>{\theta}(x) &amp;= g(\theta</em>{0} + \theta<em>{1}x</em>{1} + \theta<em>{2}x</em>{2} + \theta<em>{3}x</em>{1}^2 + \theta<em>{4}x</em>{2}^2)\<br>h<em>{\theta}(x) &amp;= g(-1 + 0 x</em>{1} + 0 x<em>{2} + 1 x</em>{1}^2 + 1 x<em>{2}^2)\<br>y &amp;= 1 \; if  \; 1 x</em>{1}^2 + 1 x_{2}^2 \geq 1<br>\end{align</em>}</p>
+<p>我们也可以使用比较复杂的模型来适应非常复杂形状的边界.$h_{\theta}(x) = g(\theta_0 + \theta_1 x_1 +\theta_2 x_2 + \theta_3 x_1^2 + \theta_4 x_2^2  + \theta_5 x_1x_2 +…)$</p>
+<h1 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h1><p>在定义逻辑回归模型的代价函数中，我们不能使用线性回归模型定义的成本函数，因为$logistic$函数会导致$y$出现震荡，从而出现许多局部的最优解，此时定义的代价函数不是一个凸函数。</p>
+<p>逻辑回归模型的代价函数为<br>\begin{align<em>}<br> J(\theta) &amp;= \dfrac{1}{m} \sum<em>{i=1}^m \mathrm{Cost}(h</em>\theta(x^{(i)}),y^{(i)})<br>\end{align</em>}<br>$$<br>\left{<br> \begin{aligned}<br> \mathrm{Cost}(h<em>\theta(x),y) &amp;= -\log(h</em>\theta(x)) \; &amp; \text{if y = 1} \<br> \mathrm{Cost}(h<em>\theta(x),y) &amp;= -\log(1-h</em>\theta(x)) \; &amp; \text{if y = 0}<br>  \end{aligned}<br>\right.$$</p>
+<p>当$y=1$和$y=0$时，分别画出 $J(\theta) = \mathrm{Cost}(h_{\theta}(x), y)$的图像，如图\ref{figure:y}</p>
+<p>\begin{figure}[htbp]<br>\centering                                                          %居中<br>\subfigure[当y=1时]{                    %第一张子图<br>\begin{minipage}{7cm}<br>\centering                                                          %子图居中<br>\includegraphics[scale=0.75]{y1.png}               %以pic.jpg的0.5倍大小输出<br>\end{minipage}}<br>\subfigure[当y=0时]{                    %第二张子图<br>\begin{minipage}{7cm}<br>\centering                                                          %子图居中<br>\includegraphics[scale=0.65]{y0.png}                %以pic.jpg的0.5倍大小输出<br>\end{minipage}}<br>\caption{$J(\theta)$ vs $h_{\theta}$} %                         %大图名称<br>\label{figure:y}                                                        %图片引用标记<br>\end{figure}</p>
+<center><br><img src="http://olrs8j04a.bkt.clouddn.com/17-12-21/7436806.jpg" alt=""><br></center>
+
+<p>$\mathrm{Cost}(h<em>{\theta}(x),y)$的特点为：<br>\begin{align*}<br>&amp; \mathrm{Cost}(h</em>\theta(x),y) = 0 \text{ if } h<em>\theta(x) = y \<br> &amp; \mathrm{Cost}(h</em>\theta(x),y) \rightarrow \infty \text{ if } y = 0 \; \mathrm{and} \; h<em>\theta(x) \rightarrow 1 \<br>&amp; \mathrm{Cost}(h</em>\theta(x),y) \rightarrow \infty \text{ if } y = 1 \; \mathrm{and} \; h_\theta(x) \rightarrow 0<br>\end{align*}</p>
+<p><strong>公式反映了一个事实：</strong><br>如果$h_{\theta}  = 0$，即$\mathrm{P}(y=1 | \theta,x)=0$，但是$\mathrm{y}=1$，则我们将会以一个很大的代价（$\infty$）惩罚学习算法！</p>
+<p><strong>上面的话简单点:</strong> 你预测对了，没事！（$\mathrm{OK} \rightarrow \mathrm{Cost} = 0$），但是你如果预测错了，抱歉，狠狠教训一顿！（$\mathrm{Sorry}, \mathrm{Cost} \rightarrow \infty$），其实这是<strong>信息论中熵的应用，信息增益</strong>！</p>
+<p>这样写过之后，就保证了代价函数是凸函数！</p>
+<h1 id="简化代价函数形式和梯度下降算法"><a href="#简化代价函数形式和梯度下降算法" class="headerlink" title="简化代价函数形式和梯度下降算法"></a>简化代价函数形式和梯度下降算法</h1><p>我们可以将<br>$$ \mathrm{Cost}(h<em>\theta(x),y) =<br>\left{<br> \begin{aligned}<br> &amp; -\log(h</em>\theta(x)) \; &amp; \text{if y = 1} \<br> &amp; -\log(1-h_\theta(x)) \; &amp; \text{if y = 0}<br>  \end{aligned}<br>\right.$$</p>
+<p>简化为<br>$$\mathrm{Cost}(h<em>\theta(x),y) = - y \; \log(h</em>\theta(x)) - (1 - y) \log(1 - h_\theta(x))$$</p>
+<p>代入代价函数得到：<br>\begin{align<em>}<br>J(\theta) &amp;= - \frac{1}{m} \displaystyle \sum<em>{i=1}^m \mathrm{Cost}(h</em>{\theta}(x^{(i)}) - y^{(i)}) \<br>          &amp;= - \frac{1}{m} \displaystyle \sum<em>{i=1}^m [y^{(i)}\log (h</em>\theta (x^{(i)})) + (1 - y^{(i)})\log (1 - h_\theta(x^{(i)}))]<br>\end{align</em>}</p>
+<p>向量化之后：</p>
+<p>\begin{align<em>}<br>&amp; h = g(X\theta)\<br>&amp; J(\theta) = \frac{1}{m} \cdot \left(-y^{T}\log(h)-(1-y)^{T}\log(1-h)\right)<br>\end{align</em>}<br>在得到这样的一个代价函数之后，就可以使用梯度下降算法求出使得代价函数最小的参数$\theta$.</p>
+<p>梯度下降算法框架如下：<br>\begin{align<em>}<br>&amp; Repeat \; \lbrace \<br>&amp; \; \theta_j := \theta_j - \alpha \dfrac{\partial}{\partial \theta_j}J(\theta) \<br> &amp; \rbrace<br>\end{align</em>}</p>
+<p>将$J(\theta)$代入得</p>
+<p>\begin{align<em>} &amp; Repeat \; \lbrace \<br>&amp; \; \theta_j := \theta<em>j - \frac{\alpha}{m} \sum</em>{i=1}^m (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)} \<br>&amp; \rbrace<br> \end{align</em>}</p>
+<p>向量化：$$\theta := \theta - \frac{\alpha}{m} X^{T} (g(X \theta ) - \vec{y})$$</p>
+<p><strong>注意：</strong> 表面上看起来和线性回归的梯度下降一样，但是这里的$h_{\theta}(x)=g(\theta^{T}x)$与线性回归不同，所以实际上是不一样的。另外在运行梯度下降算法之前，进行特征缩放是非常必要的。</p>
+<h1 id="高级优化"><a href="#高级优化" class="headerlink" title="高级优化"></a>高级优化</h1><p>“共轭梯度”、“BFGS”-局部优化法、和“L-BFGS”-有限内存局部优化，使用更成熟，更快的方法来优化$\theta$，它们可以用来代替梯度下降。不建议自己编写这些复杂的算法，而是使用库，因为它们已经经过测试并高度优化。Octave提供它们！<br>\begin{align<em>}<br>&amp;\mathrm{Given} \; \theta\<br>&amp; \rightarrow J(\theta) \<br>&amp; \rightarrow \frac{\partial}{\partial<em>{\theta</em>{j}}}J(\theta) \;  \mathrm{for} \;{j} = 0,1,2,3,…<br>\end{align</em>}</p>
+<p>\lstset{language=Matlab}</p>
+<p>代码实现：</p>
+<p>\begin{lstlisting}<br>function [jVal, gradient] = costFunction(theta)<br>  jVal = […code to compute J(theta)…];<br>  gradient = […code to compute derivative of J(theta)…];<br>end<br>\end{lstlisting}</p>
+<center><br><img src="http://olrs8j04a.bkt.clouddn.com/17-12-21/86473859.jpg" alt=""><br></center>
+          
         
       
     </div>
@@ -1147,7 +1341,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1190,7 +1384,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1199,7 +1393,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1208,7 +1402,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

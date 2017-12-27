@@ -301,7 +301,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/02/16/利用机器学习实现数字识别及分类/">
+  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/12/20/2017-12-20-opencv-rpi/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Shen Hengheng">
@@ -326,8 +326,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/02/16/利用机器学习实现数字识别及分类/" itemprop="url">
-                  利用机器学习实现数字识别及分类
+                <a class="post-title-link" href="/2017/12/20/2017-12-20-opencv-rpi/" itemprop="url">
+                  在树莓派上搭建OpenCV环境
                 </a>
               
             
@@ -343,8 +343,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-16T15:34:46+08:00">
-                Feb 16 2017
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-20T08:00:00+08:00">
+                Dec 20 2017
               </time>
             
 
@@ -366,32 +366,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/machine-learning/" itemprop="url" rel="index">
-                    <span itemprop="name">machine learning</span>
-                  </a>
-	
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/machine-learning/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">algorithm</span>
-                  </a>
-	
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/machine-learning/algorithm/图像处理/" itemprop="url" rel="index">
-                    <span itemprop="name">图像处理</span>
+                  <a href="/categories/pi/" itemprop="url" rel="index">
+                    <span itemprop="name">pi</span>
                   </a>
 	
                 </span>
@@ -411,8 +387,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/16/利用机器学习实现数字识别及分类/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/利用机器学习实现数字识别及分类/" itemprop="commentCount"></span>
+                <a href="/2017/12/20/2017-12-20-opencv-rpi/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/20/2017-12-20-opencv-rpi/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -444,14 +420,39 @@
 
       
         
-          <p>利用opencv对图像进行边缘检测，轮廓检测等等，人工构建特征和训练集，结合 <a href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean distance</a> 来计算相似度，进而可实现0～9的数字的分类。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/16/利用机器学习实现数字识别及分类/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>本文主要介绍如何在树莓派上配置和安装OpenCV，本文原文出处^[www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv- 3/].</p>
+<h1 id="扩大文件系统"><a href="#扩大文件系统" class="headerlink" title="扩大文件系统"></a>扩大文件系统</h1><p>由于编译安装OpenCV需要的空间很大，所以应该做的第一件事是扩展文件系统，以包括micro-SD卡上的所有可用空间：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo raspi-config</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>echo=FALSE, fig.height=3, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE, fig.align='center'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\6380903.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>fig-margin, echo=FALSE, fig.cap="扩展文件系统",fig.align='center', fig.height=3, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\6380903.png&quot;)</div><div class="line">grid::grid.raster(ima)</div><div class="line"></div><div class="line"></div><div class="line">imb &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\85376892.png&quot;)</div><div class="line">grid::grid.raster(imb)</div></pre></td></tr></table></figure>
+<!-- <img src="http://olrs8j04a.bkt.clouddn.com/17-12-10/6380903.jpg"> <center class="cap"><caption></caption></center> -->
+<!-- <div align="center"><img src="http://olrs8j04a.bkt.clouddn.com/17-12-10/85376892.jpg"> <center class="cap"><caption>图4-1 扩展文件系统</caption></center></div>  -->
+<h1 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install build-essential cmake pkg-config -y</div><div class="line">sudo apt-get install libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev -y</div><div class="line"></div><div class="line">sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev -y </div><div class="line">sudo apt-get install libxvidcore-dev libx264-dev -y</div><div class="line">sudo apt-get install libgtk2.0-dev -y</div><div class="line">sudo apt-get install libatlas-base-dev gfortran -y </div><div class="line">sudo apt-get install python2.7-dev python3-dev -y</div></pre></td></tr></table></figure>
+<h1 id="下载OpenCV源代码"><a href="#下载OpenCV源代码" class="headerlink" title="下载OpenCV源代码"></a>下载OpenCV源代码</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~</div><div class="line">wget -O opencv.zip https://github.com/Itseez/opencv/archive/3.1.0.zip</div><div class="line">unzip opencv.zip</div></pre></td></tr></table></figure>
+<p>OpenCV 3.1.0 地址：<a href="https://github.com/Itseez/opencv_contrib/archive/3.1.0.zip" target="_blank" rel="external">https://github.com/Itseez/opencv_contrib/archive/3.1.0.zip</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget -O opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/3.1.0.zip</div><div class="line">unzip opencv_contrib.zip</div></pre></td></tr></table></figure>
+<h1 id="Python2-7还是Python3-5"><a href="#Python2-7还是Python3-5" class="headerlink" title="Python2.7还是Python3.5"></a>Python2.7还是Python3.5</h1><ol>
+<li>pip包管理器</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">wget https://bootstrap.pypa.io/get-pip.py</div><div class="line">sudo python get-pip.py</div><div class="line"></div><div class="line">sudo pip install virtualenv virtualenvwrapper</div><div class="line">sudo rm -rf ~/.cache/pip</div><div class="line"></div><div class="line"><span class="comment"># virtualenv and virtualenvwrapper</span></div><div class="line"><span class="built_in">export</span> WORKON_HOME=<span class="variable">$HOME</span>/.virtualenvs</div><div class="line"><span class="built_in">source</span> /usr/<span class="built_in">local</span>/bin/virtualenvwrapper.sh</div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="_">-e</span> <span class="string">"\n# virtualenv and virtualenvwrapper"</span> &gt;&gt; ~/.profile</div><div class="line"><span class="built_in">echo</span> <span class="string">"export WORKON_HOME=<span class="variable">$HOME</span>/.virtualenvs"</span> &gt;&gt; ~/.profile</div><div class="line"><span class="built_in">echo</span> <span class="string">"source /usr/local/bin/virtualenvwrapper.sh"</span> &gt;&gt; ~/.profile</div><div class="line"></div><div class="line"><span class="built_in">source</span> ~/.profile</div></pre></td></tr></table></figure>
+<h1 id="安装Numpy"><a href="#安装Numpy" class="headerlink" title="安装Numpy"></a>安装Numpy</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install numpy</div></pre></td></tr></table></figure>
+<p>如果正在为Python 2.7编译OpenCV 3，请确保Python 2部分包含Interpreter ，Libraries ，numpy和packages path ：</p>
+<h1 id="编译安装OpenCV"><a href="#编译安装OpenCV" class="headerlink" title="编译安装OpenCV"></a>编译安装OpenCV</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/opencv-3.1.0/</div><div class="line">mkdir build</div><div class="line"><span class="built_in">cd</span> build</div><div class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE \</div><div class="line">    -D CMAKE_INSTALL_PREFIX=/usr/<span class="built_in">local</span> \</div><div class="line">    -D INSTALL_PYTHON_EXAMPLES=ON \</div><div class="line">    -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib-3.1.0/modules \</div><div class="line">    -D BUILD_EXAMPLES=ON ..</div><div class="line"></div><div class="line"></div><div class="line">make -j4</div></pre></td></tr></table></figure>
+<p>很容易出错，因为树莓派不一定CPU的资源不一定够用，使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">make clean</div><div class="line">make</div><div class="line"></div><div class="line">sudo make install</div><div class="line">sudo ldconfig</div></pre></td></tr></table></figure>
+<p>然后检查是否存在层<code>cv2.so</code>或者<code>cv2.cpython-34m.so</code>：</p>
+<p>对于Python27说，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls <span class="_">-l</span> /usr/<span class="built_in">local</span>/lib/python2.7/site-packages/</div></pre></td></tr></table></figure>
+<p>如果存在，则说明在python2的环境下能够使用OpenCV。</p>
+<p>对于Python3.4说：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls <span class="_">-l</span> /usr/<span class="built_in">local</span>/lib/python3.4/site-packages/</div></pre></td></tr></table></figure>
+<p>如果存在，则表明在Python3的环境下能够使用OpenCV</p>
+<p>但是对于Python3说需要将<code>cv2.cpython-34m.so</code>重命名为<code>cv2.so</code>才能使用。</p>
+<p>安装完成后，需要将编译生成的文件和解压后的文件删除。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf opencv-3.1.0 opencv_contrib-3.1.0</div></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -490,7 +491,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/02/16/利用Python爬虫来抓取银行的牌告汇率/">
+  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/12/20/2017-12-20-mail-server-rpi/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Shen Hengheng">
@@ -515,8 +516,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/02/16/利用Python爬虫来抓取银行的牌告汇率/" itemprop="url">
-                  系列01-利用Python爬虫来抓取银行的牌告汇率
+                <a class="post-title-link" href="/2017/12/20/2017-12-20-mail-server-rpi/" itemprop="url">
+                  在树莓派上搭建邮件服务器
                 </a>
               
             
@@ -532,8 +533,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-16T14:43:16+08:00">
-                Feb 16 2017
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-20T08:00:00+08:00">
+                Dec 20 2017
               </time>
             
 
@@ -555,8 +556,20 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/爬虫/" itemprop="url" rel="index">
-                    <span itemprop="name">爬虫</span>
+                  <a href="/categories/rpi/" itemprop="url" rel="index">
+                    <span itemprop="name">rpi</span>
+                  </a>
+	
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/rpi/mail-server/" itemprop="url" rel="index">
+                    <span itemprop="name">mail server</span>
                   </a>
 	
                 </span>
@@ -576,8 +589,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/16/利用Python爬虫来抓取银行的牌告汇率/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/利用Python爬虫来抓取银行的牌告汇率/" itemprop="commentCount"></span>
+                <a href="/2017/12/20/2017-12-20-mail-server-rpi/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/20/2017-12-20-mail-server-rpi/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -609,17 +622,71 @@
 
       
         
-          <p>python爬虫抓取台湾银行的牌告汇率,让你更加获益</p>
+          
+            <p>上篇文章介绍了利用树莓派搭建AP，那么有了AP之后，由于小编是一名在校的学生，将我的树莓派和我宿舍的路由器连接上网之后，我的树莓派就拥有了全球唯一可访问的地址了，这样的话就可以为所欲为了.</p>
+<p>说到为什么搭建邮件服务器，为什么要使用树莓派呢？为什么不使用VPS呢？</p>
+<p>有所不知，现在VPS（国外的）是严格要求的，<strong>不允许在他们的服务器上搭建邮件服务</strong>的!这让小编很慌啊，上次搭建了一次，可以发但是不可以接受邮件，这让我很受伤，因此我要在我树莓派上下功夫了，功夫不负有心人呢，我在下面po下我的教程，教程大部分来自该处^[<a href="https://pimylifeup.com/raspberry-pi-email-server/]。" target="_blank" rel="external">https://pimylifeup.com/raspberry-pi-email-server/]。</a></p>
+<h1 id="安装-Citadel-邮件服务器"><a href="#安装-Citadel-邮件服务器" class="headerlink" title="安装 Citadel 邮件服务器"></a>安装 Citadel 邮件服务器</h1><ol>
+<li>更新软件包</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div></pre></td></tr></table></figure>
+<ol>
+<li>将我们的软件包升级到最新版本.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get upgrade</div></pre></td></tr></table></figure>
+<ol>
+<li>安装Citadel 邮件服务器</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install citadel-suite</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>echo=FALSE, fig.cap="leave the field set to 0.0.0.0 as this allows Citadel to listen on all incoming addresses. ",fig.height=6,fig.width=9.5, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE, fig.align='center'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\01-Configuring-citadel-server-.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>echo=FALSE, fig.cap="Now for the user authentication mode we’re going to keep this set to internal. ",fig.height=6,fig.width=9.5, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE, fig.align='center'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\02-Select-authentication-mode.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>echo=FALSE, fig.cap="Select admin username",fig.height=6,fig.width=9.5, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE, fig.align='center'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\03-Select-admin-username.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>echo=FALSE, fig.cap="Select admin password",fig.height=6,fig.width=9.5, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE, fig.align='center'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\04-Select-admin-password.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>echo=FALSE, fig.cap="Select Web Server",fig.height=6,fig.width=9.5, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE, fig.align='center'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\05-Select-Web-Server.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>echo=FALSE, fig.cap="Select HTTP Port ",fig.height=6,fig.width=9.5, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE, fig.align='center'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\06-Select-HTTP-Port.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>echo=FALSE, fig.cap="Select HTTPs Port ",fig.height=6,fig.width=9.5, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE, fig.align='center'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\07-Select-HTTPS-Port.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>echo=FALSE, fig.cap="Select Language ",fig.height=6,fig.width=9.5, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE, fig.align='center'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\08-Select-Language.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
 <blockquote>
-<p>台湾银行网站为 <a href="http://rate.bot.com.tw/xrt?Lang=zh-TW">http://rate.bot.com.tw/xrt?Lang=zh-TW</a><br>视频为：<a href="https://www.youtube.com/watch?v=-c5rrzjsN34">https://www.youtube.com/watch?v=-c5rrzjsN34</a><br>简介：利用pandas爬去牌告汇率，然后生成excel文件</p>
+<p>Extra Steps \<br>Sometimes the steps above will throw errors and not create the admin account we need to setup the email server correctly. If this is the case with you then you will need to do a few extra steps.\</p>
+<ol>
+<li>First we need to create the netconfigs folder and set the owner and group to citadel.<br><pre class="bash"><code class="hljs">sudo mkdir /etc/citadel/netconfigs<br>sudo chown citadel:citadel /etc/citadel/netconfigs</code></pre>\</li>
+<li>Next we need to restart Citadel so the previous changes are applied correctly. We also want to run setup again so that we can setup the admin account if it wasn’t created correctly the first time.<br><pre class="bash"><code class="hljs">sudo service citadel restart<br>sudo /usr/lib/citadel-server/setup</code></pre>\</li>
+<li>When you run the setup it will take you through a series of questions with the first being the name of admin. Set this to the username you wish to have for your admin account. \</li>
+<li>Next it will ask you to set a password for the administrator account. Set this to something secure so you’re not easily hacked. \<br>5 You can now skip through the rest of the questions. Simply press enter to skip the questions and not change anything.</li>
+</ol>
 </blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/16/利用Python爬虫来抓取银行的牌告汇率/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<h1 id="配置-Citadel-邮件服务器"><a href="#配置-Citadel-邮件服务器" class="headerlink" title="配置 Citadel 邮件服务器"></a>配置 Citadel 邮件服务器</h1><p>由于已经安装完成，并且安装了一些Web服务器，那么现在打开一个浏览器，输入<a href="http://hostname" target="_blank" rel="external">http://hostname</a> 或者<a href="http://localhost" target="_blank" rel="external">http://localhost</a> 就可以看到web界面下的Citadel服务器</p>
+<blockquote>
+<p>如果你不知道你的hostname是什么，你可以通过下面的命令进行查询</p>
+<pre class="bash"><code class="hljs">hostname -i</code></pre>
+
+
+
+</blockquote>
+<figure class="highlight plain"><figcaption><span>echo=FALSE, fig.cap="登陆界面 ",fig.height=6,fig.width=9.5, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE, fig.align='center'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\09-Citadel-Login.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+<p>使用上面安装时的用户名和密码</p>
+<ul>
+<li>admin</li>
+<li>123456</li>
+</ul>
+<p>登陆进去之后，你可以看到Citadel的仪器盘，可以通过选中相关的term进行详细的配置.</p>
+<figure class="highlight plain"><figcaption><span>echo=FALSE, fig.cap="Citadel的仪器",fig.height=6,fig.width=9.5, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE, fig.align='center'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\10-Citadel-Dashboard.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+<p>此时进入administrator进行管理员配置,注意只有管理员权限的用户才可以使用该选项，对于一般网络用户是不可见的.</p>
+<figure class="highlight plain"><figcaption><span>echo=FALSE, fig.cap="进入管理员界面",fig.height=6,fig.width=9.5, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE, fig.align='center'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\11-Citadel-Admin-menu.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>echo=FALSE, fig.cap="将主机名设置为DNS解析后的全球域名",fig.height=6,fig.width=9.5, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE, fig.align='center'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\12-Citadel-Site-config-general.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+<p>编辑SMTP服务器的参数</p>
+<figure class="highlight plain"><figcaption><span>echo=FALSE, fig.cap="SMTP服务配置",fig.height=6,fig.width=9.5, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE, fig.align='center'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\13-SMTP-config.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+<p>然后进入系统级别的配置，包括更改域名和相关的反垃圾，反病毒设置。</p>
+<figure class="highlight plain"><figcaption><span>echo=FALSE, fig.cap="进入系统配置",fig.height=6,fig.width=9.5, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE, fig.align='center'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\11b-Citadel-Admin-menu.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>echo=FALSE, fig.cap="添加本地的主机名别名",fig.height=6,fig.width=9.5, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE, fig.align='center'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\11c-Citadel-Admin-menu.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>echo=FALSE, fig.cap="完成上面的配置后，重启服务器",fig.height=6,fig.width=9.5, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE, fig.align='center'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\14-Local-host-aliases.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>一般情况下，重启之后，就可以正常使用了，但是我们忘记了一个很重要的步骤，就是设置DNS记录，一般情况下，需要设置A记录，MX记录即可。<br><img src="http://olrs8j04a.bkt.clouddn.com/17-12-20/11642203.jpg"> <center class="cap"><caption>图1 这是我的DNS解析</caption></center></p>
+</blockquote>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>配置很简单，相比较vps来说，并且很稳定，拥有一个属于自己的邮箱，是一件很cool的事情，关于反垃圾，反病毒的设置可以参考我下面给出的参考链接。</p>
+<p>说实话，我感觉反垃圾什么的并没什么卵用！上面主要作学习用，因为快速并且稳定的配置会使得我们的工作效率大大提高的！</p>
+
+          
         
       
     </div>
@@ -658,7 +725,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/02/16/利用pandas实现输出漂亮的图表/">
+  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/12/19/2017-12-19-example/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Shen Hengheng">
@@ -683,8 +750,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/02/16/利用pandas实现输出漂亮的图表/" itemprop="url">
-                  利用pandas实现输出漂亮的图表
+                <a class="post-title-link" href="/2017/12/19/2017-12-19-example/" itemprop="url">
+                  Display Image Using R
                 </a>
               
             
@@ -700,8 +767,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-16T14:30:40+08:00">
-                Feb 16 2017
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-19T08:00:00+08:00">
+                Dec 19 2017
               </time>
             
 
@@ -723,8 +790,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据科学/" itemprop="url" rel="index">
-                    <span itemprop="name">数据科学</span>
+                  <a href="/categories/blog/" itemprop="url" rel="index">
+                    <span itemprop="name">blog</span>
                   </a>
 	
                 </span>
@@ -735,8 +802,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据科学/爬虫/" itemprop="url" rel="index">
-                    <span itemprop="name">爬虫</span>
+                  <a href="/categories/blog/comment/" itemprop="url" rel="index">
+                    <span itemprop="name">comment</span>
                   </a>
 	
                 </span>
@@ -756,8 +823,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/16/利用pandas实现输出漂亮的图表/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/利用pandas实现输出漂亮的图表/" itemprop="commentCount"></span>
+                <a href="/2017/12/19/2017-12-19-example/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/19/2017-12-19-example/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -789,14 +856,11 @@
 
       
         
-          <p>利用python的数据分析 pandas 库来可视化近期货币的走势，具体代码见-&gt;</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/16/利用pandas实现输出漂亮的图表/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&#123;r fig-margin, echo=<span class="literal">FALSE</span>, fig.cap=<span class="string">"这是一个神经网络的图。"</span>, fig.height=<span class="number">3.5</span>, fig.margin=<span class="literal">TRUE</span>, <span class="keyword">warning</span>=<span class="literal">FALSE</span>, background=<span class="string">"#f5f5d5"</span>, cache=<span class="literal">FALSE</span>&#125;</div><div class="line"><span class="comment"># need png package</span></div><div class="line"><span class="keyword">library</span>(png)</div><div class="line"></div><div class="line"><span class="comment">#Replace the directory and file information with your info</span></div><div class="line">ima &lt;- readPNG(<span class="string">"C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\logo.png"</span>)</div><div class="line"></div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>fig-margin, echo=FALSE, fig.cap="这是一个神经网络的图。", fig.height=3.5, fig.margin=TRUE, warning=FALSE,eval=TRUE,background="#f5f5d5", cache=FALSE&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">library(png)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line"></div><div class="line">ima &lt;- readPNG(&quot;C:\\Users\\Shine\\Desktop\\readailib\\themes\\hugo-lithium-theme\\static\\images\\logo.png&quot;)</div><div class="line">grid::grid.raster(ima)</div></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -835,7 +899,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/02/16/old-利用opencv实现脸部识别/">
+  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-tufte-template-for-blog/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Shen Hengheng">
@@ -860,8 +924,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/02/16/old-利用opencv实现脸部识别/" itemprop="url">
-                  old-利用opencv实现脸部识别
+                <a class="post-title-link" href="/2017/12/15/2017-12-15-tufte-template-for-blog/" itemprop="url">
+                  Tufte样式
                 </a>
               
             
@@ -877,8 +941,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-16T14:19:10+08:00">
-                Feb 16 2017
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-15T08:00:00+08:00">
+                Dec 15 2017
               </time>
             
 
@@ -900,8 +964,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OpenCV/" itemprop="url" rel="index">
-                    <span itemprop="name">OpenCV</span>
+                  <a href="/categories/rmarkdown/" itemprop="url" rel="index">
+                    <span itemprop="name">rmarkdown</span>
                   </a>
 	
                 </span>
@@ -921,8 +985,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/16/old-利用opencv实现脸部识别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/old-利用opencv实现脸部识别/" itemprop="commentCount"></span>
+                <a href="/2017/12/15/2017-12-15-tufte-template-for-blog/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/15/2017-12-15-tufte-template-for-blog/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -954,14 +1018,47 @@
 
       
         
-          <p>利用很简单的<a href="www.opencv.org">OpenCV</a>库在JuPyter上实现了一个简单的练习，人脸检测。使用了OpenCV成熟的级联分类器,又称为 <strong>分类器</strong> <a href="https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml">haarcascade_frontalface_default.xml</a></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/16/old-利用opencv实现脸部识别/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <hr>
+<p>title: “Tufte样式”<br>subtitle: “一个R Markdown实现”<br>author: “JJ Allaire，谢益辉”<br>date: “<code>r Sys.Date()</code>“<br>output:<br>  tufte::tufte_html: default<br>  tufte::tufte_book:<br>    citation_package: natbib<br>    latex_engine: xelatex<br>  tufte::tufte_handout:<br>    citation_package: natbib<br>    latex_engine: xelatex<br>ctex: yes<br>biblio-title: 参考文献<br>bibliography: skeleton.bib</p>
+<h2 id="link-citations-yes"><a href="#link-citations-yes" class="headerlink" title="link-citations: yes"></a>link-citations: yes</h2><figure class="highlight plain"><figcaption><span>setup, include=FALSE&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(tufte)</div><div class="line"></div><div class="line"># tufte版本变化之后更新knitr缓存</div><div class="line">knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion(&apos;tufte&apos;))</div><div class="line">options(htmltools.dir.version = FALSE)</div></pre></td></tr></table></figure>
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>Tufte样式在Edward Tufte的书以及物理学家费曼的教科书很常见，它的一个显著特点就是边栏的使用。例如脚注和边栏注解，以及放在边栏里的小型插图。Tufte样式在LaTeX和HTML/CSS中都有实现^[参见Github库<a href="https://github.com/tufte-latex/tufte-latex" target="_blank" rel="external">tufte-latex</a>和 <a href="https://github.com/edwardtufte/tufte-css" target="_blank" rel="external">tufte-css</a>]。我们将这两种实现都纳入了<a href="https://github.com/rstudio/tufte" target="_blank" rel="external"><strong>tufte</strong>包</a>。若需要LaTeX/PDF输出，使用输出格式<code>tufte_handout</code>即可，类似地，<code>tufte_book</code>可以用来输出PDF书，<code>tufte_html</code>生成HTML网页。这些输出格式可以在YAML元数据中指定，或者传给<code>rmarkdown::render()</code>函数。若对<strong>rmarkdown</strong>包不熟悉，可参见 @R-rmarkdown。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">title:</span> <span class="string">"一个Tufte样式示例"</span></div><div class="line"><span class="attr">author:</span> <span class="string">"张三"</span></div><div class="line"><span class="attr">ctex:</span> <span class="literal">yes</span></div><div class="line"><span class="attr">output:</span></div><div class="line"><span class="attr">  tufte:</span>:tufte_handout:</div><div class="line"><span class="attr">    latex_engine:</span> xelatex</div><div class="line"><span class="attr">  tufte:</span>:tufte_html: default</div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
+<h1 id="章节标题"><a href="#章节标题" class="headerlink" title="章节标题"></a>章节标题</h1><p>Tufte样式不主张太深的章节目录，一般仅仅使用一级标题（Markdown中用一个井号<code>#</code>）和二级标题（两个井号）。</p>
+<h1 id="插图"><a href="#插图" class="headerlink" title="插图"></a>插图</h1><h2 id="边栏插图"><a href="#边栏插图" class="headerlink" title="边栏插图"></a>边栏插图</h2><p>插图在Tufte的书中非常常见，我们可以使用三种插图：边栏图、全宽图、主栏图。先说边栏图：使用<strong>knitr</strong>代码段选项<code>fig.margin = TRUE</code>即可将图形放置在边栏中，如：</p>
+<figure class="highlight plain"><figcaption><span>fig-margin, fig.margin = TRUE, fig.cap = "MPG与horsepower两个变量的散点图；颜色代表自动挡或手动挡。", fig.width=3.5, fig.height=3.5, cache=TRUE&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line">mtcars2 &lt;- mtcars</div><div class="line">mtcars2$am &lt;- factor(</div><div class="line">  mtcars$am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)</div><div class="line">)</div><div class="line">ggplot(mtcars2, aes(hp, mpg, color = am)) +</div><div class="line">  geom_point() + geom_smooth() +</div><div class="line">  theme(legend.position = &apos;bottom&apos;)+ theme(panel.background = element_rect(fill = &apos;#f5f5d5&apos;, colour = &apos;#f5f5d5&apos;))</div></pre></td></tr></table></figure>
+<p>注意我们使用代码段选项<code>fig.cap</code>设定了图的标题。当然我们也可以设置图的长宽。</p>
+<h2 id="任意数学公式"><a href="#任意数学公式" class="headerlink" title="任意数学公式"></a>任意数学公式</h2><p>对于数学公式，<code>$\LaTeX$</code>的支持，可以使用(inline: <code>`$ $` </code>; display style: <code>`$$ $$` </code>)。例如下面有一个微积分第一基本定理。</p>
+<blockquote>
+<p>根据微积分第一基本定理我们知道，对<code>$x \in [a, b]$</code>有<br><code>$$\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x).$$</code></p>
+</blockquote>
+<p>为了文本内容的可移植性（同样的内容可以生成HTML和LaTeX文档）。</p>
+<h2 id="全宽插图"><a href="#全宽插图" class="headerlink" title="全宽插图"></a>全宽插图</h2><p>代码段选项<code>fig.fullwidth = TRUE</code>可以使得一幅图占用全部页宽，例如：</p>
+<figure class="highlight plain"><figcaption><span>fig-fullwidth, fig.width = 10, fig.height = 2, fig.fullwidth = TRUE, fig.cap = "一幅全宽图形。", warning=FALSE, cache=TRUE&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line">ggplot(diamonds, aes(carat, price)) + geom_smooth() +</div><div class="line">  facet_grid(~ cut) + theme(panel.background = element_rect(fill = &apos;#f5f5d5&apos;, colour = &apos;#f5f5d5&apos;))</div></pre></td></tr></table></figure>
+<p>其它和图形有关的代码段选项仍然可以使用，一般情况下，全款图形的<code>fig.width</code>选项会较大，而<code>fig.height</code>相对较小。上图的尺寸是 <code>$10 \times 2$</code> 英寸.</p>
+<h2 id="主栏插图"><a href="#主栏插图" class="headerlink" title="主栏插图"></a>主栏插图</h2><p>默认情况下，R代码段生成的图形放置在主栏里，其标题放在边栏中，例如：</p>
+<figure class="highlight plain"><figcaption><span>fig-main, fig.cap = "一幅主栏插图。", cache=TRUE&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(diamonds, aes(cut, price)) + geom_boxplot() + theme(panel.background = element_rect(fill = &apos;#f5f5d5&apos;, colour = &apos;#f5f5d5&apos;))</div></pre></td></tr></table></figure>
+<h1 id="边栏附注"><a href="#边栏附注" class="headerlink" title="边栏附注"></a>边栏附注</h1><p>Tufte样式的文档中，脚注会被自动转换为边栏附注^[这里本来是一个脚注]。脚注是带编号的，另一种边栏附注是不带编号的，这种附注需要用<strong>tufte</strong>包中的R函数<code>margin_note()</code>在<strong>knitr</strong>行内代码中生成。</p>
+<p><code>r margin_note(&quot;这是一个边栏附注，它没有编号。&quot;)</code>与边栏插图一样，边栏附注中我们也不建议写太复杂的内容，通常只是一句简单的文字。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>HTML输出中，参考文献默认也放在边栏中。例如这里我们可以引用[@R-base]。这个功能需要在YAML元数据中设置<code>link-citations: yes</code>，而且<code>pandoc-citeproc</code>程序的版本应该至少是0.7.2。若这两个条件不满足，参考文献会被放在文档末尾。</p>
+<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><p>我们可以用<strong>knitr</strong>包中的<code>kable()</code>函数生成简单的表格。HTML输出中表格的标题也会被放在边栏中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">knitr::kable(</div><div class="line">  mtcars[1:6, 1:6], caption = &apos;mtcars数据的前几行。&apos;</div><div class="line">)</div></pre></td></tr></table></figure>
+<h1 id="引文"><a href="#引文" class="headerlink" title="引文"></a>引文</h1><p>Markdown语法使用<code>&gt;</code>来生成引文，如果需要在引文下面用行内代码以及<code>quote_footer()</code>函数加上一句引文来源，例如：</p>
+<blockquote>
+<p>“多亏了我的律师，要不然我现在还在牢里。两个人一起挖确实比一个人快很多啊。”</p>
+<p><code>r tufte::quote_footer(&#39;--- Joe Martin&#39;)</code></p>
+</blockquote>
+<p>如果不用这个函数的话，引文底部的话只是一个普通段落：</p>
+<blockquote>
+<p>“伟人论道，凡人论事，小人论酒。”</p>
+<p><code>r tufte::quote_footer(&#39;--- Fran Lebowitz&#39;)</code></p>
+</blockquote>
+<h1 id="响应式页面"><a href="#响应式页面" class="headerlink" title="响应式页面"></a>响应式页面</h1><p>这个包生成的HTML页面是响应式的：如果页宽小于760像素，边栏内容会自动隐藏。此时我们可以点击脚注的序号显示它，其它边栏附注则可以通过点击圆圈加号的符号显示。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>希望诸位喜欢R Markdown的超级简洁性，同时我们感谢Tufte-CSS和Tufte-LaTeX项目的作者们，没有他们的辛勤劳动，就没有这个<strong>tufte</strong>包。这份文档的R Markdown源文档可以在<a href="https://github.com/rstudio/tufte/raw/master/inst/rmarkdown/templates/tufte_ctex/skeleton/skeleton.Rmd" target="_blank" rel="external">Github上找到</a>，或者直接使用RStudio菜单<code>File -&gt; New File -&gt; R Markdown -&gt; From Template</code>新建一个文档，或直接从R里面打开这个Rmd文件：</p>
+<figure class="highlight plain"><figcaption><span>eval=FALSE&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">file.edit(</div><div class="line">  tufte:::template_resources(</div><div class="line">    &apos;tufte_ctex&apos;, &apos;..&apos;, &apos;skeleton&apos;, &apos;skeleton.Rmd&apos;</div><div class="line">  )</div><div class="line">)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>bib, include=FALSE&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># create a bib file for the R packages used in this document</div><div class="line">knitr::write_bib(c(&apos;base&apos;, &apos;rmarkdown&apos;), file = &apos;skeleton.bib&apos;)</div></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -1000,7 +1097,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/02/16/爬虫实战第一天-抓取淘宝网站的名称和价格/">
+  <link itemprop="mainEntityOfPage" href="http://blog.shenhengheng.xyz/2017/12/15/2017-12-15-ctex-template-for-rstudio/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Shen Hengheng">
@@ -1025,8 +1122,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/02/16/爬虫实战第一天-抓取淘宝网站的名称和价格/" itemprop="url">
-                  爬虫实战第一天-抓取淘宝网站的名称和价格
+                <a class="post-title-link" href="/2017/12/15/2017-12-15-ctex-template-for-rstudio/" itemprop="url">
+                  CTeX样式
                 </a>
               
             
@@ -1042,8 +1139,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-16T13:52:29+08:00">
-                Feb 16 2017
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-15T08:00:00+08:00">
+                Dec 15 2017
               </time>
             
 
@@ -1065,8 +1162,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/爬虫/" itemprop="url" rel="index">
-                    <span itemprop="name">爬虫</span>
+                  <a href="/categories/rmarkdown/" itemprop="url" rel="index">
+                    <span itemprop="name">rmarkdown</span>
                   </a>
 	
                 </span>
@@ -1086,8 +1183,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/16/爬虫实战第一天-抓取淘宝网站的名称和价格/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/爬虫实战第一天-抓取淘宝网站的名称和价格/" itemprop="commentCount"></span>
+                <a href="/2017/12/15/2017-12-15-ctex-template-for-rstudio/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/15/2017-12-15-ctex-template-for-rstudio/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1119,14 +1216,35 @@
 
       
         
-          <p>之前在YouTube上学习过一系列的<a href="https://www.youtube.com/watch?v=vOjRcxTLUEI&amp;t=2s">爬虫实战课程</a>,<strong>淘宝</strong>（这里的淘宝指的是 <strong>台湾淘宝</strong>）使用AJAX 的方式填入页面内容。因此在这里便可以从XHR 以及JS 下手，找寻入口点，再使用正规表达式(<strong>re</strong>)，便可以快速的剖析出重要资讯，</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/16/爬虫实战第一天-抓取淘宝网站的名称和价格/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <hr>
+<p>title: “在R Markdown文档中使用中文”<br>author:</p>
+<ul>
+<li>谢益辉</li>
+<li>邱怡轩</li>
+<li>于淼<br>documentclass: ctexart<br>output:<br>rticles::ctex:<br>fig_caption: yes<br>number_sections: yes<br>toc: yes<br>classoption: “hyperref,”</li>
+</ul>
+<hr>
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>中文LaTeX文档并非难题。当然这句话得站在巨人 <a href="http://ctex.org" target="_blank" rel="external">CTeX</a> 的肩膀上才能说，它让我们只需要一句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">\documentclass&#123;ctexart&#125; % 或者ctexrep/ctexbook</div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">\usepackage&#123;ctex&#125;</div></pre></td></tr></table></figure>
+<p>就轻松搞定中文LaTeX排版问题。跨平台通用的LaTeX编译却是个小难题，主要是没有一种跨平台通用且免费的中文字体。好吧，你们Windows用户永远有宋体黑体，你们Mac用户有华文字体，而我们苦逼Linux用户在编译LaTeX文档就没那么简单了^[切，傲娇的Linux用户怎么会干出找你们复制字体的事情]，是啊，我们有文泉驿，但我们要是用了文泉驿之后把文档发给你们八成不能编译，因为你们没有安装文泉驿。</p>
+<h1 id="字体和选项"><a href="#字体和选项" class="headerlink" title="字体和选项"></a>字体和选项</h1><p>LaTeX包<a href="http://ctan.org/pkg/ctex" target="_blank" rel="external"><strong>ctex</strong></a>支持若干种字体选项，如果你是<strong>ctex</strong>老用户，请注意这里我们要求的最低版本是2.2，你可能需要升级你的LaTeX包。从版本2.0开始，<strong>ctex</strong>支持根据不同操作系统自动选择中文字体，简直是为人类进步作出了巨大贡献，我们再也不必费尽口舌向用户解释“啊，你用Windows啊，那么你该使用什么字体；啊，你用Mac啊，又该如何如何”。</p>
+<p>下面的YAML元数据应该能满足多数用户的需求，主要设置两项参数：文档类为<code>ctexart</code>（当然也可以是别的类），输出格式为<code>rticles::ctex</code>，其默认LaTeX引擎为XeLaTeX（真的，别纠结你的旧爱PDFLaTeX了）。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">documentclass:</span> ctexart</div><div class="line"><span class="attr">output:</span> rticles::ctex</div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
+<p><code>rticles::ctex</code>的参数都是普通的<code>pdf_document</code>参数，参见文档<strong>rmarkdown</strong>包的文档，这里就不赘述了。</p>
+<p>Windows和Mac用户应该都已经有自带的中文字体了。Linux用户可以另外下载 <a href="http://ctan.org/pkg/fandol" target="_blank" rel="external">Fandol字体</a>^[<a href="http://ctan.org/tex-archive/fonts/fandol]，它号称是免费的，不过我们也没太搞清楚它的来头。把那些.otf字体文件下载下来保存到`~/.fonts`文件夹下，然后命令行切换到那里，运行`fc-cache" target="_blank" rel="external">http://ctan.org/tex-archive/fonts/fandol]，它号称是免费的，不过我们也没太搞清楚它的来头。把那些.otf字体文件下载下来保存到`~/.fonts`文件夹下，然后命令行切换到那里，运行`fc-cache</a> -fv`。</p>
+<h1 id="R代码段"><a href="#R代码段" class="headerlink" title="R代码段"></a>R代码段</h1><p>R代码用R Markdown的语法嵌入，即三个反引号开始一段代码<figure class="highlight plain"><figcaption><span>```&#123;r&#125; ````和三个反引号```` ``` ```` 结束一段代码：</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```&#123;r&#125;</div><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line">options(digits = 4)</div><div class="line">fit = lm(dist ~ speed, data = cars)</div><div class="line">coef(summary(fit))</div><div class="line">b = coef(fit)</div></pre></td></tr></table></figure></p>
+<p>上面回归方程中的斜率是<code>r b[2]</code>，完整的回归方程为：$$ Y = <code>r b[1]</code> + <code>r b[2]</code>x$$</p>
+<p>画图当然也是木有问题的啦，想画就说嘛，不说我怎么知道你想画呢？</p>
+<figure class="highlight plain"><figcaption><span>scatter, fig.cap='cars数据散点图以及回归直线。'&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">par(bg = &quot;#f5f5d5&quot;)</div><div class="line">par(mar = c(4, 4, .1, .1), las = 1)</div><div class="line">plot(cars, pch = 19)</div><div class="line">abline(fit, col = &apos;red&apos;)</div></pre></td></tr></table></figure>
+<p>请不要问我为什么图浮动到下一页去了，这么初级的LaTeX问题问出来信不信我扁你。</p>
+<h1 id="源代码控"><a href="#源代码控" class="headerlink" title="源代码控"></a>源代码控</h1><p>这里提供的rticles模板可能由于种种原因不能满足客官的要求，LaTeX用户就是这样永无止境地调格式（唉，跟Word用户到底有啥区别呢）。若真是需要调整，你可以复制一份默认模板去改，如前面所说，本文档的模板是<code>rticles::ctex_template()</code>，它是一个文本文件。若熟悉LaTeX的话一看就明白，只不过里面有些Pandoc变量而已；若不熟悉LaTeX我们在这里说了也白说，花几天时间好好啃一啃LaTeX入门手册吧。</p>
+<p>本文档所用的模板是从Pandoc默认LaTeX模板基础上做了少许改动而来的：<a href="https://github.com/yihui/pandoc-templates/blob/ctex/default.latex" target="_blank" rel="external">https://github.com/yihui/pandoc-templates/blob/ctex/default.latex</a> 具体改动从GIT提交消息日志中可以看到，主要就是去掉了mathspec包和hyperref包。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>事实证明我们可以理直气壮地通过XeLaTeX将中文R Markdown转化为PDF文档，麻麻再也不用担心我的论文满屏幕都是反斜杠，朕养完小白鼠之后终于不必先折腾三个小时LaTeX再开始写实验报告了：打开RStudio，菜单File &gt; New File &gt; R Markdown，然后从模板中选择CTeX Documents，搞定。</p>
+
+          
         
       
     </div>
@@ -1160,7 +1278,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1203,7 +1321,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1212,7 +1330,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1221,7 +1339,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
